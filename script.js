@@ -8,10 +8,12 @@ const humidityEl = $('#humidity');
 const windEl = $('#wind-speed');
 const uvIndexEl = $('#UV-index');
 
+const dayCardEl = $('.card-day');
 const tempCardEl = $('.card-temperature');
 const humidityCardEl = $('.card-humidity');
 
-// Weather dashboard variables
+// Weather dashboard 
+let date = moment().format('dddd, MMMM Do');
 let weatherAPIKey = '1c15bab08bfbee58f4e3567a79550403';
 let newLocation; 
 let weatherQueryURL;
@@ -27,23 +29,20 @@ searchBtn.click(function(event) {
         url: weatherQueryURL,
         method: `GET`
     }).then (function(response){
-        console.log(response); 
+        // console.log(response); 
         renderConditions(response);            
     });
     $.ajax({
         url: forecastQueryURL,
         method: `GET`
     }).then (function(response){
-        console.log(response); 
-        console.log(response.list[0].main.temp);
-        console.log(response.list[0].main.humidity);
         renderForecast(response);            
     });
     
 })
 
 function renderConditions(city) {
-    cityEl.text(city.name);
+    cityEl.text(`${city.name} ${date}`);
     tempEl.text(city.main.temp);
     humidityEl.text(city.main.humidity);
     windEl.text(city.wind.speed);
@@ -51,12 +50,15 @@ function renderConditions(city) {
 }
 
 function renderForecast(city) {
+    dayCardEl.each(function(i) {
+        $(this).text(moment().add((i), 'days').format('dddd'));
+    })
     tempCardEl.each(function(i) {
-        console.log(city.list[i].main.temp);
+        // console.log(city.list[i].main.temp);
         $(this).text(city.list[i].main.temp);
     })
     humidityCardEl.each(function(i) {
-        console.log(city.list[i].main.humidity);
+        // console.log(city.list[i].main.humidity);
         $(this).text(city.list[i].main.humidity);
     })
 }
