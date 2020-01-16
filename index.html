@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Dashboard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel='stylesheet' type='text/css' href='styles.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <main>
+        <div id='search-container'>
+
+            <form>
+                <label for='location-input'>Search for a City:</label>
+                <input type='text' id='location-input' name='location-input'>
+                <button type='submit' id='search-btn'>
+                    <i class='fas fa-search fa-lg'></i>
+                </button>
+            </form>
+            
+        </div>
+        <div id='results-container'>
+
+            <div id='conditions-container'>
+                <h2 id='city'></h2>
+                <p id='temperature'></p>
+                <p id='humidity'></p>
+                <p id='wind-speed'></p>
+                <p id='UV-index'></p>
+            </div>
+
+            <div id='forecast-container'>
+
+                <h3 id='5day-forcast'>5-Day Forecast:</h3>
+
+                <div id='forecast-card-container'>
+
+                    <div class='forecast-card'>
+                        <p class='card-temperature'></p>
+                        <p class='card-humidity'></p>
+                    </div>
+
+                    <div class='forecast-card'>
+                        <p class='card-temperature'></p>
+                        <p class='card-humidity'></p>
+                    </div>
+
+                    <div class='forecast-card'>
+                        <p class='card-temperature'></p>
+                        <p class='card-humidity'></p>
+                    </div>
+
+                    <div class='forecast-card'>
+                        <p class='card-temperature'></p>
+                        <p class='card-humidity'></p>
+                    </div>
+
+                    <div class='forecast-card'>
+                        <p class='card-temperature'></p>
+                        <p class='card-humidity'></p>
+                    </div>
+
+                </div>
+                
+            </div>
+            
+        </div>
+    </main>
+    
+    <script src='script.js'></script>
+</body>
+</html>
