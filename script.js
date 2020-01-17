@@ -8,8 +8,10 @@ const tempEl = $('#temperature');
 const humidityEl = $('#humidity');
 const windEl = $('#wind-speed');
 const uvIndexEl = $('#UV-index');
+const conditionIcon = $('#condition-icon');
 
 const dayCardEl = $('.card-day');
+const cardIcon = $('.card-icon');
 const tempCardEl = $('.card-temperature');
 const humidityCardEl = $('.card-humidity');
 
@@ -23,6 +25,8 @@ let newLocation;
 let coordinatesWeatherURL;
 let weatherQueryURL;
 let forecastQueryURL;
+
+dateEl.text(date);
 
 if (navigator.geolocation) {
     console.log('yes');
@@ -41,13 +45,15 @@ searchBtn.click(function(event) {
         url: weatherQueryURL,
         method: `GET`
     }).then (function(response){ 
-        renderConditions(response);            
+        renderConditions(response); 
+        renderConditionIcon(response);           
     });
     $.ajax({
         url: forecastQueryURL,
         method: `GET`
     }).then (function(response){
-        renderForecast(response);            
+        renderForecast(response);
+        renderForecastIcon(response);            
     });
     
 })
@@ -63,24 +69,26 @@ function displayLocationInfo(position) {
         url: coordinatesWeatherURL,
         method: `GET`
     }).then (function(response){ 
-        renderConditions(response);           
+        renderConditions(response); 
+        renderConditionIcon(response);         
     });
     $.ajax({
         url: coordinatesForecastURL,
         method: `GET`
     }).then (function(response){
-        renderForecast(response);            
+        renderForecast(response);
+        renderForecastIcon(response);           
     });
 }
 
 function renderConditions(city) {
     let tempF = Math.floor((city.main.temp - 273.15) * 1.80 + 32)
-    dateEl.text(date);
+    let speedMPH = Math.floor(city.wind.speed * 2.237);
     cityEl.text(city.name);
-    tempEl.text(`Temperature: ${tempF}`);
-    humidityEl.text(`Humidity: ${city.main.humidity}`);
-    windEl.text(`Wind speed: ${city.wind.speed}`);
-    uvIndexEl.text('');
+    tempEl.html(`${tempF}&deg;`);
+    humidityEl.text(`Humidity: ${city.main.humidity}%`);
+    windEl.text(`Wind speed: ${speedMPH}mph`);
+    // uvIndexEl.text(`UV Index: ${city.clouds.all}`);
 }
 
 function renderForecast(city) {
@@ -89,11 +97,51 @@ function renderForecast(city) {
     })
     tempCardEl.each(function(i) {
         let tempF = Math.floor((city.list[i].main.temp - 273.15) * 1.80 + 32)
-        $(this).text(`Temperature: ${tempF}`);
+        $(this).html(`${tempF}&deg;`);
     })
     humidityCardEl.each(function(i) {
-        $(this).text(`Humidity: ${city.list[i].main.humidity}`);
+        $(this).text(`Humidity: ${city.list[i].main.humidity}%`);
     })
 }
 
+function renderConditionIcon(city) {
+    let category = city.weather[0].main;
+    conditionIcon.attr('class', '');
+    if (category === 'Clouds' || category === 'Fog') {
+        conditionIcon.addClass('fas fa-cloud fa-6x');
+    } else if (category === 'Rain' || category === 'Drizzle' || category === 'Mist') {
+        conditionIcon.addClass ('fas fa-cloud-rain fa-6x');
+    } else if (category === 'Snow') {
+        conditionIcon.addClass('far fa-snowflake fa-6x');
+    } else if (category === 'Thunderstorm') {
+        conditionIcon.addClass('fas fa-bolt fa-6x');
+    } else if (category === 'Clear') {
+        conditionIcon.addClass('fas fa-sun fa-6x');
+    } else if (category === 'Smoke' || category === 'Haze' || category === 'Ash' || category === 'Dust' || category === 'Sand') {
+        conditionIcon.addClass('fas fa-smog fa-6x');
+    } else if (category === 'Squall' || category === 'Tornado') {
+        conditionIcon.addClass('fas fa-cloud fa-6x');
+    } 
+}
 
+function renderForecastIcon(city) {
+    cardIcon.each(function(i) {
+        let category = city.list[i].weather[0].main;
+        $(this).attr('class', 'card-icon');
+        if (category === 'Clouds' || category === 'Fog') {
+            $(this).addClass('fas fa-cloud fa-2x');
+        } else if (category === 'Rain' || category === 'Drizzle' || category === 'Mist') {
+            $(this).addClass('fas fa-cloud-rain fa-2x');
+        } else if (category === 'Snow') {
+            $(this).addClass('far fa-snowflake fa-2x');
+        } else if (category === 'Thunderstorm') {
+            $(this).addClass('fas fa-bolt fa-2x');
+        } else if (category === 'Clear') {
+            $(this).addClass('fas fa-sun fa-2x');
+        } else if (category === 'Smoke' || category === 'Haze' || category === 'Ash' || category === 'Dust' || category === 'Sand') {
+            $(this).addClass('fas fa-smog fa-2x');
+        } else if (category === 'Squall' || category === 'Tornado') {
+            $(this).addClass('fas fa-cloud fa-2x');
+        } 
+    })
+}

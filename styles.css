@@ -7,7 +7,7 @@
 /* --- Base Styles --- */
 
 body {
-    background-color: rgb(104, 162, 238);
+    background-image: linear-gradient(rgb(159, 195, 241), rgb(135, 116, 221));
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -36,10 +36,17 @@ label {
     
 }
 input {
-    padding: 8px 5px;
-    margin-left: 3px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 5px;
+    margin-left: 5px;
 }
 button {
+    background-image: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
+    border-radius: 5px;
+    /* box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.5); */
+    color: white;
+    cursor: pointer;
     border: none;
     padding: 10px;
 }
@@ -87,10 +94,13 @@ i {
 #forecast-card-container {
     display: flex;
     flex-direction: column;
-    margin: 5px auto;
+    margin: 5px auto 20px;
     width: 90%;
 }
 .forecast-card {
+    background-image: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
+    border-radius: 5px;
+    box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: row;
     margin: 5px auto;
@@ -100,6 +110,9 @@ i {
 .forecast-card h4 {
     margin: auto;
     width: 20%;
+}
+.card-icon {
+    display: none;
 }
 .forecast-card p {
     margin: auto;
@@ -116,7 +129,6 @@ i {
         font-size: 1.2em;
     }
 }
-
 @media (min-width: 768px) {
     header {
         font-size: 1.6em;
@@ -150,11 +162,16 @@ i {
         flex-direction: column;
         margin: 8px;
         padding: 10px 0;
+        text-align: center;
+    }
+    .card-icon {
+        display: inline-block;
+        margin: 2px auto 5px;
     }
     .forecast-card h4,
     .forecast-card p {
-        text-align: center;
-        padding: 8px 0;
+        font-size: 0.9em;
+        padding: 5px 0;
         width: 100%;
     }
     .forecast-card h4 {
