@@ -2,6 +2,7 @@
 const locationInput = $('#location-input');
 const searchBtn = $('#search-btn');
 
+const dateEl = $('#date');
 const cityEl = $('#city');
 const tempEl = $('#temperature');
 const humidityEl = $('#humidity');
@@ -30,27 +31,6 @@ if (navigator.geolocation) {
     console.log('no');
 }
 
-function displayLocationInfo(position) {
-    lon = position.coords.longitude;
-    lat = position.coords.latitude;
-
-    coordinatesWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}`
-    coordinatesForecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}`;
-
-    $.ajax({
-        url: coordinatesWeatherURL,
-        method: `GET`
-    }).then (function(response){ 
-        renderConditions(response);           
-    });
-    $.ajax({
-        url: coordinatesForecastURL,
-        method: `GET`
-    }).then (function(response){
-        renderForecast(response);            
-    });
-}
-
 searchBtn.click(function(event) {
     event.preventDefault();
     newLocation = locationInput.val();
@@ -72,11 +52,34 @@ searchBtn.click(function(event) {
     
 })
 
+function displayLocationInfo(position) {
+    lon = position.coords.longitude;
+    lat = position.coords.latitude;
+
+    coordinatesWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}`
+    coordinatesForecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}`;
+
+    $.ajax({
+        url: coordinatesWeatherURL,
+        method: `GET`
+    }).then (function(response){ 
+        renderConditions(response);           
+    });
+    $.ajax({
+        url: coordinatesForecastURL,
+        method: `GET`
+    }).then (function(response){
+        renderForecast(response);            
+    });
+}
+
 function renderConditions(city) {
-    cityEl.text(`${city.name} ${date}`);
-    tempEl.text(city.main.temp);
-    humidityEl.text(city.main.humidity);
-    windEl.text(city.wind.speed);
+    let tempF = Math.floor((city.main.temp - 273.15) * 1.80 + 32)
+    dateEl.text(date);
+    cityEl.text(city.name);
+    tempEl.text(`Temperature: ${tempF}`);
+    humidityEl.text(`Humidity: ${city.main.humidity}`);
+    windEl.text(`Wind speed: ${city.wind.speed}`);
     uvIndexEl.text('');
 }
 
@@ -85,10 +88,11 @@ function renderForecast(city) {
         $(this).text(moment().add((i), 'days').format('dddd'));
     })
     tempCardEl.each(function(i) {
-        $(this).text(city.list[i].main.temp);
+        let tempF = Math.floor((city.list[i].main.temp - 273.15) * 1.80 + 32)
+        $(this).text(`Temperature: ${tempF}`);
     })
     humidityCardEl.each(function(i) {
-        $(this).text(city.list[i].main.humidity);
+        $(this).text(`Humidity: ${city.list[i].main.humidity}`);
     })
 }
 
