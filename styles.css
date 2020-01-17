@@ -1,0 +1,222 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Base Styles --- */
+
+body {
+    background-color: rgb(104, 162, 238);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h1,
+h2,
+h3,
+h4 {
+    font-weight: lighter;
+}
+h1 {
+    font-size: 2.4em;
+    margin: 20px auto 10px;
+    text-align: center;
+}
+
+/* --- Form Styles --- */
+
+form {
+    margin: 10px auto 20px;
+    width: 90%;
+}
+label {
+    display: block;
+    font-size: 1em;
+    margin: 5px;
+    
+}
+input {
+    padding: 8px 5px;
+    margin-left: 3px;
+}
+button {
+    border: none;
+    padding: 10px;
+}
+
+/* --- Weather Results Container --- */
+
+#results-container h3 {
+    font-size: 1.2em;
+    margin: 10px auto;
+    width: 90%;
+}
+
+/* --- Conditions Container --- */
+
+#conditions-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    margin: 10px auto 20px;
+    width: 90%;
+}
+.column {
+    text-align: center;
+}
+.column:first-child p {
+    text-align: left;
+    padding: 5px;
+    margin-left: 5px;
+}
+#city {
+    font-size: 3em;
+    padding: 10px;
+}
+#temperature {
+    font-size: 4em;
+    margin-left: 20px;
+}
+i {
+    display: inline-block;
+}
+
+/* --- Forecast Container --- */
+
+#forecast-card-container {
+    display: flex;
+    flex-direction: column;
+    margin: 5px auto;
+    width: 90%;
+}
+.forecast-card {
+    display: flex;
+    flex-direction: row;
+    margin: 5px auto;
+    padding: 0.4rem;
+    width: 100%;
+}
+.forecast-card h4 {
+    margin: auto;
+    width: 20%;
+}
+.forecast-card p {
+    margin: auto;
+    text-align: center;
+}
+.card-humidity {
+    font-weight: lighter;
+}
+
+/* --- Media Queries --- */
+
+@media (min-width: 568px) {
+    .forecast-card {
+        font-size: 1.2em;
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        font-size: 1.6em;
+        margin: 20px auto 10px;
+        text-align: center;
+    }
+    form {
+        margin: 20px auto 30px;
+        text-align: center;
+        width: 90%;
+    }
+    label {
+        display: inline-block;
+    }
+    #results-container h3 {
+        width: 80%;
+    }
+    .column {
+        padding: 10px;
+    }
+    #conditions-container {
+        margin: 30px auto;
+        width: 80%;
+    }
+    #forecast-card-container {
+        flex-direction: row;
+        margin: 20px auto;
+        width: 90%;
+    }
+    .forecast-card {
+        flex-direction: column;
+        margin: 8px;
+        padding: 10px 0;
+    }
+    .forecast-card h4,
+    .forecast-card p {
+        text-align: center;
+        padding: 8px 0;
+        width: 100%;
+    }
+    .forecast-card h4 {
+        font-size: 1.2em;
+    }
+}
+@media (min-width: 1024px) {
+    header {
+        margin: 30px auto 20px;
+    }
+    form {
+        margin: 20px auto 40px;
+        width: 80%;
+    }
+    label {
+        font-size: 1.2em;
+    }
+    input {
+        width: 30%;
+    }
+    #results-container h3 {
+        font-size: 1.4em;
+        width: 70%;
+    }
+    #conditions-container {
+        width: 75%;
+    }
+    #city {
+        font-size: 3.5em;
+    }
+    #humidity,
+    #wind-speed,
+    #UV-index {
+        font-size: 1.2em;
+    }
+    #forecast-card-container {
+        font-size: 1em;
+        margin: 10px auto 20px;
+        padding: 20px 0;
+        width: 80%;
+    }
+    .forecast-card p {
+        font-size: 0.9em;
+    }
+}
+@media (min-width: 1200px) {
+    #results-container h3 {
+        font-size: 1.6em;
+        width: 60%;
+    }
+    #conditions-container {
+        width: 60%;
+    }
+    #forecast-card-container {
+        font-size: 1.2em;
+        padding: 10px;
+        width: 70%;
+    }
+    .forecast-card {
+        font-size: 1.1em;
+    }
+    .forecast-card p {
+        font-size: 1em;
+    }
+}
