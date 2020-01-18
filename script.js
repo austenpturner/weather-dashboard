@@ -29,11 +29,8 @@ let forecastQueryURL;
 dateEl.text(date);
 
 if (navigator.geolocation) {
-    console.log('yes');
     navigator.geolocation.getCurrentPosition(displayLocationInfo);
-} else {
-    console.log('no');
-}
+} 
 
 searchBtn.click(function(event) {
     event.preventDefault();
@@ -45,6 +42,7 @@ searchBtn.click(function(event) {
         url: weatherQueryURL,
         method: `GET`
     }).then (function(response){ 
+        $('#spacer').hide();
         renderConditions(response); 
         renderConditionIcon(response);           
     });
@@ -69,6 +67,7 @@ function displayLocationInfo(position) {
         url: coordinatesWeatherURL,
         method: `GET`
     }).then (function(response){ 
+        $('#spacer').hide();
         renderConditions(response); 
         renderConditionIcon(response);         
     });
@@ -84,14 +83,18 @@ function displayLocationInfo(position) {
 function renderConditions(city) {
     let tempF = Math.floor((city.main.temp - 273.15) * 1.80 + 32)
     let speedMPH = Math.floor(city.wind.speed * 2.237);
+    $('.column').css('opacity', '0');
     cityEl.text(city.name);
     tempEl.html(`${tempF}&deg;`);
     humidityEl.text(`Humidity: ${city.main.humidity}%`);
     windEl.text(`Wind speed: ${speedMPH}mph`);
     // uvIndexEl.text(`UV Index: ${city.clouds.all}`);
+    $('.column').animate({ opacity: '1' }, 1500);
 }
 
 function renderForecast(city) {
+    $('.forecast-card').css('opacity', '0');
+    $('#forecast-heading').css('opacity', '0');
     dayCardEl.each(function(i) {
         $(this).text(moment().add((i), 'days').format('dddd'));
     })
@@ -102,6 +105,8 @@ function renderForecast(city) {
     humidityCardEl.each(function(i) {
         $(this).text(`Humidity: ${city.list[i].main.humidity}%`);
     })
+    $('.forecast-card').animate({ opacity: '1' }, 1500);
+    $('#forecast-heading').animate({ opacity: '1' }, 1500);
 }
 
 function renderConditionIcon(city) {

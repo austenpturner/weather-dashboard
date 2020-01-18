@@ -7,7 +7,7 @@
 /* --- Base Styles --- */
 
 body {
-    background-image: linear-gradient(rgb(159, 195, 241), rgb(135, 116, 221));
+    background: linear-gradient(rgb(159, 195, 241), rgb(135, 116, 221));
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -21,6 +21,9 @@ h1 {
     font-size: 2.4em;
     margin: 20px auto 10px;
     text-align: center;
+}
+#spacer {
+    height: 60vh;
 }
 
 /* --- Form Styles --- */
@@ -44,7 +47,6 @@ input {
 button {
     background-image: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
     border-radius: 5px;
-    /* box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.5); */
     color: white;
     cursor: pointer;
     border: none;
@@ -65,11 +67,12 @@ button {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 10px;
     margin: 10px auto 20px;
+    padding: 10px;
     width: 90%;
 }
 .column {
+    opacity: 0;
     text-align: center;
 }
 .column:first-child p {
@@ -97,6 +100,9 @@ i {
     margin: 5px auto 20px;
     width: 90%;
 }
+#forecast-heading {
+    opacity: 0;
+}
 .forecast-card {
     background-image: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
     border-radius: 5px;
@@ -105,6 +111,7 @@ i {
     flex-direction: row;
     margin: 5px auto;
     padding: 0.4rem;
+    opacity: 0;
     width: 100%;
 }
 .forecast-card h4 {
