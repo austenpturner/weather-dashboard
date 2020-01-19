@@ -22,9 +22,6 @@ h1 {
     margin: 20px auto 10px;
     text-align: center;
 }
-#spacer {
-    height: 60vh;
-}
 
 /* --- Form Styles --- */
 
@@ -55,6 +52,14 @@ button {
 
 /* --- Weather Results Container --- */
 
+#date {
+    font-size: 1.2em;
+    margin: 10px auto;
+    width: 90%;
+}
+#results-container {
+    min-height: calc(100vh - 198px); 
+}
 #results-container h3 {
     font-size: 1.2em;
     margin: 10px auto;
@@ -85,7 +90,7 @@ button {
     padding: 10px;
 }
 #temperature {
-    font-size: 4em;
+    font-size: 3.4em;
     margin-left: 20px;
 }
 i {
@@ -138,7 +143,7 @@ i {
 }
 @media (min-width: 768px) {
     header {
-        font-size: 1.6em;
+        font-size: 1.4em;
         margin: 20px auto 10px;
         text-align: center;
     }
@@ -147,8 +152,14 @@ i {
         text-align: center;
         width: 90%;
     }
+    #date {
+        width: 80%;
+    }
     label {
         display: inline-block;
+    }
+    #results-container {
+        min-height: calc(100vh - 212px); 
     }
     #results-container h3 {
         width: 80%;
@@ -157,7 +168,7 @@ i {
         padding: 10px;
     }
     #conditions-container {
-        margin: 30px auto;
+        margin: 10px auto;
         width: 80%;
     }
     #forecast-card-container {
@@ -177,18 +188,15 @@ i {
     }
     .forecast-card h4,
     .forecast-card p {
-        font-size: 0.9em;
+        font-size: 0.7em;
         padding: 5px 0;
         width: 100%;
     }
     .forecast-card h4 {
-        font-size: 1.2em;
+        font-size: 0.9em;
     }
 }
 @media (min-width: 1024px) {
-    header {
-        margin: 30px auto 20px;
-    }
     form {
         margin: 20px auto 40px;
         width: 80%;
@@ -199,20 +207,26 @@ i {
     input {
         width: 30%;
     }
+    #date {
+        width: 70%;
+    }
+    #results-container {
+        min-height: calc(100vh - 226px); 
+    }
     #results-container h3 {
-        font-size: 1.4em;
+        font-size: 1.2em;
         width: 70%;
     }
     #conditions-container {
         width: 75%;
     }
     #city {
-        font-size: 3.5em;
+        font-size: 3em;
     }
     #humidity,
     #wind-speed,
     #UV-index {
-        font-size: 1.2em;
+        font-size: 1.1em;
     }
     #forecast-card-container {
         font-size: 1em;
@@ -220,27 +234,22 @@ i {
         padding: 20px 0;
         width: 80%;
     }
-    .forecast-card p {
-        font-size: 0.9em;
+    .forecast-card h4 {
+        font-size: 1em;
     }
 }
 @media (min-width: 1200px) {
+    #date {
+        width: 60%;
+    }
     #results-container h3 {
-        font-size: 1.6em;
         width: 60%;
     }
     #conditions-container {
         width: 60%;
     }
     #forecast-card-container {
-        font-size: 1.2em;
         padding: 10px;
         width: 70%;
-    }
-    .forecast-card {
-        font-size: 1.1em;
-    }
-    .forecast-card p {
-        font-size: 1em;
     }
 }
