@@ -1,6 +1,10 @@
 // DOM elements
 const locationInput = $('#location-input');
 const searchBtn = $('#search-btn');
+const saveBtn = $('#save-btn');
+const deleteBtn = $('#delete-btn');
+const dropdownBtn = $('#dropdown-btn');
+const dropdownContent = $('#dropdown-content');
 
 const dateEl = $('#date');
 const cityEl = $('#city');
@@ -15,7 +19,7 @@ const cardIcon = $('.card-icon');
 const tempCardEl = $('.card-temperature');
 const humidityCardEl = $('.card-humidity');
 
-// Weather dashboard 
+// Variables
 let date = moment().format('dddd, MMMM Do');
 let weatherAPIKey = '1c15bab08bfbee58f4e3567a79550403';
 let currentLocation;
@@ -25,26 +29,40 @@ let newLocation;
 let coordinatesWeatherURL;
 let weatherQueryURL;
 let forecastQueryURL;
+let capLocation;
+let searches = [];
 
 dateEl.text(date);
+renderSavedLocations();
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(displayLocationInfo);
 } 
 
+// Event Listeners
 searchBtn.click(function(event) {
     event.preventDefault();
     newLocation = locationInput.val();
+
     weatherQueryURL = `https://api.openweathermap.org/data/2.5/weather?q=${newLocation}&appid=${weatherAPIKey}`;
-    forecastQueryURL = 
-    `https://api.openweathermap.org/data/2.5/forecast?q=${newLocation}&appid=${weatherAPIKey}`;
+    forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${newLocation}&appid=${weatherAPIKey}`;
+    UVIndexURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${weatherAPIKey}&lat=${lat}&lon=${lon}`;
+
     $.ajax({
         url: weatherQueryURL,
         method: `GET`
     }).then (function(response){ 
         $('#spacer').hide();
         renderConditions(response); 
-        renderConditionIcon(response);           
+        renderConditionIcon(response);
+        lat = response.coord.lat;
+        lon = response.coord.lon;
+        $.ajax({
+            url: UVIndexURL,
+            method: `GET`
+        }).then (function(response){
+            renderUV(response);           
+        });           
     });
     $.ajax({
         url: forecastQueryURL,
@@ -53,16 +71,62 @@ searchBtn.click(function(event) {
         renderForecast(response);
         renderForecastIcon(response);            
     });
-    
 })
 
+dropdownBtn.click(function(e) {
+    e.preventDefault();
+    if (dropdownContent.hasClass('no-display')) {
+        dropdownContent.removeClass('no-display');
+        dropdownContent.addClass('display');
+    } else if (dropdownContent.hasClass('display')) {
+        dropdownContent.removeClass('display');
+        dropdownContent.addClass('no-display');
+    }
+})
+
+saveBtn.click(function(e) {
+    e.preventDefault();
+    capSearch();
+    // TO DO: what about cities with multiple words? Like San Jose? 
+    if (searches.indexOf(capLocation) === -1 && locationInput.val() !== '') {
+        searches.push(capLocation);
+        saveSearches();
+        let newSavedCity = $('<li>');
+        newSavedCity.text(capLocation);
+        dropdownContent.append(newSavedCity);
+    }
+})
+
+deleteBtn.click(function(e) {
+    e.preventDefault();
+    capSearch();
+    let indexToDelete = searches.indexOf(capLocation);
+    if (indexToDelete > -1) {
+        searches.splice(indexToDelete, 1);
+        saveSearches();
+        dropdownContent.children().each(function() {
+            if ($(this).text() === capLocation) {
+                $(this).remove();
+            }
+        })
+    }
+})
+
+// Functions
 function displayLocationInfo(position) {
     lon = position.coords.longitude;
     lat = position.coords.latitude;
 
-    coordinatesWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}`
+    coordinatesWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}`;
     coordinatesForecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}`;
+    coordinatesUVIndexURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${weatherAPIKey}&lat=${lat}&lon=${lon}`;
 
+    $.ajax({
+        url: coordinatesUVIndexURL,
+        method: `GET`
+    }).then (function(response){
+        renderUV(response);           
+    });
     $.ajax({
         url: coordinatesWeatherURL,
         method: `GET`
@@ -83,18 +147,18 @@ function displayLocationInfo(position) {
 function renderConditions(city) {
     let tempF = Math.floor((city.main.temp - 273.15) * 1.80 + 32)
     let speedMPH = Math.floor(city.wind.speed * 2.237);
-    $('.column').css('opacity', '0');
     cityEl.text(city.name);
     tempEl.html(`${tempF}&deg;`);
     humidityEl.text(`Humidity: ${city.main.humidity}%`);
     windEl.text(`Wind speed: ${speedMPH}mph`);
-    // uvIndexEl.text(`UV Index: ${city.clouds.all}`);
-    $('.column').animate({ opacity: '1' }, 1500);
+    $('.column').animate({ opacity: '1' }, 1000);
+}
+
+function renderUV(city) {
+    uvIndexEl.text(`UV Index: ${city.value}`);
 }
 
 function renderForecast(city) {
-    $('.forecast-card').css('opacity', '0');
-    $('#forecast-heading').css('opacity', '0');
     dayCardEl.each(function(i) {
         $(this).text(moment().add((i), 'days').format('dddd'));
     })
@@ -149,4 +213,28 @@ function renderForecastIcon(city) {
             $(this).addClass('fas fa-cloud fa-2x');
         } 
     })
+}
+
+function capSearch() {
+    let location = locationInput.val().split('')
+    let capFirst = location[0].toUpperCase();
+    location.shift(location[0]);
+    location.unshift(capFirst);
+    capLocation = location.join('');
+}
+
+function saveSearches() {
+    let savedLocations = {
+        locations: searches
+    }
+    localStorage.setItem('mySavedSearches', JSON.stringify(savedLocations));
+}
+
+function renderSavedLocations() {
+    searches = JSON.parse(localStorage.getItem('mySavedSearches')).locations;
+    for (let i = 0; i < searches.length; i++) {
+        let newSavedCity = $('<li>');
+        newSavedCity.text(searches[i]);
+        dropdownContent.append(newSavedCity);
+    }
 }
