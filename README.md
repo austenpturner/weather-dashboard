@@ -19,6 +19,19 @@ Last I added some finishing CSS style touches. I included color and transitions,
 ## The Outcome
 The result is a functional weather dashboard app. It displays current weather info, accepts user input and displays weather for a searched city, and allows the user to save and delete locations. 
 
+Weather Dashboard on large screens:
+
+![Weather Dashboard Large Display](https://github.com/austenpturner/weather-dashboard/blob/master/assets/current-location-display.jpg)
+
+Weather Dashboard on smaller screens:
+
+![Weather Dashboard Small Display](https://github.com/austenpturner/weather-dashboard/blob/master/assets/responsive-layout.jpg)
+
+Weather Dashboard saved locations menu:
+
+![Weather Dashboard Slide Menu](https://github.com/austenpturner/weather-dashboard/blob/master/assets/display-saved-locations.jpg)
+
+
 ## Next Steps
 Currently, the app will capitalize the first letter of a user's search input. If a location is already saved and the user clicks save, the program will recognize that "seattle" is the same as "Seattle" and not save the location again. However right now the function only works for single-word cities. What about San Jose? The program will not recognize that "San jose" is the same as "San Jose". My next step would be to fix this bug. Also, I would like the dashboard to change colors and symbols depending on if the current time in the location displayed was night or day. To do this I could somehow use the sunrise and sunset data returned by the API. 
 
