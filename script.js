@@ -42,34 +42,7 @@ if (navigator.geolocation) {
 searchBtn.click(function(event) {
     event.preventDefault();
     newLocation = locationInput.val();
-
-    weatherQueryURL = `https://api.openweathermap.org/data/2.5/weather?q=${newLocation}&appid=${weatherAPIKey}`;
-    forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${newLocation}&appid=${weatherAPIKey}`;
-    UVIndexURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${weatherAPIKey}&lat=${lat}&lon=${lon}`;
-
-    $.ajax({
-        url: weatherQueryURL,
-        method: `GET`
-    }).then (function(response){ 
-        $('#spacer').hide();
-        renderConditions(response); 
-        renderConditionIcon(response);
-        lat = response.coord.lat;
-        lon = response.coord.lon;
-        $.ajax({
-            url: UVIndexURL,
-            method: `GET`
-        }).then (function(response){
-            renderUV(response);           
-        });           
-    });
-    $.ajax({
-        url: forecastQueryURL,
-        method: `GET`
-    }).then (function(response){
-        renderForecast(response);
-        renderForecastIcon(response);            
-    });
+    renderLocationData();
 })
 
 navSymbol.click(function() {
@@ -111,6 +84,11 @@ savedLocationsEl.on('click', '.fa-times', function() {
     elToDelete.remove();
 })
 
+savedLocationsEl.on('click', 'li', function() {
+    newLocation = $(this).text();
+    renderLocationData();
+})
+
 // Functions
 function displayLocationInfo(position) {
     lon = position.coords.longitude;
@@ -140,6 +118,36 @@ function displayLocationInfo(position) {
     }).then (function(response){
         renderForecast(response);
         renderForecastIcon(response);           
+    });
+}
+
+function renderLocationData() {
+    weatherQueryURL = `https://api.openweathermap.org/data/2.5/weather?q=${newLocation}&appid=${weatherAPIKey}`;
+    forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${newLocation}&appid=${weatherAPIKey}`;
+    UVIndexURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${weatherAPIKey}&lat=${lat}&lon=${lon}`;
+
+    $.ajax({
+        url: weatherQueryURL,
+        method: `GET`
+    }).then (function(response){ 
+        $('#spacer').hide();
+        renderConditions(response); 
+        renderConditionIcon(response);
+        lat = response.coord.lat;
+        lon = response.coord.lon;
+        $.ajax({
+            url: UVIndexURL,
+            method: `GET`
+        }).then (function(response){
+            renderUV(response);           
+        });           
+    });
+    $.ajax({
+        url: forecastQueryURL,
+        method: `GET`
+    }).then (function(response){
+        renderForecast(response);
+        renderForecastIcon(response);            
     });
 }
 
