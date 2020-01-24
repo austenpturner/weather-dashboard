@@ -2,9 +2,8 @@
 const locationInput = $('#location-input');
 const searchBtn = $('#search-btn');
 const saveBtn = $('#save-btn');
-const deleteBtn = $('#delete-btn');
-const dropdownBtn = $('#dropdown-btn');
-const dropdownContent = $('#dropdown-content');
+const navSymbol = $('#nav-symbol');
+const savedLocationsEl = $('#saved-locations');
 
 const dateEl = $('#date');
 const cityEl = $('#city');
@@ -73,14 +72,11 @@ searchBtn.click(function(event) {
     });
 })
 
-dropdownBtn.click(function(e) {
-    e.preventDefault();
-    if (dropdownContent.hasClass('no-display')) {
-        dropdownContent.removeClass('no-display');
-        dropdownContent.addClass('display');
-    } else if (dropdownContent.hasClass('display')) {
-        dropdownContent.removeClass('display');
-        dropdownContent.addClass('no-display');
+navSymbol.click(function() {
+    if (savedLocationsEl.hasClass('slide-right')) {
+        savedLocationsEl.removeClass('slide-right').addClass('slide-left');
+    } else if (savedLocationsEl.hasClass('slide-left')) {
+        savedLocationsEl.removeClass('slide-left').addClass('slide-right');
     }
 })
 
@@ -91,25 +87,28 @@ saveBtn.click(function(e) {
     if (searches.indexOf(capLocation) === -1 && locationInput.val() !== '') {
         searches.push(capLocation);
         saveSearches();
+        let newLocationContainer = $('<div>');
+        let newDeleteIcon = $('<i>');
         let newSavedCity = $('<li>');
+        newDeleteIcon.addClass('fas fa-times');
         newSavedCity.text(capLocation);
-        dropdownContent.append(newSavedCity);
+        newLocationContainer.append(newSavedCity);
+        newLocationContainer.append(newDeleteIcon);      
+        savedLocationsEl.append(newLocationContainer);
     }
 })
 
-deleteBtn.click(function(e) {
-    e.preventDefault();
-    capSearch();
-    let indexToDelete = searches.indexOf(capLocation);
-    if (indexToDelete > -1) {
-        searches.splice(indexToDelete, 1);
-        saveSearches();
-        dropdownContent.children().each(function() {
-            if ($(this).text() === capLocation) {
-                $(this).remove();
-            }
-        })
+savedLocationsEl.on('click', '.fa-times', function() {
+    let elToDelete = $(this).parent();
+    let liToDelete = $(this).prev();
+    let locationToDelete = liToDelete.text();
+        for (let i = 0; i < searches.length; i++) {
+        if (searches[i] === locationToDelete) {
+            searches.splice(i, 1);
+            saveSearches();
+        }
     }
+    elToDelete.remove();
 })
 
 // Functions
@@ -231,10 +230,17 @@ function saveSearches() {
 }
 
 function renderSavedLocations() {
-    searches = JSON.parse(localStorage.getItem('mySavedSearches')).locations;
-    for (let i = 0; i < searches.length; i++) {
-        let newSavedCity = $('<li>');
-        newSavedCity.text(searches[i]);
-        dropdownContent.append(newSavedCity);
+    if (JSON.parse(localStorage.getItem('mySavedSearches')) !== null) {
+        searches = JSON.parse(localStorage.getItem('mySavedSearches')).locations;
+        for (let i = 0; i < searches.length; i++) {
+            let newLocationContainer = $('<div>');
+            let newDeleteIcon = $('<i>');
+            let newSavedCity = $('<li>');
+            newDeleteIcon.addClass('fas fa-times');
+            newSavedCity.text(searches[i]);
+            newLocationContainer.append(newSavedCity);
+            newLocationContainer.append(newDeleteIcon);      
+            savedLocationsEl.append(newLocationContainer);
+        }
     }
 }

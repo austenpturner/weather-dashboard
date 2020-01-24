@@ -7,9 +7,10 @@
 /* --- Base Styles --- */
 
 body {
-    background: linear-gradient(rgb(159, 195, 241), rgb(135, 116, 221));
+    background: linear-gradient(rgb(159, 195, 241) 10%, rgb(135, 116, 221));
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
 }
 h1,
 h2,
@@ -17,10 +18,58 @@ h3,
 h4 {
     font-weight: lighter;
 }
+
+/* --- Header Styles --- */
+
+header {
+    min-height: 6vh;
+}
 h1 {
-    font-size: 2.4em;
+    font-size: 2em;
     margin: 20px auto 10px;
     text-align: center;
+}
+#nav-symbol {
+    cursor: pointer;
+    margin-top: 12px;
+    padding: 2px;
+    position: absolute;
+    left: 88%;
+    top: 0%;
+}
+.line {
+    background-color: white;
+    height: 3px;
+    margin: 5px;
+    width: 24px;
+}
+#saved-locations {
+    background-image: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
+    border-top-left-radius: 5px;
+    list-style: none;
+    height: 88vh;
+    padding: 10px;
+    position: absolute;
+    top: 12vh;
+    transition: right 1000ms ease-in-out;
+    width: 200px;
+}
+.slide-right {
+    right: 0;
+
+}
+.slide-left {
+    right: -200px;
+}
+#saved-locations div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+#saved-locations li,
+.fa-times {
+    cursor: pointer;
 }
 
 /* --- Form Styles --- */
@@ -33,13 +82,13 @@ label {
     display: block;
     font-size: 1em;
     margin: 5px;
-    
 }
 input {
     border-radius: 5px;
     border: none;
     padding: 10px 5px;
     margin-left: 5px;
+    margin-right: 3px;
 }
 button {
     background-image: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
@@ -55,44 +104,6 @@ button {
     background-image: radial-gradient(rgb(118, 236, 118), rgb(52, 196, 52));
     padding: 10px 12px;
 }
-#delete-btn {
-    background-image: radial-gradient(rgb(250, 205, 141), rgb(243, 164, 53));
-    padding: 10px;
-}
-#dropdown-btn {
-    margin-right: 0;
-    position: relative; 
-    width: 125px;
-}
-#dropdown-content { 
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    left: 67.5%;
-    width: 125px;
-}
-#dropdown-content li {
-    background-image: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    list-style: none;
-    padding: 8px;
-    text-align: center;
-}
-#dropdown-content li:hover {
-    background-image: radial-gradient(rgb(78, 157, 226) 40%, rgb(2,117,216));
-    
-}
-.no-display {
-    display: none;
-    transition: 1000 linear;
-}
-.display {
-    display: block;
-}
-
 
 /* --- Weather Results Container --- */
 
@@ -102,7 +113,7 @@ button {
     width: 90%;
 }
 #results-container {
-    min-height: calc(100vh - 198px); 
+    min-height: calc(100vh - 190px); 
 }
 #results-container h3 {
     font-size: 1.2em;
@@ -181,6 +192,11 @@ i {
 
 /* --- Media Queries --- */
 
+@media (min-width: 400px) {
+    #saved-locations {
+        width: 40%;
+    }
+}
 @media (min-width: 568px) {
     .forecast-card {
         font-size: 1.2em;
