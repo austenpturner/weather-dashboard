@@ -28,7 +28,7 @@ let newLocation;
 let coordinatesWeatherURL;
 let weatherQueryURL;
 let forecastQueryURL;
-let capLocation;
+let capLocation = '';
 let searches = [];
 
 dateEl.text(date);
@@ -55,8 +55,7 @@ navSymbol.click(function() {
 
 saveBtn.click(function(e) {
     e.preventDefault();
-    capSearch();
-    // TO DO: what about cities with multiple words? Like San Jose? 
+    capSearch(); 
     if (searches.indexOf(capLocation) === -1 && locationInput.val() !== '') {
         searches.push(capLocation);
         saveSearches();
@@ -223,11 +222,20 @@ function renderForecastIcon(city) {
 }
 
 function capSearch() {
-    let location = locationInput.val().split('')
-    let capFirst = location[0].toUpperCase();
-    location.shift(location[0]);
-    location.unshift(capFirst);
-    capLocation = location.join('');
+    let locationWords = locationInput.val().toLowerCase().split(' ');
+    capLocation = '';
+    for (let i = 0; i < locationWords.length; i++) {
+        let splitWord = locationWords[i].split('');
+        let capfirst = splitWord[0].toUpperCase();
+        splitWord.shift([0]); 
+        splitWord.unshift(capfirst);
+        capWord = splitWord.join(''); 
+        if (i === 0) {
+            capLocation += capWord;
+        } else {
+            capLocation += ` ${capWord}`;
+        }
+    }
 }
 
 function saveSearches() {
