@@ -33,7 +33,7 @@ Weather Dashboard saved locations menu:
 
 
 ## Next Steps
-Currently, the app will capitalize the first letter of a user's search input. If a location is already saved and the user clicks save, the program will recognize that "seattle" is the same as "Seattle" and not save the location again. However right now the function only works for single-word cities. What about San Jose? The program will not recognize that "San jose" is the same as "San Jose". My next step would be to fix this bug. Also, I would like the dashboard to change colors and symbols depending on if the current time in the location displayed was night or day. To do this I could somehow use the sunrise and sunset data returned by the API. 
+The next challenge with this app would be to change colors and symbols depending on if the current time in the location displayed was night or day. To do this I could somehow use the sunrise and sunset data returned by the API. 
 
 ## Thanks for reading! :smile:
 Please contact me with any questions or comments.
