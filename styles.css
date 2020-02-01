@@ -2,15 +2,19 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 /* --- Base Styles --- */
 
+#content {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 body {
     background: linear-gradient(rgb(159, 195, 241) 10%, rgb(135, 116, 221));
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow-x: hidden;
 }
 h1,
 h2,
@@ -53,6 +57,7 @@ h1 {
     top: 12vh;
     transition: right 1000ms ease-in-out;
     width: 200px;
+    z-index: 1;
 }
 .slide-right {
     right: 0;
