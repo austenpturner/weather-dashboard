@@ -29,16 +29,18 @@ header {
     min-height: 6vh;
 }
 h1 {
-    font-size: 2em;
+    font-size: 1.8em;
     margin: 20px auto 10px;
     text-align: center;
 }
+
+/* --- Nav Styles --- */
+
 #nav-symbol {
     cursor: pointer;
-    margin-top: 12px;
     padding: 2px;
     position: absolute;
-    left: 88%;
+    left: 86%;
     top: 0%;
 }
 .line {
@@ -51,17 +53,16 @@ h1 {
     background-image: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
     border-top-left-radius: 5px;
     list-style: none;
-    height: 88vh;
+    height: 90vh;
     padding: 10px;
     position: absolute;
-    top: 12vh;
+    top: 10vh;
     transition: right 1000ms ease-in-out;
     width: 200px;
     z-index: 1;
 }
 .slide-right {
     right: 0;
-
 }
 .slide-left {
     right: -200px;
@@ -118,7 +119,7 @@ button {
     width: 90%;
 }
 #results-container {
-    min-height: calc(100vh - 190px); 
+    min-height: calc(100vh - 170px); 
 }
 #results-container h3 {
     font-size: 1.2em;
@@ -203,6 +204,9 @@ i {
     }
 }
 @media (min-width: 568px) {
+    h1 {
+        font-size: 2em;
+    }
     #nav-symbol {
         left: 90%;
     }
@@ -213,6 +217,8 @@ i {
         width: 30px;
     }
     #saved-locations {
+        height: 86vh;
+        top: 14vh;
         width: 200px;
     }
     .slide-right {
@@ -228,11 +234,11 @@ i {
 @media (min-width: 768px) {
     header {
         font-size: 1.4em;
-        margin: 20px auto 10px;
+        margin: 30px auto 10px;
         text-align: center;
     }
     #nav-symbol {
-        left: 92%;
+        left: 90%;
     }
     .line {
         background-color: white;
@@ -240,6 +246,8 @@ i {
         width: 36px;
     }
     #saved-locations {
+        height: 93vh;
+        top: 7vh;
         width: 200px;
     }
     .slide-right {
@@ -260,7 +268,7 @@ i {
         display: inline-block;
     }
     #results-container {
-        min-height: calc(100vh - 212px); 
+        min-height: calc(100vh - 180px); 
     }
     #results-container h3 {
         width: 80%;
@@ -297,9 +305,19 @@ i {
         font-size: 0.9em;
     }
 }
+@media (min-width: 812px) {
+    #saved-locations {
+        height: 86vh;
+        top: 14vh;
+        width: 200px;
+    }
+}
 @media (min-width: 1024px) {
+    h1 {
+        font-size: 2.2em;
+    }
     #nav-symbol {
-        left: 93%;
+        left: 92%;
     }
     .line {
         background-color: white;
@@ -307,6 +325,8 @@ i {
         width: 38px;
     }
     #saved-locations {
+        height: 92vh;
+        top: 8vh;
         width: 200px;
     }
     .slide-right {
@@ -329,7 +349,7 @@ i {
         width: 70%;
     }
     #results-container {
-        min-height: calc(100vh - 226px); 
+        min-height: calc(100vh - 188px); 
     }
     #results-container h3 {
         font-size: 1.2em;
@@ -357,6 +377,9 @@ i {
     }
 }
 @media (min-width: 1200px) {
+    header {
+        margin-top: 30px;
+    }
     #date {
         width: 60%;
     }
