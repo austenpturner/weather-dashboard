@@ -1,5 +1,4 @@
 #header {
-  border: 1px solid white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,6 +10,7 @@
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   height: 80px;
+  width: 100vw;
 }
 
 #header h1 {
@@ -22,8 +22,58 @@
   text-align: center;
 }
 
-#header #nav {
+#header #nav-icon {
+  cursor: pointer;
+  padding: 20px;
   position: absolute;
   right: 0;
+  z-index: 2;
+}
+
+#header #nav-icon .line {
+  background: white;
+  border-radius: 5px;
+  height: 3px;
+  margin: 8px;
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+  width: 40px;
+}
+
+#header #nav-icon .toggle1 {
+  -webkit-transform: rotate(-45deg) translate(-5px, 11px);
+          transform: rotate(-45deg) translate(-5px, 11px);
+}
+
+#header #nav-icon .toggle2 {
+  opacity: 0;
+}
+
+#header #nav-icon .toggle3 {
+  -webkit-transform: rotate(45deg) translate(-5px, -11px);
+          transform: rotate(45deg) translate(-5px, -11px);
+}
+
+#header nav {
+  background: radial-gradient(#4e9de2, #0275d8);
+  height: calc(100vh - 80px);
+  position: absolute;
+  top: 80px;
+  -webkit-transition: left 1000ms ease-in-out;
+  transition: left 1000ms ease-in-out;
+  width: 100vw;
+  z-index: 1;
+}
+
+#header nav #saved-list {
+  list-style: none;
+}
+
+#header .slide-in {
+  left: 0;
+}
+
+#header .slide-out {
+  left: 100vw;
 }
 /*# sourceMappingURL=headerstyles.css.map */

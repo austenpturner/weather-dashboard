@@ -5,17 +5,56 @@
 }
 
 #header {
-    border: 1px solid white;
+    // border: 1px solid white;
     @include flex (row, space-evenly);
     height: 80px;
+    width: 100vw;
     h1 {
         align-self: center;
         font-size: 2.8em;
         font-weight: 300;
         text-align: center;
     }
-    #nav {
+    #nav-icon {
+        cursor: pointer;
+        padding: 20px;
         position: absolute;
         right: 0;
+        z-index: 2;
+        .line {
+            background: white;
+            border-radius: 5px;
+            height: 3px;
+            margin: 8px;
+            transition: all 500ms ease-in-out;
+            width: 40px;
+        }
+        .toggle1 {
+            transform: rotate(-45deg) translate(-5px, 11px);
+        }
+        .toggle2 {
+            opacity: 0;
+        }
+        .toggle3 {
+            transform: rotate(45deg) translate(-5px, -11px);
+        }
+    }
+    nav {
+        background: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
+        height: calc(100vh - 80px);
+        position: absolute;
+        top: 80px;
+        transition: left 1000ms ease-in-out;
+        width: 100vw;
+        z-index: 1;
+        #saved-list {
+            list-style: none;
+        }  
+    }
+    .slide-in {
+        left: 0;
+    }
+    .slide-out {
+        left: 100vw;
     }
 }
