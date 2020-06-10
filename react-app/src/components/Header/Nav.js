@@ -10,7 +10,7 @@ class Nav extends Component {
                     id='saved-list' 
                     className='slide-right'
                 >
-                    <li>
+                    {/* <li>
                         <a 
                             className='saved-place' 
                             href='#about'
@@ -18,7 +18,7 @@ class Nav extends Component {
                         >
                             About
                         </a>
-                    </li>
+                    </li> */}
                 </ul>
             </nav>
         );

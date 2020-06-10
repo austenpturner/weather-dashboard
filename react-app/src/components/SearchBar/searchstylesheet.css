@@ -1,8 +1,49 @@
 #search-bar {
-  border: 1px solid white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100px;
 }
 
-#search-bar h4 {
-  text-align: center;
+#search-bar form {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#search-bar form label {
+  font-size: 1em;
+  margin: 5px;
+}
+
+#search-bar form input {
+  border-radius: 5px;
+  border: none;
+  padding: 10px 5px;
+  margin: 0 8px 0 5px;
+  width: 200px;
+}
+
+#search-bar form button {
+  background-image: radial-gradient(#4e9de2, #0275d8);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 0.9em;
+  margin-right: 8px;
+  padding: 10px;
+}
+
+#search-bar form #save-btn {
+  background-image: radial-gradient(#76ec76, #34c434);
+  padding: 10px 12px;
 }
 /*# sourceMappingURL=searchstylesheet.css.map */
