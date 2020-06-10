@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAMA,AAAA,mBAAmB,CAAC;EAChB,MAAM,EAAE,eAAe;EACvB,MAAM,EAAE,KAAK;CAIhB;;AAND,AAGI,mBAHe,CAGf,EAAE,CAAC;EACC,UAAU,EAAE,MAAM;CACrB",
+    "sources": [
+        "forecaststyles.scss"
+    ],
+    "names": [],
+    "file": "forecaststyles.css"
+}

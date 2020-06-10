@@ -12,98 +12,98 @@
 </head>
 <body>
     <div id='content'>
-    <header>
-        <h1>Weather Dashboard</h1>
-        <ul id='saved-locations' class='slide-left'></ul>
-        <div id='nav-symbol'>
-            <div class='line'></div>
-            <div class='line'></div>
-            <div class='line'></div>
-        </div>
-    </header>
+        <header>
+            <h1>Weather Dashboard</h1>
+            <ul id='saved-locations' class='slide-left'></ul>
+            <div id='nav-symbol'>
+                <div class='line'></div>
+                <div class='line'></div>
+                <div class='line'></div>
+            </div>
+        </header>
 
-    <main>
-        <div id='search-container'>
+        <main>
+            <div id='search-container'>
 
-            <form>
-                <label for='location-input'>Search for a City:</label>
-                <input type='text' id='location-input' name='location-input'>
-                <button type='submit' id='search-btn'>
-                    <i class='fas fa-search fa-lg'></i>
-                </button>
-                <button id='save-btn'>
-                    <i class='far fa-bookmark fa-lg'></i>
-                </button>
-            </form>
-            
+                <form>
+                    <label for='location-input'>Search for a City:</label>
+                    <input type='text' id='location-input' name='location-input'>
+                    <button type='submit' id='search-btn'>
+                        <i class='fas fa-search fa-lg'></i>
+                    </button>
+                    <button id='save-btn'>
+                        <i class='far fa-bookmark fa-lg'></i>
+                    </button>
+                </form>
+                
 
-            <h3 id='date'></h3>
+                <h3 id='date'></h3>
 
-        </div>
-
-        <div id='results-container'>
-
-            <div id='conditions-container'>
-                <div class='column'>
-                    <h2 id='city'></h2>
-                    <p id='humidity'></p>
-                    <p id='wind-speed'></p>
-                    <p id='UV-index'></p>
-                </div>
-
-                <div class='column'>
-                    <p id='temperature'></p>
-                    <i id='condition-icon'></i>
-                </div>
             </div>
 
-            <div id='forecast-container'>
+            <div id='results-container'>
 
-                <h3 id='forecast-heading'>5-Day Forecast:</h3>
-
-                <div id='forecast-card-container'>
-
-                    <div class='forecast-card'>
-                        <h4 class='card-day'></h4>
-                        <p class='card-temperature'></p>
-                        <i class='card-icon'></i>
-                        <p class='card-humidity'></p>
+                <div id='conditions-container'>
+                    <div class='column'>
+                        <h2 id='city'></h2>
+                        <p id='humidity'></p>
+                        <p id='wind-speed'></p>
+                        <p id='UV-index'></p>
                     </div>
 
-                    <div class='forecast-card'>
-                        <h4 class='card-day'></h4>
-                        <p class='card-temperature'></p>
-                        <i class='card-icon'></i>
-                        <p class='card-humidity'></p>
+                    <div class='column'>
+                        <p id='temperature'></p>
+                        <i id='condition-icon'></i>
                     </div>
+                </div>
 
-                    <div class='forecast-card'>
-                        <h4 class='card-day'></h4>
-                        <p class='card-temperature'></p>
-                        <i class='card-icon'></i>
-                        <p class='card-humidity'></p>
+                <div id='forecast-container'>
+
+                    <h3 id='forecast-heading'>5-Day Forecast:</h3>
+
+                    <div id='forecast-card-container'>
+
+                        <div class='forecast-card'>
+                            <h4 class='card-day'></h4>
+                            <p class='card-temperature'></p>
+                            <i class='card-icon'></i>
+                            <p class='card-humidity'></p>
+                        </div>
+
+                        <div class='forecast-card'>
+                            <h4 class='card-day'></h4>
+                            <p class='card-temperature'></p>
+                            <i class='card-icon'></i>
+                            <p class='card-humidity'></p>
+                        </div>
+
+                        <div class='forecast-card'>
+                            <h4 class='card-day'></h4>
+                            <p class='card-temperature'></p>
+                            <i class='card-icon'></i>
+                            <p class='card-humidity'></p>
+                        </div>
+
+                        <div class='forecast-card'>
+                            <h4 class='card-day'></h4>
+                            <p class='card-temperature'></p>
+                            <i class='card-icon'></i>
+                            <p class='card-humidity'></p>
+                        </div>
+
+                        <div class='forecast-card'>
+                            <h4 class='card-day'></h4>
+                            <p class='card-temperature'></p>
+                            <i class='card-icon'></i>
+                            <p class='card-humidity'></p>
+                        </div>
+
                     </div>
-
-                    <div class='forecast-card'>
-                        <h4 class='card-day'></h4>
-                        <p class='card-temperature'></p>
-                        <i class='card-icon'></i>
-                        <p class='card-humidity'></p>
-                    </div>
-
-                    <div class='forecast-card'>
-                        <h4 class='card-day'></h4>
-                        <p class='card-temperature'></p>
-                        <i class='card-icon'></i>
-                        <p class='card-humidity'></p>
-                    </div>
-
+                    
                 </div>
                 
             </div>
-            
-        </div>
-    </main>
+        </main>
     </div>
     
     <script src='moment.js'></script>

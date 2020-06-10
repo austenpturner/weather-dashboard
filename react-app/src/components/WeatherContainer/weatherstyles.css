@@ -1,0 +1,9 @@
+#weather-container {
+  border: 1px solid white;
+  height: 100px;
+}
+
+#weather-container h4 {
+  text-align: center;
+}
+/*# sourceMappingURL=weatherstyles.css.map */

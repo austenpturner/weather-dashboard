@@ -1,0 +1,21 @@
+@mixin flex ($direction, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+}
+
+#header {
+    border: 1px solid white;
+    @include flex (row, space-evenly);
+    height: 80px;
+    h1 {
+        align-self: center;
+        font-size: 2.8em;
+        font-weight: 300;
+        text-align: center;
+    }
+    #nav {
+        position: absolute;
+        right: 0;
+    }
+}
