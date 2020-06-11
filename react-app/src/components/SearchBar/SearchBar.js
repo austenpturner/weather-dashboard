@@ -26,25 +26,31 @@ class SearchBar extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
-        // console.log(this.state.searchInput);
         const searchInput = this.state.searchInput;
         weatherAPI.getWeatherData(searchInput)
             .then(res => {
                 const results = res.data;
+                const lat = results.coord.lat;
+                const lon = results.coord.lon;
                 // console.log(res);
                 this.setState({ description: results.weather[0].main });
                 this.setState({ temp: results.main.temp });
                 this.setState({ humidity: results.main.humidity });
                 this.setState({ windSpeed: results.wind.speed });
-                this.setState({ lat: results.coord.lat });
-                this.setState({ lon: results.coord.lon });
+                this.setState({ lat: lat });
+                this.setState({ lon: lon });
                 console.log(this.state);
+                weatherAPI.getUVIndexData(lat, lon)
+                    .then(res => {
+                        this.setState({ UVIndex: res.data.value });
+                        console.log(this.state.UVIndex);
+                    });
             });
         weatherAPI.getForecastData(searchInput)
             .then(res => {
                 const results = res.data;
                 const forecast = [];
-                console.log(res);
+                // console.log(res);
                 for (let i = 1; i < 6; i++) {
                     forecast.push({
                         temp: results.list[i].main.temp,
