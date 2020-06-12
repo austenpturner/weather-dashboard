@@ -1,20 +1,16 @@
 import axios from "axios";
 
 const weatherAPIKey = '1c15bab08bfbee58f4e3567a79550403';
-
-const weatherQueryURL = `https://api.openweathermap.org/data/2.5/weather?q=`;
-const forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?q=`;
-const UVIndexURL = `https://api.openweathermap.org/data/2.5/uvi?appid=`;
+const geoCodeURL = `https://geocode.xyz/`;
+const resFormat = `?json=1`;
+const oneCallWeatherQueryURL = `https://api.openweathermap.org/data/2.5/onecall?`;
 
 const weatherAPI = {
-    getWeatherData: searchInput => { 
-        return axios.get(`${weatherQueryURL}${searchInput}&appid=${weatherAPIKey}`);
+    weatherData: (lat, lon) => {
+        return axios.get(`${oneCallWeatherQueryURL}lat=${lat}&lon=${lon}&appid=${weatherAPIKey}`);
     },
-    getForecastData: searchInput => {
-        return axios.get(`${forecastQueryURL}${searchInput}&appid=${weatherAPIKey}`);
-    },
-    getUVIndexData: (lat, lon) => {
-        return axios.get(`${UVIndexURL}${weatherAPIKey}&lat=${lat}&lon=${lon}`); 
+    searchCoordidateData: searchInput => {
+        return axios.get(`${geoCodeURL}${searchInput}${resFormat}`);
     }
 };
 
