@@ -11,7 +11,6 @@ class Header extends Component {
     }
 
     handleNavSlide() {
-        // const targetId = event.target.id;
         if (this.state.slideNav) {
             this.setState({ slideNav: false});
         } else {

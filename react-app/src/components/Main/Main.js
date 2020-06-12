@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import SearchBar from "./SearchBar/SearchBar";
+import WeatherContainer from "./WeatherContainer/WeatherContainer";
+import ForecastContainer from "./ForecastContainer/ForecastContainer";
 import weatherAPI from "../../utils/openWeatherAPI";
-import "./searchstylesheet.css";
 
 const calculateSunStatus = (unixSunrise) => {
     // Create a new JavaScript Date object based on the timestamp
@@ -24,7 +26,7 @@ const getDecimal = unixNum => {
   return parseFloat(decimal);
 };
 
-class SearchBar extends Component {
+class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -105,39 +107,23 @@ class SearchBar extends Component {
                             hourlyWeather: hourlyWeather
                         });
                         console.log(this.state);
-                })
-            })
-    }
+                });
+            });
+    };
 
     render() {
         return (
-            <div id="search-bar">
-                <form>
-                    <div className="form-group">
-                        <label htmlFor="search">Search for a city:</label>
-                        <input 
-                            type="text" 
-                            name="search" 
-                            id="search-input"
-                            value={this.state.searchInput} 
-                            onChange={this.handleInputChange.bind(this)}
-                        />
-                        <button  
-                            id='search-btn'
-                            onClick={this.handleFormSubmit.bind(this)}
-                        >
-                            <i 
-                                className='fas fa-search fa-lg'
-                            ></i>
-                        </button>
-                        <button id='save-btn'>
-                            <i className='far fa-bookmark fa-lg'></i>
-                        </button>
-                    </div>
-                </form>
+            <div id="main">
+                <SearchBar 
+                    searchInput={this.state.searchInput}
+                    handleInputChange={this.handleInputChange.bind(this)}
+                    handleFormSubmit={this.handleFormSubmit.bind(this)}
+                />
+                <WeatherContainer />
+                <ForecastContainer />
             </div>
         );
     }
 }
 
-export default SearchBar;
+export default Main;
