@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Moment from "moment";
 import SearchBar from "./SearchBar/SearchBar";
 import WeatherContainer from "./WeatherContainer/WeatherContainer";
+import HourlyContainer from "./HourlyContainer/HourlyContainer";
 import ForecastContainer from "./ForecastContainer/ForecastContainer";
 import weatherAPI from "../../utils/openWeatherAPI";
 
@@ -99,7 +100,7 @@ class Main extends Component {
                 const hourlyRes = res.data.hourly;
                 const hourlyWeather = [];
                 for (let i = 0; i < 12; i++) {
-                    const rawTemp = hourlyRes[i].temp.day;
+                    const rawTemp = hourlyRes[i].temp;
                     const temp = Math.floor((rawTemp - 273.15) * 1.8 + 32);
                     const rawWindSpeed = hourlyRes[i].wind_speed;
                     const windSpeed = Math.floor(rawWindSpeed * 2.237);
@@ -189,6 +190,10 @@ class Main extends Component {
                     currentWeather={this.state.currentWeather}
                     location={this.state.location}
                     date={this.state.date}
+                />
+                <HourlyContainer 
+                    hourlyWeather={this.state.hourlyWeather}
+                    location={this.state.location}
                 />
                 <ForecastContainer 
                     forecast={this.state.forecast}

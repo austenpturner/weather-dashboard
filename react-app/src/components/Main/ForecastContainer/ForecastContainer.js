@@ -25,7 +25,6 @@ const renderConditionIcon = description => {
 class ForecastContainer extends Component {
     render() {
         const forecastData = this.props.forecast;
-        console.log(forecastData);
         return (
             <div id="forecast-container">
                 {forecastData.map((day, index) => {

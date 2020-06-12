@@ -4,19 +4,19 @@ import "./weatherstyles.css";
 const renderConditionIcon = description => {
     let iconClass = "";
     if (description === 'Clouds' || description === 'Fog') {
-        iconClass = 'fas fa-cloud fa-6x';
+        iconClass = 'fas fa-cloud fa-5x';
     } else if (description === 'Rain' || description === 'Drizzle' || description === 'Mist') {
-        iconClass = 'fas fa-cloud-rain fa-6x';
+        iconClass = 'fas fa-cloud-rain fa-5x';
     } else if (description === 'Snow') {
-        iconClass = 'far fa-snowflake fa-6x';
+        iconClass = 'far fa-snowflake fa-5x';
     } else if (description === 'Thunderstorm') {
-        iconClass = 'fas fa-bolt fa-6x';
+        iconClass = 'fas fa-bolt fa-5x';
     } else if (description === 'Clear') {
-        iconClass = 'fas fa-sun fa-6x';
+        iconClass = 'fas fa-sun fa-5x';
     } else if (description === 'Smoke' || description === 'Haze' || description === 'Ash' || description === 'Dust' || description === 'Sand') {
-        iconClass = 'fas fa-smog fa-6x';
+        iconClass = 'fas fa-smog fa-5x';
     } else if (description === 'Squall' || description === 'Tornado') {
-        iconClass = 'fas fa-cloud fa-6x';
+        iconClass = 'fas fa-cloud fa-5x';
     }
     return iconClass; 
 };
