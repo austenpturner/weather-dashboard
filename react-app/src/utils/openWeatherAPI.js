@@ -11,6 +11,9 @@ const weatherAPI = {
     },
     searchCoordidateData: searchInput => {
         return axios.get(`${geoCodeURL}${searchInput}${resFormat}`);
+    },
+    retrieveLocationCoords: (lat, lon) => {
+        return axios.get(`${geoCodeURL}${lat},${lon}${resFormat}`);
     }
 };
 

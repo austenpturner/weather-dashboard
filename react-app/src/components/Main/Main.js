@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from "moment";
 import SearchBar from "./SearchBar/SearchBar";
 import WeatherContainer from "./WeatherContainer/WeatherContainer";
 import ForecastContainer from "./ForecastContainer/ForecastContainer";
@@ -26,10 +27,30 @@ const getDecimal = unixNum => {
   return parseFloat(decimal);
 };
 
+const capLocation = location => {
+    const locationWords = location.toLowerCase().split(' ');
+    let capLocation = '';
+    for (let i = 0; i < locationWords.length; i++) {
+        const splitWord = locationWords[i].split('');
+        const capfirst = splitWord[0].toUpperCase();
+        splitWord.shift([0]); 
+        splitWord.unshift(capfirst);
+        const capWord = splitWord.join(''); 
+        if (i === 0) {
+            capLocation += capWord;
+        } else {
+            capLocation += ` ${capWord}`;
+        }
+    }
+    return capLocation;
+}
+
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            date: "",
+            location: "",
             searchInput: "",
             lat: "",
             lon: "",
@@ -41,73 +62,118 @@ class Main extends Component {
         };
     }
 
+    retrieveWeatherData = (lat, lon) => {
+        weatherAPI.weatherData(lat, lon)
+            .then(res => {
+                // console.log(`one call data:`, res);
+                const currentRes = res.data.current;
+
+                const rawTemp = currentRes.temp;
+                const temp = Math.floor((rawTemp  - 273.15) * 1.8 + 32);
+
+                const rawWindSpeed = currentRes.wind_speed;
+                const windSpeed = Math.floor(rawWindSpeed * 2.237);
+
+                const unixSunrise = currentRes.sunrise;
+                const unixSunset = currentRes.sunset;
+
+                const sunrise = getDecimal(unixSunrise);
+                const sunset = getDecimal(unixSunset);
+
+                const dailyRes = res.data.daily;
+                const forecast = [];
+                for (let i = 1; i < 6; i++) {
+                    const rawTemp = dailyRes[i].temp.day;
+                    const temp = Math.floor((rawTemp - 273.15) * 1.8 + 32);
+                    const rawWindSpeed = dailyRes[i].wind_speed;
+                    const windSpeed = Math.floor(rawWindSpeed * 2.237);
+                    forecast.push({
+                        temp: temp,
+                        windSpeed: windSpeed,
+                        humidity: dailyRes[i].humidity,
+                        description: dailyRes[i].weather[0].main,
+                        uvIndex: dailyRes[i].uvi
+                    });
+                };
+
+                const hourlyRes = res.data.hourly;
+                const hourlyWeather = [];
+                for (let i = 0; i < 12; i++) {
+                    const rawTemp = hourlyRes[i].temp.day;
+                    const temp = Math.floor((rawTemp - 273.15) * 1.8 + 32);
+                    const rawWindSpeed = hourlyRes[i].wind_speed;
+                    const windSpeed = Math.floor(rawWindSpeed * 2.237);
+                    hourlyWeather.push({
+                        temp: temp,
+                        windSpeed: windSpeed,
+                        humidity: hourlyRes[i].humidity,
+                        description: hourlyRes[i].weather[0].main,
+                        uvIndex: hourlyRes[i].uvi
+                    });
+                };
+                
+                this.setState({
+                    currentWeather: {
+                        temp: temp,
+                        windSpeed: windSpeed,
+                        humidity: currentRes.humidity,
+                        description: currentRes.weather[0].main,
+                        uvIndex: currentRes.uvi
+                    },
+                    sunrise: sunrise,
+                    sunset: sunset,
+                    forecast: forecast,
+                    hourlyWeather: hourlyWeather
+                });
+                console.log(this.state);
+        });
+    };
+    
+    componentDidMount() {
+        const date = Moment().format('dddd, MMMM Do');
+        this.setState({ date: date });
+        const setPosition = position => {
+            this.setState({
+                lat: position.coords.latitude,
+                lon: position.coords.longitude
+            });
+            console.log(this.state);
+            const lat = this.state.lat;
+            const lon = this.state.lon;
+            this.retrieveWeatherData(lat, lon);
+            weatherAPI.retrieveLocationCoords(lat, lon)
+            .then(res => {
+                const currentLocation = capLocation(res.data.city);
+                this.setState({ location: currentLocation });
+            });
+        }
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(setPosition);
+        }
+    };
+
     handleInputChange(event) {
         const search = event.target.value;
         this.setState({ searchInput: search })
-    }
+    };
 
     handleFormSubmit(event) {
         event.preventDefault();
+
         const searchInput = this.state.searchInput;
+        const searchLocation = capLocation(searchInput);
+        this.setState({ location: searchLocation });
+
         weatherAPI.searchCoordidateData(searchInput)
             .then(res => {
-                // console.log(`search coordinates:`, res);
+                console.log(`search coordinates:`, res);
                 const lat = res.data.latt;
                 const lon = res.data.longt;
                 this.setState({
                     lat: lat,
                     lon: lon
                 });
-                weatherAPI.weatherData(lat, lon)
-                    .then(res => {
-                        // console.log(`one call data:`, res);
-                        const currentRes = res.data.current;
-
-                        const unixSunrise = currentRes.sunrise;
-                        const unixSunset = currentRes.sunset;
-
-                        const sunrise = getDecimal(unixSunrise);
-                        const sunset = getDecimal(unixSunset);
-
-                        const dailyRes = res.data.daily;
-                        const forecast = [];
-                        for (let i = 1; i < 6; i++) {
-                            forecast.push({
-                                temp: dailyRes[i].temp.day,
-                                windSpeed: dailyRes[i].wind_speed,
-                                humidity: dailyRes[i].humidity,
-                                description: dailyRes[i].weather[0].main,
-                                uvIndex: dailyRes[i].uvi
-                            });
-                        };
-
-                        const hourlyRes = res.data.hourly;
-                        const hourlyWeather = [];
-                        for (let i = 0; i < 12; i++) {
-                            hourlyWeather.push({
-                                temp: hourlyRes[i].temp.day,
-                                windSpeed: hourlyRes[i].wind_speed,
-                                humidity: hourlyRes[i].humidity,
-                                description: hourlyRes[i].weather[0].main,
-                                uvIndex: hourlyRes[i].uvi
-                            });
-                        };
-                        
-                        this.setState({
-                            currentWeather: {
-                                temp: currentRes.temp,
-                                windSpeed: currentRes.wind_speed,
-                                humidity: currentRes.humidity,
-                                description: currentRes.weather[0].main,
-                                uvIndex: currentRes.uvi
-                            },
-                            sunrise: sunrise,
-                            sunset: sunset,
-                            forecast: forecast,
-                            hourlyWeather: hourlyWeather
-                        });
-                        console.log(this.state);
-                });
+                this.retrieveWeatherData(lat, lon);
             });
     };
 
@@ -119,7 +185,11 @@ class Main extends Component {
                     handleInputChange={this.handleInputChange.bind(this)}
                     handleFormSubmit={this.handleFormSubmit.bind(this)}
                 />
-                <WeatherContainer />
+                <WeatherContainer 
+                    currentWeather={this.state.currentWeather}
+                    location={this.state.location}
+                    date={this.state.date}
+                />
                 <ForecastContainer />
             </div>
         );
