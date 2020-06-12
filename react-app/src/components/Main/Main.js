@@ -125,7 +125,7 @@ class Main extends Component {
                     forecast: forecast,
                     hourlyWeather: hourlyWeather
                 });
-                console.log(this.state);
+                // console.log(this.state);
         });
     };
     
@@ -137,7 +137,7 @@ class Main extends Component {
                 lat: position.coords.latitude,
                 lon: position.coords.longitude
             });
-            console.log(this.state);
+            // console.log(this.state);
             const lat = this.state.lat;
             const lon = this.state.lon;
             this.retrieveWeatherData(lat, lon);
@@ -190,7 +190,10 @@ class Main extends Component {
                     location={this.state.location}
                     date={this.state.date}
                 />
-                <ForecastContainer />
+                <ForecastContainer 
+                    forecast={this.state.forecast}
+                    date={this.state.date}
+                />
             </div>
         );
     }

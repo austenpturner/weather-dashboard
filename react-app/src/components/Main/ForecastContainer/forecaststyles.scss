@@ -5,9 +5,30 @@
 }
 
 #forecast-container {
-    border: 1px solid white;
-    // height: 100px;
-    h4 {
+    @include flex(row, space-evenly);
+    // border: 1px solid white;
+    margin: 40px auto;
+    width: 90%;
+    .card {
+        background: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
+        border-radius: 5px;
+        padding: 8px;
         text-align: center;
+        width: 16%;
+        p {
+            margin: 5px;
+        }
+        i {
+            padding: 10px;
+        }
+        #day {
+            font-size: 1.1em;
+        }
+        #temp {
+            font-size: 1.3em;
+        }
+        #wind-speed, #humidity {
+            font-size: 0.8em;
+        }
     }
 }

@@ -24,7 +24,7 @@ const renderConditionIcon = description => {
 class WeatherContainer extends Component {
     render() {
         const currentWeather = this.props.currentWeather;
-        console.log(currentWeather);
+        // console.log(currentWeather);
         const iconClass = renderConditionIcon(currentWeather.description);
         return (
             <div id="weather-container">
