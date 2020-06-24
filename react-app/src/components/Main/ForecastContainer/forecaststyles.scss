@@ -109,22 +109,80 @@
 @media (min-width: 568px) {
     #forecast-container {
         @include flex(row, space-evenly);
-        margin: 40px auto;
-        width: 90%;
+        margin: 16px auto;
+        width: 86%;
         .card {
             @include flex(column, space-evenly);
-            padding: 8px;
-            text-align: center;
+            padding: 6px;
             width: 16%;
             p {
                 margin: 5px;
                 width: 100%;
             }
             i {
+                font-size: 2em;
+                padding: 6px;
+            }
+            #day {
+                font-size: 0.9em;
+            }
+            #temp {
+                font-size: 0.8em;
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+@media (min-width: 667px) {
+    #forecast-container {
+        margin: 20px auto;
+        width: 82%;
+    }
+}
+
+@media (min-width: 768px) {
+    #forecast-container {
+        margin: 30px auto;
+        width: 86%;
+        .card {
+            padding: 8px;
+            width: 16%;
+            p {
+                margin: 5px;
+                width: 100%;
+            }
+            i {
+                font-size: 2.2em;
                 padding: 10px;
             }
             #day {
-                font-size: 1.1em;
+                font-size: 1.2em;
+            }
+            #temp {
+                font-size: 1.2em;
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) and (min-height: 768px) {
+    #forecast-container {
+        @include flex(row, space-evenly);
+        margin: 20px auto;
+        width: 76%;
+        .card {
+            @include flex(column, space-evenly);
+            padding: 8px;
+            text-align: center;
+            width: 16%;
+            i {
+                font-size: 2em;
+                padding: 10px;
+            }
+            #day {
+                font-size: 1.2em;
             }
             #temp {
                 font-size: 1.3em;

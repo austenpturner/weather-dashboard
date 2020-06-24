@@ -98,11 +98,15 @@
 }
 
 @media (min-width: 568px) {
+    
+}
+
+@media (min-width: 768px) {
     #header {
         height: 120px; 
         h1 {
             display: block;
-            font-size: 3em;
+            font-size: 2.4em;
         }
         #nav-icon {
             padding: 25px;
@@ -117,6 +121,27 @@
             .toggle3 {
                 transform: rotate(45deg) translate(-5px, -13px);
             }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    #header {
+        height: 120px; 
+        h1 {
+            font-size: 2.8em;
+        }
+        #nav-icon {
+            padding: 32px;
+        }
+    }
+}
+
+@media (min-width: 1024px) and (min-height: 768px) {
+    #header {
+        height: 120px; 
+        h1 {
+            font-size: 2.6em;
         }
     }
 }

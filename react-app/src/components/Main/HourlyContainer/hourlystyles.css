@@ -15,23 +15,24 @@
 }
 
 #hourly-container::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background-color: #F5F5F5;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: white;
   display: none;
 }
 
 #hourly-container::-webkit-scrollbar {
   display: none;
-  width: 12px;
+  width: 8px;
 }
 
 #hourly-container::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #555;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  background: -webkit-gradient(linear, left top, left bottom, from(#76ec76), to(#34c434));
+  background: linear-gradient(#76ec76, #34c434);
   display: none;
 }
 
@@ -134,6 +135,139 @@
   }
   #hourly-container i {
     font-size: 2.1em;
+  }
+}
+
+@media (min-width: 568px) {
+  #hourly-container {
+    width: 80%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin: 10px auto;
+    overflow-x: auto;
+  }
+  #hourly-container .tile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    margin: 6px 18px 10px 0px;
+  }
+  #hourly-container p {
+    font-size: 0.9em;
+    margin: 3px;
+  }
+  #hourly-container i {
+    font-size: 1.5em;
+    margin: 8px auto;
+  }
+}
+
+@media (min-width: 667px) {
+  #hourly-container {
+    width: 76%;
+    margin: 20px auto;
+  }
+  #hourly-container .tile {
+    margin: 6px 24px 10px 0px;
+  }
+  #hourly-container p {
+    font-size: 1em;
+    margin: 5px;
+  }
+  #hourly-container i {
+    font-size: 1.6em;
+  }
+}
+
+@media (min-width: 768px) {
+  #hourly-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin: 40px auto;
+    overflow-x: auto;
+    width: 80%;
+  }
+  #hourly-container::-webkit-scrollbar-track {
+    display: inline-block;
+  }
+  #hourly-container::-webkit-scrollbar {
+    display: inline-block;
+  }
+  #hourly-container::-webkit-scrollbar-thumb {
+    display: inline-block;
+  }
+  #hourly-container .tile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    margin: 6px 22px 10px 0px;
+  }
+  #hourly-container p {
+    font-size: 1.4em;
+    font-weight: 300;
+    margin: 4px;
+  }
+  #hourly-container i {
+    font-size: 2em;
+    margin: 8px auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  #hourly-container {
+    margin: 20px auto 30px;
+    overflow-x: auto;
+    width: 70%;
+  }
+  #hourly-container .tile {
+    margin: 6px 38px 10px 0px;
+  }
+  #hourly-container p {
+    font-size: 1.2em;
+    margin: 4px;
+  }
+  #hourly-container i {
+    font-size: 1.8em;
+    margin: 8px auto;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 768px) {
+  #hourly-container {
+    margin: 12px auto 20px;
+  }
+  #hourly-container p {
+    font-size: 1.3em;
   }
 }
 /*# sourceMappingURL=hourlystyles.css.map */

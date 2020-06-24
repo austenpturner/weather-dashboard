@@ -134,8 +134,87 @@
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
-    margin: 40px auto;
-    width: 90%;
+    margin: 16px auto;
+    width: 86%;
+  }
+  #forecast-container .card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    padding: 6px;
+    width: 16%;
+  }
+  #forecast-container .card p {
+    margin: 5px;
+    width: 100%;
+  }
+  #forecast-container .card i {
+    font-size: 2em;
+    padding: 6px;
+  }
+  #forecast-container .card #day {
+    font-size: 0.9em;
+  }
+  #forecast-container .card #temp {
+    font-size: 0.8em;
+    font-weight: 300;
+  }
+}
+
+@media (min-width: 667px) {
+  #forecast-container {
+    margin: 20px auto;
+    width: 82%;
+  }
+}
+
+@media (min-width: 768px) {
+  #forecast-container {
+    margin: 30px auto;
+    width: 86%;
+  }
+  #forecast-container .card {
+    padding: 8px;
+    width: 16%;
+  }
+  #forecast-container .card p {
+    margin: 5px;
+    width: 100%;
+  }
+  #forecast-container .card i {
+    font-size: 2.2em;
+    padding: 10px;
+  }
+  #forecast-container .card #day {
+    font-size: 1.2em;
+  }
+  #forecast-container .card #temp {
+    font-size: 1.2em;
+    font-weight: 300;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 768px) {
+  #forecast-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    margin: 20px auto;
+    width: 76%;
   }
   #forecast-container .card {
     display: -webkit-box;
@@ -152,15 +231,12 @@
     text-align: center;
     width: 16%;
   }
-  #forecast-container .card p {
-    margin: 5px;
-    width: 100%;
-  }
   #forecast-container .card i {
+    font-size: 2em;
     padding: 10px;
   }
   #forecast-container .card #day {
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
   #forecast-container .card #temp {
     font-size: 1.3em;

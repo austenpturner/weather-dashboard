@@ -10,7 +10,7 @@
     // border: 1px solid white;
     margin: 10px auto;
     form {
-        @include flex (row, space-evenly);
+        @include flex (row, center);
         // border: 1px solid white;
         .form-group {
             @include flex (column, center);
@@ -39,13 +39,13 @@
             padding: 10px;
         }
         #save-btn {
-            background-image: radial-gradient(rgb(118, 236, 118), rgb(52, 196, 52));
+            background: radial-gradient(rgb(118, 236, 118), rgb(52, 196, 52));
             padding: 10px 12px;
         }
     }
 }
 
-@media (min-width: 568px) {
+@media (min-width: 768px) {
     #search-bar {
         display: block;
         margin: 20px auto;
@@ -53,7 +53,7 @@
             .form-group {
                 @include flex (row, center);
                 label {
-                    font-size: 1em;
+                    font-size: 1.2em;
                     margin: 5px;
                 }
                 input {
@@ -70,6 +70,22 @@
             }
             #save-btn {
                 padding: 10px 12px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    #search-bar {
+        margin: 0px auto;
+        form {
+            .form-group {
+                label {
+                    font-weight: 300;
+                }
+                input {
+                    width: 280px;
+                }
             }
         }
     }
