@@ -114,25 +114,9 @@
   #header #nav-icon {
     padding: 25px;
   }
-  #header #nav-icon .line {
-    height: 3px;
-    margin: 10px;
-    width: 45px;
-  }
-  #header #nav-icon .toggle1 {
-    -webkit-transform: rotate(-45deg) translate(-5px, 13px);
-            transform: rotate(-45deg) translate(-5px, 13px);
-  }
-  #header #nav-icon .toggle3 {
-    -webkit-transform: rotate(45deg) translate(-5px, -13px);
-            transform: rotate(45deg) translate(-5px, -13px);
-  }
 }
 
 @media (min-width: 1024px) {
-  #header {
-    height: 120px;
-  }
   #header h1 {
     font-size: 2.8em;
   }

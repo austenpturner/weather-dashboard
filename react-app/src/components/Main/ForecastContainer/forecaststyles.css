@@ -70,9 +70,6 @@
   #forecast-container {
     margin: 22px auto;
   }
-  #forecast-container .card {
-    margin: 6px 0px;
-  }
   #forecast-container .card i {
     font-size: 1.7em;
     padding: 10px;
@@ -197,46 +194,21 @@
   }
   #forecast-container .card #temp {
     font-size: 1.2em;
-    font-weight: 300;
   }
 }
 
 @media (min-width: 1024px) and (min-height: 768px) {
   #forecast-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
     margin: 20px auto;
     width: 76%;
   }
   #forecast-container .card {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
     padding: 8px;
     text-align: center;
     width: 16%;
   }
   #forecast-container .card i {
     font-size: 2em;
-    padding: 10px;
-  }
-  #forecast-container .card #day {
-    font-size: 1.2em;
   }
   #forecast-container .card #temp {
     font-size: 1.3em;

@@ -128,13 +128,7 @@
     margin: 28px auto;
   }
   #hourly-container .tile {
-    margin: 6px 18px 10px 0px;
-  }
-  #hourly-container p {
-    font-size: 1.2em;
-  }
-  #hourly-container i {
-    font-size: 2.1em;
+    margin: 6px 25px 10px 0px;
   }
 }
 
@@ -152,7 +146,6 @@
         -ms-flex-pack: start;
             justify-content: flex-start;
     margin: 10px auto;
-    overflow-x: auto;
   }
   #hourly-container .tile {
     display: -webkit-box;
@@ -165,7 +158,6 @@
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
-    margin: 6px 18px 10px 0px;
   }
   #hourly-container p {
     font-size: 0.9em;
@@ -207,7 +199,6 @@
         -ms-flex-pack: start;
             justify-content: flex-start;
     margin: 40px auto;
-    overflow-x: auto;
     width: 80%;
   }
   #hourly-container::-webkit-scrollbar-track {
@@ -246,7 +237,6 @@
 @media (min-width: 1024px) {
   #hourly-container {
     margin: 20px auto 30px;
-    overflow-x: auto;
     width: 70%;
   }
   #hourly-container .tile {
@@ -254,11 +244,9 @@
   }
   #hourly-container p {
     font-size: 1.2em;
-    margin: 4px;
   }
   #hourly-container i {
     font-size: 1.8em;
-    margin: 8px auto;
   }
 }
 

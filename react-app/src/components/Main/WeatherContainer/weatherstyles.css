@@ -87,20 +87,11 @@
   #weather-container {
     margin: 24px auto 28px;
   }
-  #weather-container #date {
-    margin: 10px;
-  }
   #weather-container #weather-data .col {
     margin: 12px 10px 10px;
   }
   #weather-container #weather-data .col h4 {
     font-size: 2.2em;
-  }
-  #weather-container #weather-data .col h4, #weather-container #weather-data .col p {
-    margin: 10px 2px;
-  }
-  #weather-container #weather-data .col p {
-    font-size: 1.1em;
   }
   #weather-container #weather-data .col i {
     margin-top: 12px;
@@ -117,9 +108,6 @@
   }
   #weather-container #weather-data .col {
     margin: 12px 10px 10px;
-  }
-  #weather-container #weather-data .col h4 {
-    font-size: 2.2em;
   }
   #weather-container #weather-data .col h4, #weather-container #weather-data .col p {
     margin: 10px 2px;
@@ -190,18 +178,6 @@
   #weather-container {
     margin: 20px auto 10px;
     width: 76%;
-  }
-  #weather-container #weather-data {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
   }
   #weather-container #weather-data .col {
     margin: 6px 10px;
@@ -275,29 +251,7 @@
     font-size: 1.2em;
     margin: 6px 0px;
   }
-  #weather-container #weather-data {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
-  }
   #weather-container #weather-data .col {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
     margin: 4px 8px;
     padding: 10px;
   }
@@ -328,18 +282,6 @@
   }
   #weather-container #date {
     font-size: 1.2em;
-  }
-  #weather-container #weather-data {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
   }
   #weather-container #weather-data .col {
     margin: 4px 8px;

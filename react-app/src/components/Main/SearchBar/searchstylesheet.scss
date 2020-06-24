@@ -7,11 +7,9 @@
 #search-bar {
     @include flex (row, center);
     display: none;
-    // border: 1px solid white;
     margin: 10px auto;
     form {
         @include flex (row, center);
-        // border: 1px solid white;
         .form-group {
             @include flex (column, center);
             align-self: center;

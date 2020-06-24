@@ -6,19 +6,16 @@
 
 #forecast-container {
     @include flex(column, space-evenly);
-    // border: 1px solid white;
     margin: 10px auto;
     width: 90%;
     .card {
         @include flex(row, space-evenly);
         background: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
-        // border: 1px solid white;
         border-radius: 5px;
         margin: 5px 0px;
         text-align: center;
         p {
             align-self: center;
-            // border: 1px solid white;
             margin: 2px 5px;
             width: 25%;
         }
@@ -52,7 +49,6 @@
     #forecast-container {
         margin: 22px auto;
         .card {
-            margin: 6px 0px;
             i {
                 font-size: 1.7em;
                 padding: 10px;
@@ -161,7 +157,6 @@
             }
             #temp {
                 font-size: 1.2em;
-                font-weight: 300;
             }
         }
     }
@@ -169,20 +164,14 @@
 
 @media (min-width: 1024px) and (min-height: 768px) {
     #forecast-container {
-        @include flex(row, space-evenly);
         margin: 20px auto;
         width: 76%;
         .card {
-            @include flex(column, space-evenly);
             padding: 8px;
             text-align: center;
             width: 16%;
             i {
                 font-size: 2em;
-                padding: 10px;
-            }
-            #day {
-                font-size: 1.2em;
             }
             #temp {
                 font-size: 1.3em;

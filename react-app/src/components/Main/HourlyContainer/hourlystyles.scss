@@ -6,7 +6,6 @@
 
 #hourly-container {
     @include flex (row, flex-start);
-    // border: 1px solid white;
     margin: 10px auto;
     overflow-x: auto;
     width: 88%;
@@ -28,7 +27,6 @@
     }
     .tile {
         @include flex (column, space-evenly);
-        // border: 1px solid white;
         margin: 6px 15px 10px 0px;
     }
     p {
@@ -106,13 +104,7 @@
     #hourly-container {
         margin: 28px auto;
         .tile {
-            margin: 6px 18px 10px 0px;
-        }
-        p {
-            font-size: 1.2em;
-        }
-        i {
-            font-size: 2.1em;
+            margin: 6px 25px 10px 0px;
         }
     }
 }
@@ -122,10 +114,8 @@
         width: 80%;
         @include flex (row, flex-start);
         margin: 10px auto;
-        overflow-x: auto;
         .tile {
             @include flex (column, space-evenly);
-            margin: 6px 18px 10px 0px;
         }
         p {
             font-size: 0.9em;
@@ -159,7 +149,6 @@
     #hourly-container {
         @include flex (row, flex-start);
         margin: 40px auto;
-        overflow-x: auto;
         width: 80%;
         &::-webkit-scrollbar-track {
             display: inline-block;
@@ -189,18 +178,15 @@
 @media (min-width: 1024px) {
     #hourly-container {
         margin: 20px auto 30px;
-        overflow-x: auto;
         width: 70%;
         .tile {
             margin: 6px 38px 10px 0px;
         }
         p {
             font-size: 1.2em;
-            margin: 4px;
         }
         i {
             font-size: 1.8em;
-            margin: 8px auto;
         }
     }
 }
