@@ -9,6 +9,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  display: none;
   margin: 10px auto;
 }
 
@@ -73,6 +74,7 @@
 
 @media (min-width: 568px) {
   #search-bar {
+    display: block;
     margin: 20px auto;
   }
   #search-bar form .form-group {

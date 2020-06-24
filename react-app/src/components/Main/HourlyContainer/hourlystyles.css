@@ -9,9 +9,9 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin: 40px auto;
+  margin: 10px auto;
   overflow-x: auto;
-  width: 85%;
+  width: 88%;
 }
 
 #hourly-container::-webkit-scrollbar-track {
@@ -19,9 +19,11 @@
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: #F5F5F5;
+  display: none;
 }
 
 #hourly-container::-webkit-scrollbar {
+  display: none;
   width: 12px;
 }
 
@@ -30,6 +32,7 @@
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #555;
+  display: none;
 }
 
 #hourly-container .tile {
@@ -43,11 +46,12 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  margin: 20px 5px;
+  margin: 6px 15px 10px 0px;
 }
 
 #hourly-container p {
-  margin: 5px;
+  font-size: 0.9em;
+  margin: 4px;
   text-align: center;
 }
 
@@ -55,6 +59,81 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  font-size: 1.5em;
   margin: 2px auto;
+}
+
+@media (min-width: 360px) and (min-height: 640px) {
+  #hourly-container {
+    margin: 15px auto;
+  }
+  #hourly-container .tile {
+    margin: 6px 16px 10px 0px;
+  }
+  #hourly-container p {
+    font-size: 1em;
+    margin: 5px;
+  }
+  #hourly-container i {
+    font-size: 1.8em;
+    margin: 2px auto;
+  }
+}
+
+@media (min-width: 360px) and (min-height: 740px) {
+  #hourly-container {
+    margin: 22px auto;
+  }
+  #hourly-container .tile {
+    margin: 6px 12px 10px 0px;
+  }
+  #hourly-container p {
+    font-size: 1.2em;
+  }
+  #hourly-container i {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 375px) and (min-height: 667px) {
+  #hourly-container {
+    margin: 18px auto;
+  }
+  #hourly-container .tile {
+    margin: 6px 18px 10px 0px;
+  }
+  #hourly-container i {
+    font-size: 1.6em;
+  }
+}
+
+@media (min-width: 375px) and (min-height: 812px) {
+  #hourly-container {
+    margin: 32px auto;
+  }
+  #hourly-container .tile {
+    margin: 6px 14px 10px 0px;
+  }
+  #hourly-container p {
+    font-size: 1.2em;
+  }
+  #hourly-container i {
+    font-size: 2.1em;
+  }
+}
+
+@media (min-width: 411px) and (min-height: 731px) {
+  #hourly-container {
+    margin: 28px auto;
+  }
+  #hourly-container .tile {
+    margin: 6px 18px 10px 0px;
+  }
+  #hourly-container p {
+    font-size: 1.2em;
+  }
+  #hourly-container i {
+    font-size: 2.1em;
+  }
 }
 /*# sourceMappingURL=hourlystyles.css.map */

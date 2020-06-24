@@ -7,18 +7,18 @@
 #header {
     // border: 1px solid white;
     @include flex (row, space-evenly);
-    height: 80px;
+    height: 10px;
     width: 100vw;
     h1 {
         align-self: center;
-        // display: none;
+        display: none;
         font-size: 1.4em;
         font-weight: 300;
         text-align: center;
     }
     #nav-icon {
         cursor: pointer;
-        padding: 12px;
+        padding: 15px;
         position: absolute;
         right: 0;
         z-index: 2;
@@ -61,10 +61,47 @@
     }
 }
 
+@media (min-width: 360px) and (min-height: 640px) {
+    #header {
+        #nav-icon {
+            padding: 20px;
+        }
+    }
+}
+
+@media (min-width: 360px) and (min-height: 740px) {
+    #header {
+        #nav-icon {
+            padding: 28px 26px;
+        }
+    }
+}
+
+@media (min-width: 375px) and (min-height: 667px) {
+    #header {
+        #nav-icon {
+            padding: 22px;
+        }
+    }
+}
+
+@media (min-width: 375px) and (min-height: 812px) {
+    #header {
+        #nav-icon {
+            padding: 30px 26px;
+        }
+    }
+}
+
+@media (min-width: 411px) and (min-height: 731px) {
+    
+}
+
 @media (min-width: 568px) {
     #header {
         height: 120px; 
         h1 {
+            display: block;
             font-size: 3em;
         }
         #nav-icon {

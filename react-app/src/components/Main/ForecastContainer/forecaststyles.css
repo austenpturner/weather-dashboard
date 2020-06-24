@@ -9,7 +9,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  margin: 40px auto;
+  margin: 10px auto;
   width: 90%;
 }
 
@@ -26,8 +26,7 @@
           justify-content: space-evenly;
   background: radial-gradient(#4e9de2, #0275d8);
   border-radius: 5px;
-  margin: 8px;
-  padding: 4px;
+  margin: 5px 0px;
   text-align: center;
 }
 
@@ -35,7 +34,7 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  margin: 3px;
+  margin: 2px 5px;
   width: 25%;
 }
 
@@ -43,8 +42,8 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  font-size: 1.6em;
-  padding: 10px;
+  font-size: 1.3em;
+  padding: 8px;
 }
 
 #forecast-container .card #day {
@@ -53,6 +52,74 @@
 
 #forecast-container .card #temp {
   font-size: 1.1em;
+}
+
+@media (min-width: 360px) and (min-height: 640px) {
+  #forecast-container {
+    margin: 15px auto;
+  }
+  #forecast-container .card {
+    margin: 6px 0px;
+  }
+  #forecast-container .card i {
+    font-size: 1.6em;
+  }
+}
+
+@media (min-width: 360px) and (min-height: 740px) {
+  #forecast-container {
+    margin: 22px auto;
+  }
+  #forecast-container .card {
+    margin: 6px 0px;
+  }
+  #forecast-container .card i {
+    font-size: 1.7em;
+    padding: 10px;
+  }
+  #forecast-container .card #day {
+    font-size: 1.1em;
+  }
+  #forecast-container .card #temp {
+    font-size: 1.2em;
+  }
+}
+
+@media (min-width: 375px) and (min-height: 667px) {
+  #forecast-container {
+    margin: 18px auto;
+  }
+}
+
+@media (min-width: 375px) and (min-height: 812px) {
+  #forecast-container {
+    margin: 28px auto;
+  }
+  #forecast-container .card {
+    margin: 8px 0px;
+  }
+  #forecast-container .card i {
+    font-size: 1.8em;
+    padding: 10px;
+  }
+  #forecast-container .card #day {
+    font-size: 1.2em;
+  }
+  #forecast-container .card #temp {
+    font-size: 1.3em;
+  }
+}
+
+@media (min-width: 411px) and (min-height: 731px) {
+  #forecast-container {
+    margin: 28px auto;
+  }
+  #forecast-container .card #day {
+    font-size: 1.1em;
+  }
+  #forecast-container .card #temp {
+    font-size: 1.2em;
+  }
 }
 
 @media (min-width: 568px) {

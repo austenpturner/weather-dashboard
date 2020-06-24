@@ -7,30 +7,101 @@
 #forecast-container {
     @include flex(column, space-evenly);
     // border: 1px solid white;
-    margin: 40px auto;
+    margin: 10px auto;
     width: 90%;
     .card {
         @include flex(row, space-evenly);
         background: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
+        // border: 1px solid white;
         border-radius: 5px;
-        margin: 8px;
-        padding: 4px;
+        margin: 5px 0px;
         text-align: center;
         p {
             align-self: center;
-            margin: 3px;
+            // border: 1px solid white;
+            margin: 2px 5px;
             width: 25%;
         }
         i {
             align-self: center;
-            font-size: 1.6em;
-            padding: 10px;
+            font-size: 1.3em;
+            padding: 8px;
         }
         #day {
             font-size: 1em;
         }
         #temp {
             font-size: 1.1em;
+        }
+    }
+}
+
+@media (min-width: 360px) and (min-height: 640px) {
+    #forecast-container {
+        margin: 15px auto;
+        .card {
+            margin: 6px 0px;
+            i {
+                font-size: 1.6em;
+            }
+        }
+    }
+}
+
+@media (min-width: 360px) and (min-height: 740px) {
+    #forecast-container {
+        margin: 22px auto;
+        .card {
+            margin: 6px 0px;
+            i {
+                font-size: 1.7em;
+                padding: 10px;
+            }
+            #day {
+                font-size: 1.1em;
+            }
+            #temp {
+                font-size: 1.2em;
+            }
+        }
+    }
+}
+
+@media (min-width: 375px) and (min-height: 667px) {
+    #forecast-container {
+        margin: 18px auto;
+    }
+}
+
+@media (min-width: 375px) and (min-height: 812px) {
+    #forecast-container {
+        margin: 28px auto;
+        .card {
+            margin: 8px 0px;
+            i {
+                font-size: 1.8em;
+                padding: 10px;
+            }
+            #day {
+                font-size: 1.2em;
+            }
+            #temp {
+                font-size: 1.3em;
+            }
+        }
+    }
+}
+
+@media (min-width: 411px) and (min-height: 731px) {
+    #forecast-container {
+        margin: 28px auto;
+        .card {
+            #day {
+                font-size: 1.1em;
+            }
+            #temp {
+                font-size: 1.2em;
+            }
         }
     }
 }

@@ -49,11 +49,11 @@ const capLocation = location => {
 const getTime = hour => {
     const time = getDecimal(hour);
     if (time > 12) {
-        return time - 12 + ":00pm";
+        return time - 12 + "pm";
     } else if (time === 0 ) {
-        return 12 + ":00am";
+        return 12 + "am";
     } else {
-        return time + ":00am";
+        return time + "am";
     }
 }
 
