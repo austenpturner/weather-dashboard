@@ -110,7 +110,7 @@ class Main extends Component {
 
                 const hourlyRes = res.data.hourly;
                 const hourlyWeather = [];
-                for (let i = 1; i < 13; i++) {
+                for (let i = 1; i < 26; i++) {
                     const rawTemp = hourlyRes[i].temp;
                     const temp = Math.floor((rawTemp - 273.15) * 1.8 + 32);
                     const rawWindSpeed = hourlyRes[i].wind_speed;

@@ -56,6 +56,7 @@
 
 #header nav {
   background: radial-gradient(#4e9de2, #0275d8);
+  display: none;
   height: calc(100vh - 120px);
   position: absolute;
   top: 120px;

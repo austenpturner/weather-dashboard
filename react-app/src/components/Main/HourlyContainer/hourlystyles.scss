@@ -25,7 +25,7 @@
     }
     .tile {
         @include flex (column, space-evenly);
-        margin: 20px 12px;
+        margin: 20px 5px;
     }
     p {
         margin: 5px;

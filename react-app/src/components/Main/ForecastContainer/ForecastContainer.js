@@ -35,8 +35,6 @@ class ForecastContainer extends Component {
                         <p id="day">{Moment().add(index + 1, 'days').format('dddd')}</p>
                         <p id="temp">{day.temp}&deg;F</p>
                         <i className={renderConditionIcon(day.description)}></i>
-                        {/* <p id="wind-speed">Wind Speed: {day.windSpeed}mph</p> */}
-                        {/* <p id="humidity">Humidity: {day.humidity}%</p> */}
                     </div>;
                 })}
             </div>

@@ -11,6 +11,7 @@
     width: 100vw;
     h1 {
         align-self: center;
+        // display: none;
         font-size: 1.4em;
         font-weight: 300;
         text-align: center;
@@ -41,7 +42,7 @@
     }
     nav {
         background: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
-        // display: none;
+        display: none;
         height: calc(100vh - 120px);
         position: absolute;
         top: 120px;
