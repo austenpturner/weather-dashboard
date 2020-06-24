@@ -5,5 +5,34 @@
 }
 
 #hourly-container {
-    @include flex (row, space-evenly);
+    @include flex (row, flex-start);
+    // border: 1px solid white;
+    margin: 40px auto;
+    overflow-x: auto;
+    width: 85%;
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #555;
+    }
+    .tile {
+        @include flex (column, space-evenly);
+        margin: 20px 12px;
+    }
+    p {
+        margin: 5px;
+        text-align: center;
+    }
+    i {
+        align-self: center;
+        margin: 2px auto;
+    }
 }

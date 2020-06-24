@@ -11,39 +11,40 @@
     width: 100vw;
     h1 {
         align-self: center;
-        font-size: 2.8em;
+        font-size: 1.4em;
         font-weight: 300;
         text-align: center;
     }
     #nav-icon {
         cursor: pointer;
-        padding: 20px;
+        padding: 12px;
         position: absolute;
         right: 0;
         z-index: 2;
         .line {
             background: white;
             border-radius: 5px;
-            height: 3px;
-            margin: 8px;
+            height: 2px;
+            margin: 6px;
             transition: all 500ms ease-in-out;
-            width: 40px;
+            width: 30px;
         }
         .toggle1 {
-            transform: rotate(-45deg) translate(-5px, 11px);
+            transform: rotate(-45deg) translate(-5px, 6px);
         }
         .toggle2 {
             opacity: 0;
         }
         .toggle3 {
-            transform: rotate(45deg) translate(-5px, -11px);
+            transform: rotate(45deg) translate(-5px, -6px);
         }
     }
     nav {
         background: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
-        height: calc(100vh - 80px);
+        // display: none;
+        height: calc(100vh - 120px);
         position: absolute;
-        top: 80px;
+        top: 120px;
         transition: left 1000ms ease-in-out;
         width: 100vw;
         z-index: 1;
@@ -56,5 +57,28 @@
     }
     .slide-out {
         left: 100vw;
+    }
+}
+
+@media (min-width: 568px) {
+    #header {
+        height: 120px; 
+        h1 {
+            font-size: 3em;
+        }
+        #nav-icon {
+            padding: 25px;
+            .line {
+                height: 3px;
+                margin: 10px;
+                width: 45px;
+            }
+            .toggle1 {
+                transform: rotate(-45deg) translate(-5px, 13px);
+            }
+            .toggle3 {
+                transform: rotate(45deg) translate(-5px, -13px);
+            }
+        }
     }
 }

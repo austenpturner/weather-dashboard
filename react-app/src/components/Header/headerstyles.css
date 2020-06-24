@@ -17,14 +17,14 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  font-size: 2.8em;
+  font-size: 1.4em;
   font-weight: 300;
   text-align: center;
 }
 
 #header #nav-icon {
   cursor: pointer;
-  padding: 20px;
+  padding: 12px;
   position: absolute;
   right: 0;
   z-index: 2;
@@ -33,16 +33,16 @@
 #header #nav-icon .line {
   background: white;
   border-radius: 5px;
-  height: 3px;
-  margin: 8px;
+  height: 2px;
+  margin: 6px;
   -webkit-transition: all 500ms ease-in-out;
   transition: all 500ms ease-in-out;
-  width: 40px;
+  width: 30px;
 }
 
 #header #nav-icon .toggle1 {
-  -webkit-transform: rotate(-45deg) translate(-5px, 11px);
-          transform: rotate(-45deg) translate(-5px, 11px);
+  -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+          transform: rotate(-45deg) translate(-5px, 6px);
 }
 
 #header #nav-icon .toggle2 {
@@ -50,15 +50,15 @@
 }
 
 #header #nav-icon .toggle3 {
-  -webkit-transform: rotate(45deg) translate(-5px, -11px);
-          transform: rotate(45deg) translate(-5px, -11px);
+  -webkit-transform: rotate(45deg) translate(-5px, -6px);
+          transform: rotate(45deg) translate(-5px, -6px);
 }
 
 #header nav {
   background: radial-gradient(#4e9de2, #0275d8);
-  height: calc(100vh - 80px);
+  height: calc(100vh - 120px);
   position: absolute;
-  top: 80px;
+  top: 120px;
   -webkit-transition: left 1000ms ease-in-out;
   transition: left 1000ms ease-in-out;
   width: 100vw;
@@ -75,5 +75,30 @@
 
 #header .slide-out {
   left: 100vw;
+}
+
+@media (min-width: 568px) {
+  #header {
+    height: 120px;
+  }
+  #header h1 {
+    font-size: 3em;
+  }
+  #header #nav-icon {
+    padding: 25px;
+  }
+  #header #nav-icon .line {
+    height: 3px;
+    margin: 10px;
+    width: 45px;
+  }
+  #header #nav-icon .toggle1 {
+    -webkit-transform: rotate(-45deg) translate(-5px, 13px);
+            transform: rotate(-45deg) translate(-5px, 13px);
+  }
+  #header #nav-icon .toggle3 {
+    -webkit-transform: rotate(45deg) translate(-5px, -13px);
+            transform: rotate(45deg) translate(-5px, -13px);
+  }
 }
 /*# sourceMappingURL=headerstyles.css.map */

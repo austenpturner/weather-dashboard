@@ -15,18 +15,18 @@ class SearchBar extends Component {
                             value={this.props.searchInput} 
                             onChange={this.props.handleInputChange}
                         />
-                        <button  
-                            id='search-btn'
-                            onClick={this.props.handleFormSubmit}
-                        >
-                            <i 
-                                className='fas fa-search fa-lg'
-                            ></i>
-                        </button>
-                        <button id='save-btn'>
-                            <i className='far fa-bookmark fa-lg'></i>
-                        </button>
                     </div>
+                    <button  
+                        id='search-btn'
+                        onClick={this.props.handleFormSubmit}
+                    >
+                        <i 
+                            className='fas fa-search fa-lg'
+                        ></i>
+                    </button>
+                    <button id='save-btn'>
+                        <i className='far fa-bookmark fa-lg'></i>
+                    </button>
                 </form>
             </div>
         );

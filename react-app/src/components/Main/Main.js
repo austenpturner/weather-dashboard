@@ -6,7 +6,7 @@ import HourlyContainer from "./HourlyContainer/HourlyContainer";
 import ForecastContainer from "./ForecastContainer/ForecastContainer";
 import weatherAPI from "../../utils/openWeatherAPI";
 
-const calculateSunStatus = (unixSunrise) => {
+const calculateTime = (unixSunrise) => {
     // Create a new JavaScript Date object based on the timestamp
     let unix_timestamp = unixSunrise;
     // multiplied by 1000 so that the argument is in milliseconds, not seconds.
@@ -23,7 +23,7 @@ const calculateSunStatus = (unixSunrise) => {
 
 const getDecimal = unixNum => {
   const regex = /:/gi; 
-  const time = calculateSunStatus(unixNum);
+  const time = calculateTime(unixNum);
   const decimal = time.replace(regex, ".");
   return parseFloat(decimal);
 };
@@ -44,6 +44,17 @@ const capLocation = location => {
         }
     }
     return capLocation;
+}
+
+const getTime = hour => {
+    const time = getDecimal(hour);
+    if (time > 12) {
+        return time - 12 + ":00pm";
+    } else if (time === 0 ) {
+        return 12 + ":00am";
+    } else {
+        return time + ":00am";
+    }
 }
 
 class Main extends Component {
@@ -99,12 +110,15 @@ class Main extends Component {
 
                 const hourlyRes = res.data.hourly;
                 const hourlyWeather = [];
-                for (let i = 0; i < 12; i++) {
+                for (let i = 1; i < 13; i++) {
                     const rawTemp = hourlyRes[i].temp;
                     const temp = Math.floor((rawTemp - 273.15) * 1.8 + 32);
                     const rawWindSpeed = hourlyRes[i].wind_speed;
                     const windSpeed = Math.floor(rawWindSpeed * 2.237);
+                    const hour = getTime(hourlyRes[i].dt)
+
                     hourlyWeather.push({
+                        hour: hour,
                         temp: temp,
                         windSpeed: windSpeed,
                         humidity: hourlyRes[i].humidity,
