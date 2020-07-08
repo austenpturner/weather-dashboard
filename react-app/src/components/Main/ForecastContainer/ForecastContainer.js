@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
 import Moment from "moment";
+import renderConditionIcon from "../../../utils/renderIcons";
 import "./forecaststyles.css";
 
-const renderConditionIcon = description => {
-    let iconClass = "";
-    if (description === 'Clouds' || description === 'Fog') {
-        iconClass = 'fas fa-cloud fa-3x';
-    } else if (description === 'Rain' || description === 'Drizzle' || description === 'Mist') {
-        iconClass = 'fas fa-cloud-rain fa-3x';
-    } else if (description === 'Snow') {
-        iconClass = 'far fa-snowflake fa-3x';
-    } else if (description === 'Thunderstorm') {
-        iconClass = 'fas fa-bolt fa-3x';
-    } else if (description === 'Clear') {
-        iconClass = 'fas fa-sun fa-3x';
-    } else if (description === 'Smoke' || description === 'Haze' || description === 'Ash' || description === 'Dust' || description === 'Sand') {
-        iconClass = 'fas fa-smog fa-3x';
-    } else if (description === 'Squall' || description === 'Tornado') {
-        iconClass = 'fas fa-cloud fa-3x';
-    }
-    return iconClass; 
-};
-
 class ForecastContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            cardSide: "front"
+        };
+    }
+
+    handleCardFlip(e) {
+        let cardNum;
+        if (e.target.id) {
+            cardNum = e.target.id;
+        } else {
+            cardNum = e.target.parentElement.id;
+        }
+        console.log(cardNum);
+        if (this.state.cardSide === "front") {
+            this.setState({ 
+                cardSide: `back`
+            });
+        } else {
+            this.setState({ 
+                cardSide: `front`
+            });
+        }
+        console.log(this.state);
+    }
+
     render() {
         const forecastData = this.props.forecast;
         return (
@@ -32,9 +40,24 @@ class ForecastContainer extends Component {
                         key={index}
                         className="card"
                     >
-                        <p id="day">{Moment().add(index + 1, 'days').format('dddd')}</p>
-                        <p id="temp">{day.temp}&deg;F</p>
-                        <i className={renderConditionIcon(day.description)}></i>
+                        <div 
+                            className={this.state.cardSide === `front` ? "card-front show" : "card-front hide"}
+                            id={index}
+                            onClick={this.handleCardFlip.bind(this)}
+                        >
+                            <p className="day">{Moment().add(index + 1, 'days').format('dddd')}</p>
+                            <p className="temp">{day.temp}&deg;F</p>
+                            <i className={renderConditionIcon(day.description)}></i>
+                        </div>
+                        <div 
+                            className={this.state.cardSide === `back` ? "card-back show" : "card-back hide"}
+                            id={index}
+                            onClick={this.handleCardFlip.bind(this)}
+                        >
+                            <p className="humidity">Humidity: {day.humidity}%</p>
+                            <p className="windspeed">Wind Speed: {day.windSpeed}mph</p>
+                            <p className="uvIndex">UV Index: {day.uvIndex}</p>
+                        </div>
                     </div>;
                 })}
             </div>

@@ -112,7 +112,22 @@
     font-size: 2.4em;
   }
   #header #nav-icon {
-    padding: 25px;
+    padding: 25px 35px;
+  }
+  #header #nav-icon .line {
+    height: 3px;
+    margin: 7px;
+    -webkit-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+    width: 40px;
+  }
+  #header #nav-icon .toggle1 {
+    -webkit-transform: rotate(-45deg) translate(-5px, 9px);
+            transform: rotate(-45deg) translate(-5px, 9px);
+  }
+  #header #nav-icon .toggle3 {
+    -webkit-transform: rotate(45deg) translate(-5px, -9px);
+            transform: rotate(45deg) translate(-5px, -9px);
   }
 }
 

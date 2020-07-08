@@ -1,26 +1,6 @@
 import React, { Component } from 'react';
-import Moment from "moment";
+import renderConditionIcon from "../../../utils/renderIcons";
 import "./hourlystyles.css";
-
-const renderConditionIcon = description => {
-    let iconClass = "";
-    if (description === 'Clouds' || description === 'Fog') {
-        iconClass = 'fas fa-cloud fa-2x';
-    } else if (description === 'Rain' || description === 'Drizzle' || description === 'Mist') {
-        iconClass = 'fas fa-cloud-rain fa-2x';
-    } else if (description === 'Snow') {
-        iconClass = 'far fa-snowflake fa-2x';
-    } else if (description === 'Thunderstorm') {
-        iconClass = 'fas fa-bolt fa-2x';
-    } else if (description === 'Clear') {
-        iconClass = 'fas fa-sun fa-2x';
-    } else if (description === 'Smoke' || description === 'Haze' || description === 'Ash' || description === 'Dust' || description === 'Sand') {
-        iconClass = 'fas fa-smog fa-2x';
-    } else if (description === 'Squall' || description === 'Tornado') {
-        iconClass = 'fas fa-cloud fa-2x';
-    }
-    return iconClass; 
-};
 
 class HourlyContainer extends Component {
     render() {
