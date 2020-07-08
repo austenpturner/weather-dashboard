@@ -5,7 +5,6 @@ import "./hourlystyles.css";
 class HourlyContainer extends Component {
     render() {
         const hourlyWeather = this.props.hourlyWeather;
-        console.log(hourlyWeather);
         return (
             <div id="hourly-container">
                 {hourlyWeather.map((hour, index) => {

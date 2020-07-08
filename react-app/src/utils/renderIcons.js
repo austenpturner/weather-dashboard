@@ -24,6 +24,8 @@ const renderConditionIcon = description => {
         case 'Dust':
         case 'Sand':
             return iconClass = 'fas fa-smog fa-3x';
+        default:
+            return iconClass;
     }
 };
 
