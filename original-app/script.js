@@ -55,9 +55,12 @@ navSymbol.click(function() {
 
 saveBtn.click(function(e) {
     e.preventDefault();
-    capSearch(); 
+    capSearch();
+    // Check to see if location has already been saved
     if (searches.indexOf(capLocation) === -1 && locationInput.val() !== '') {
+        // if not already a saved location then add to searches array
         searches.push(capLocation);
+        // save searches array to local storage
         saveSearches();
         let newLocationContainer = $('<div>');
         let newDeleteIcon = $('<i>');

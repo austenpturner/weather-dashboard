@@ -17,7 +17,7 @@
 #hourly-container::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: white;
   display: none;
 }
@@ -28,11 +28,11 @@
 }
 
 #hourly-container::-webkit-scrollbar-thumb {
-  border-radius: 5px;
+  border-radius: 3px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  background: -webkit-gradient(linear, left top, left bottom, from(#76ec76), to(#34c434));
-  background: linear-gradient(#76ec76, #34c434);
+  background: -webkit-gradient(linear, left top, left bottom, from(#bbbbbb), to(#9c9c9c));
+  background: linear-gradient(#bbbbbb, #9c9c9c);
   display: none;
 }
 

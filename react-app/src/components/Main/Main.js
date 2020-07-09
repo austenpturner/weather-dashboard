@@ -6,6 +6,7 @@ import HourlyContainer from "./HourlyContainer/HourlyContainer";
 import ForecastContainer from "./ForecastContainer/ForecastContainer";
 import weatherAPI from "../../utils/openWeatherAPI";
 import utilFunctions from "../../utils/utilFunctions";
+import localStorageFunctions from "../../utils/localStorage";
 
 class Main extends Component {
     constructor(props) {
@@ -20,7 +21,8 @@ class Main extends Component {
             sunset: 0,
             currentWeather: {},
             hourlyWeather: [],
-            forecast: []
+            forecast: [],
+            savedLocations: []
         };
     }
 
@@ -86,7 +88,6 @@ class Main extends Component {
                 lat: position.coords.latitude,
                 lon: position.coords.longitude
             });
-            // console.log(this.state);
             const lat = this.state.lat;
             const lon = this.state.lon;
             this.retrieveWeatherData(lat, lon);
@@ -96,9 +97,13 @@ class Main extends Component {
                 this.setState({ location: currentLocation });
             });
         }
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(setPosition);
         }
+
+        console.log(localStorageFunctions.getLocalStorage()); 
+        this.setState({ savedLocations: localStorageFunctions.getLocalStorage() });
     };
 
     handleInputChange(event) {
@@ -110,20 +115,40 @@ class Main extends Component {
         event.preventDefault();
 
         const searchInput = this.state.searchInput;
-        const searchLocation = utilFunctions.capLocation(searchInput);
-        this.setState({ location: searchLocation });
 
-        weatherAPI.searchCoordidateData(searchInput)
-            .then(res => {
-                console.log(`search coordinates:`, res);
-                const lat = res.data.latt;
-                const lon = res.data.longt;
-                this.setState({
-                    lat: lat,
-                    lon: lon
+        if (searchInput === '') {
+            return;
+        } else {
+            const searchLocation = utilFunctions.capLocation(searchInput);
+            this.setState({ location: searchLocation });
+    
+            weatherAPI.searchCoordidateData(searchInput)
+                .then(res => {
+                    // console.log(`search coordinates:`, res);
+                    const lat = res.data.latt;
+                    const lon = res.data.longt;
+                    this.setState({
+                        lat: lat,
+                        lon: lon
+                    });
+                    this.retrieveWeatherData(lat, lon);
                 });
-                this.retrieveWeatherData(lat, lon);
-            });
+        };
+    };
+
+    handleLocationSave(event) {
+        event.preventDefault();
+        const newLocation = utilFunctions.capLocation(this.state.searchInput);
+        const savedLocations = this.state.savedLocations;
+
+        if (savedLocations.indexOf(newLocation) === -1) {
+            savedLocations.push(newLocation);
+            this.setState({ savedLocations: savedLocations });
+        }
+
+        localStorageFunctions.setLocalStorage(savedLocations);
+        
+        console.log(localStorageFunctions.getLocalStorage());
     };
 
     render() {
@@ -133,6 +158,7 @@ class Main extends Component {
                     searchInput={this.state.searchInput}
                     handleInputChange={this.handleInputChange.bind(this)}
                     handleFormSubmit={this.handleFormSubmit.bind(this)}
+                    handleLocationSave={this.handleLocationSave.bind(this)}
                 />
                 <WeatherContainer 
                     currentWeather={this.state.currentWeather}

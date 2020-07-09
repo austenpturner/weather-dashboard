@@ -24,7 +24,10 @@ class SearchBar extends Component {
                             className='fas fa-search fa-lg'
                         ></i>
                     </button>
-                    <button id='save-btn'>
+                    <button 
+                        id='save-btn'
+                        onClick={this.props.handleLocationSave}
+                    >
                         <i className='far fa-bookmark fa-lg'></i>
                     </button>
                 </form>
