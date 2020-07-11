@@ -1,21 +1,49 @@
 import React, { Component } from 'react';
+import localStorage from '../../utils/localStorage'
+import weatherAPI from '../../utils/openWeatherAPI';
 import './navstyles.css';
+
+const renderLocations = () => {
+    const savedLocations = localStorage.getLocalStorage();
+    return savedLocations;
+};
+
+const renderLocationTemps = locations => {
+    console.log(locations);
+    for (let i = 0; i < locations.length; i++) {
+        const location = locations[i];
+        weatherAPI.searchCoordidateData(location)
+                .then(res => {
+                    const lat = res.data.latt;
+                    const lon = res.data.longt;
+                    console.log(location, ":", lat, lon);
+                });
+    };
+};
 
 class Nav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            slideNav: false
+            slideNav: false,
+            savedLocations: []
         };
-    }
+    };
+
+    componentDidMount() {
+        this.setState({ savedLocations: renderLocations() });
+    };
 
     handleNavSlide() {
+        this.setState({ savedLocations: renderLocations() });
+        // renderLocationTemps(this.state.savedLocations);
+
         if (this.state.slideNav) {
             this.setState({ slideNav: false});
         } else {
             this.setState({ slideNav: true });
         }
-    }
+    };
 
     render() {
         return (
@@ -31,7 +59,7 @@ class Nav extends Component {
                     </button>
                     <button 
                         id='save-btn'
-                        // onClick={this.props.handleLocationSave}
+                        onClick={this.props.handleLocationSave}
                     >
                         <i className='far fa-bookmark fa-lg'></i>
                     </button>
@@ -60,20 +88,21 @@ class Nav extends Component {
                     <ul 
                         id='saved-list' 
                     >
-                        {/* <li>
-                            <a 
-                                className='saved-place' 
-                                href='#about'
+                        {this.state.savedLocations.map((location, index) => {
+                            return <li
+                                key={index}
+                                className='location'
                                 onClick={this.props.handleNavSlide}
                             >
-                                About
-                            </a>
-                        </li> */}
+                                <p>{location}</p>
+                                {/* <p id="temp">&deg;F</p> */}
+                            </li>
+                        })}
                     </ul>
                 </div>
             </nav>
         );
-    }
-}
+    };
+};
 
 export default Nav;

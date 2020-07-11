@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar/SearchBar";
 import Main from './Main/Main';
 import weatherAPI from "../utils/openWeatherAPI";
 import utilFunctions from "../utils/utilFunctions";
-import localStorageFunctions from "../utils/localStorage";
+import localStorage from "../utils/localStorage";
 import './dashboardstyles.css';
 
 class Dashboard extends Component {
@@ -104,8 +104,11 @@ class Dashboard extends Component {
             navigator.geolocation.getCurrentPosition(setPosition);
         }
 
-        console.log(localStorageFunctions.getLocalStorage()); 
-        this.setState({ savedLocations: localStorageFunctions.getLocalStorage() });
+        // console.log(localStorageFunctions.getLocalStorage());
+        const savedLocations = localStorage.getLocalStorage();
+        if (savedLocations !== undefined) {
+            this.setState({ savedLocations: savedLocations });
+        };
     };
 
     handleInputChange(event) {
@@ -116,19 +119,20 @@ class Dashboard extends Component {
     handleFormSubmit(event) {
         event.preventDefault();
 
-        const searchInput = this.state.searchInput;
+        const search = this.state.searchInput;
 
-        if (searchInput === '') {
+        if (search === '') {
             return;
         } else {
-            const searchLocation = utilFunctions.capLocation(searchInput);
+            const searchLocation = utilFunctions.capLocation(search);
             this.setState({ location: searchLocation });
     
-            weatherAPI.searchCoordidateData(searchInput)
+            weatherAPI.searchCoordidateData(search)
                 .then(res => {
                     // console.log(`search coordinates:`, res);
                     const lat = res.data.latt;
                     const lon = res.data.longt;
+                    console.log(lat, lon);
                     this.setState({
                         lat: lat,
                         lon: lon
@@ -136,6 +140,18 @@ class Dashboard extends Component {
                     this.retrieveWeatherData(lat, lon);
                 });
         };
+
+        if (this.state.showSearchBar) {
+            this.setState({ showSearchBar: false});
+        } else {
+            this.setState({ showSearchBar: true });
+        };
+
+        const searchIcon = event.target;
+        const searchInput = searchIcon.parentElement.previousSibling;
+        console.log(searchInput);
+
+        // clear search input
     };
 
     handleLocationSave(event) {
@@ -148,20 +164,19 @@ class Dashboard extends Component {
             this.setState({ savedLocations: savedLocations });
         }
 
-        localStorageFunctions.setLocalStorage(savedLocations);
+        localStorage.setLocalStorage(savedLocations);
         
-        console.log(localStorageFunctions.getLocalStorage());
+        console.log(localStorage.getLocalStorage());
     };
 
     displaySearchBar(event) {
         event.preventDefault();
-        console.log('show search bar');
         if (this.state.showSearchBar) {
             this.setState({ showSearchBar: false});
         } else {
             this.setState({ showSearchBar: true });
-        }
-    }
+        };
+    };
 
     render() {
         return (
