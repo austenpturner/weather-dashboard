@@ -86,18 +86,19 @@ class Dashboard extends Component {
         const date = Moment().format('dddd, MMMM Do');
         this.setState({ date: date });
         const setPosition = position => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
             this.setState({
-                lat: position.coords.latitude,
-                lon: position.coords.longitude
+                lat: lat,
+                lon: lon
             });
-            const lat = this.state.lat;
-            const lon = this.state.lon;
             this.retrieveWeatherData(lat, lon);
+
             weatherAPI.retrieveLocationCoords(lat, lon)
-            .then(res => {
-                const currentLocation = utilFunctions.capLocation(res.data.city);
-                this.setState({ location: currentLocation });
-            });
+                .then(res => {
+                    const currentLocation = utilFunctions.capLocation(res.data.city);
+                    this.setState({ location: currentLocation });
+                });
         }
 
         if (navigator.geolocation) {
@@ -125,13 +126,11 @@ class Dashboard extends Component {
         } else {
             const searchLocation = utilFunctions.capLocation(search);
             this.setState({ location: searchLocation });
-    
+
             weatherAPI.searchCoordidateData(search)
                 .then(res => {
-                    // console.log(`search coordinates:`, res);
                     const lat = res.data.latt;
                     const lon = res.data.longt;
-                    console.log(lat, lon);
                     this.setState({
                         lat: lat,
                         lon: lon
@@ -146,11 +145,8 @@ class Dashboard extends Component {
             this.setState({ showSearchBar: true });
         };
 
-        const searchIcon = event.target;
-        const searchInput = searchIcon.parentElement.previousSibling;
-        console.log(searchInput);
-
         // clear search input
+        this.setState({ searchInput: '' });       
     };
 
     handleLocationSave(event) {
@@ -160,7 +156,7 @@ class Dashboard extends Component {
             newLocation = utilFunctions.capLocation(this.state.location);
         } else {
             newLocation = utilFunctions.capLocation(this.state.searchInput);
-        }
+        };
 
         const locationInfo = {
             city: newLocation,
@@ -182,8 +178,8 @@ class Dashboard extends Component {
                 } else {
                     savedLocations.push(locationInfo);
                     this.setState({ savedLocations: savedLocations });
-                }
-            }
+                };
+            };
         };
 
         localStorage.setLocalStorage(savedLocations);
@@ -200,15 +196,12 @@ class Dashboard extends Component {
 
     handleLocationSelection(event) {
         if (event.target.className === 'location') {
-            console.log(event.target.id);
             const selectedLocation = event.target.id;
             this.setState({ location: selectedLocation });
             weatherAPI.searchCoordidateData(selectedLocation)
                 .then(res => {
-                    // console.log(`search coordinates:`, res);
                     const lat = res.data.latt;
                     const lon = res.data.longt;
-                    console.log(lat, lon);
                     this.setState({
                         lat: lat,
                         lon: lon
@@ -216,15 +209,12 @@ class Dashboard extends Component {
                     this.retrieveWeatherData(lat, lon);
                 });
         } else if (event.target.parentElement.className === 'location') {
-            console.log(event.target.parentElement.id);
             const selectedLocation = event.target.parentElement.id;
             this.setState({ location: selectedLocation });
             weatherAPI.searchCoordidateData(selectedLocation)
                 .then(res => {
-                    // console.log(`search coordinates:`, res);
                     const lat = res.data.latt;
                     const lon = res.data.longt;
-                    console.log(lat, lon);
                     this.setState({
                         lat: lat,
                         lon: lon

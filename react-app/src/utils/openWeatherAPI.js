@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const weatherAPIKey = '1c15bab08bfbee58f4e3567a79550403';
+const geoCodeKey = '212959806664248386919x6259';
 const geoCodeURL = `https://geocode.xyz/`;
 const resFormat = `?json=1`;
 const oneCallWeatherQueryURL = `https://api.openweathermap.org/data/2.5/onecall?`;
@@ -10,10 +11,10 @@ const weatherAPI = {
         return axios.get(`${oneCallWeatherQueryURL}lat=${lat}&lon=${lon}&appid=${weatherAPIKey}`);
     },
     searchCoordidateData: searchInput => {
-        return axios.get(`${geoCodeURL}${searchInput}${resFormat}`);
+        return axios.get(`${geoCodeURL}${searchInput}${resFormat}&auth=${geoCodeKey}`);
     },
     retrieveLocationCoords: (lat, lon) => {
-        return axios.get(`${geoCodeURL}${lat},${lon}${resFormat}`);
+        return axios.get(`${geoCodeURL}${lat},${lon}${resFormat}&auth=${geoCodeKey}`);
     }
 };
 
