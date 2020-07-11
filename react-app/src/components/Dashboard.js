@@ -104,7 +104,6 @@ class Dashboard extends Component {
             navigator.geolocation.getCurrentPosition(setPosition);
         }
 
-        // console.log(localStorageFunctions.getLocalStorage());
         const savedLocations = localStorage.getLocalStorage();
         if (savedLocations !== undefined) {
             this.setState({ savedLocations: savedLocations });
@@ -113,7 +112,7 @@ class Dashboard extends Component {
 
     handleInputChange(event) {
         const search = event.target.value;
-        this.setState({ searchInput: search })
+        this.setState({ searchInput: search });
     };
 
     handleFormSubmit(event) {
@@ -156,10 +155,12 @@ class Dashboard extends Component {
 
     handleLocationSave(event) {
         event.preventDefault();
-        const newLocation = utilFunctions.capLocation(this.state.searchInput);
-        const savedLocations = this.state.savedLocations;
-
-        console.log(this.state.lat, this.state.lon);
+        let newLocation = '';
+        if (this.state.searchInput === '') {
+            newLocation = utilFunctions.capLocation(this.state.location);
+        } else {
+            newLocation = utilFunctions.capLocation(this.state.searchInput);
+        }
 
         const locationInfo = {
             city: newLocation,
@@ -167,14 +168,25 @@ class Dashboard extends Component {
             lon: this.state.lon
         };
 
-        if (savedLocations.indexOf(newLocation) === -1) {
+        const savedLocations = this.state.savedLocations;
+
+        if (savedLocations.length === 0) {
             savedLocations.push(locationInfo);
             this.setState({ savedLocations: savedLocations });
-        }
+        } else {
+            for (let i = 0; i < savedLocations.length; i++) {
+                const location = savedLocations[i].city;
+                if (location === newLocation) {
+                    // console.log('already saved');
+                    break;
+                } else {
+                    savedLocations.push(locationInfo);
+                    this.setState({ savedLocations: savedLocations });
+                }
+            }
+        };
 
         localStorage.setLocalStorage(savedLocations);
-        
-        console.log(localStorage.getLocalStorage());
     };
 
     displaySearchBar(event) {
@@ -183,6 +195,42 @@ class Dashboard extends Component {
             this.setState({ showSearchBar: false});
         } else {
             this.setState({ showSearchBar: true });
+        };
+    };
+
+    handleLocationSelection(event) {
+        if (event.target.className === 'location') {
+            console.log(event.target.id);
+            const selectedLocation = event.target.id;
+            this.setState({ location: selectedLocation });
+            weatherAPI.searchCoordidateData(selectedLocation)
+                .then(res => {
+                    // console.log(`search coordinates:`, res);
+                    const lat = res.data.latt;
+                    const lon = res.data.longt;
+                    console.log(lat, lon);
+                    this.setState({
+                        lat: lat,
+                        lon: lon
+                    });
+                    this.retrieveWeatherData(lat, lon);
+                });
+        } else if (event.target.parentElement.className === 'location') {
+            console.log(event.target.parentElement.id);
+            const selectedLocation = event.target.parentElement.id;
+            this.setState({ location: selectedLocation });
+            weatherAPI.searchCoordidateData(selectedLocation)
+                .then(res => {
+                    // console.log(`search coordinates:`, res);
+                    const lat = res.data.latt;
+                    const lon = res.data.longt;
+                    console.log(lat, lon);
+                    this.setState({
+                        lat: lat,
+                        lon: lon
+                    });
+                    this.retrieveWeatherData(lat, lon);
+                });
         };
     };
 
@@ -195,6 +243,7 @@ class Dashboard extends Component {
                 <Nav
                     displaySearchBar={this.displaySearchBar.bind(this)}
                     handleLocationSave={this.handleLocationSave.bind(this)}
+                    handleLocationSelection={this.handleLocationSelection.bind(this)}
                 />
                 <SearchBar
                     showSearchBar={this.state.showSearchBar}

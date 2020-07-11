@@ -7,7 +7,6 @@ import './navstyles.css';
 
 const retrieveLocationInfo = () => {
     const locationInfo = localStorage.getLocalStorage();
-    console.log(locationInfo);
     if (locationInfo !== undefined) {
         for (let i = 0; i < locationInfo.length; i++) {
             const location = locationInfo[i];
@@ -44,9 +43,13 @@ class Nav extends Component {
         if (this.state.slideNav) {
             this.setState({ slideNav: false});
         } else {
-            console.log(retrieveLocationInfo());
             this.setState({ slideNav: true });
-        }
+        };
+    };
+
+    locationSelection(event) {
+        this.handleNavSlide();
+        this.props.handleLocationSelection(event);
     };
 
     render() {
@@ -97,11 +100,12 @@ class Nav extends Component {
                             return <li
                                 key={index}
                                 className='location'
-                                onClick={this.props.handleNavSlide}
+                                id={location.city}
+                                onClick={this.locationSelection.bind(this)}
                             >
-                                <p>{location.city}</p>
+                                <p className='city'>{location.city}</p>
                                 <i className={renderConditionIcon(location.description)}></i>
-                                <p id="temp">{location.temp}&deg;F</p>
+                                <p className='temp'>{location.temp}&deg;F</p>
                             </li>
                         })}
                     </ul>
