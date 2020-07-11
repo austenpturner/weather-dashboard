@@ -97,6 +97,24 @@ nav #nav-slider #saved-list {
   list-style: none;
 }
 
+nav #nav-slider #saved-list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 20px 30px;
+}
+
+nav #nav-slider #saved-list li p {
+  font-size: 1.4em;
+}
+
 nav .slide-in {
   left: 0;
 }

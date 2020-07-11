@@ -75,6 +75,13 @@ nav {
         z-index: 2;
         #saved-list {
             list-style: none;
+            li {
+                @include flex (row, space-between);
+                padding: 20px 30px;
+                p {
+                    font-size: 1.4em;
+                }
+            }
         }  
         
     }

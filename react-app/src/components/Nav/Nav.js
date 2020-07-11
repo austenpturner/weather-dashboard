@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
 import localStorage from '../../utils/localStorage'
 import weatherAPI from '../../utils/openWeatherAPI';
+import utilFunctions from '../../utils/utilFunctions';
+import renderConditionIcon from '../../utils/renderIcons';
 import './navstyles.css';
 
-const renderLocations = () => {
-    const savedLocations = localStorage.getLocalStorage();
-    return savedLocations;
-};
-
-const renderLocationTemps = locations => {
-    console.log(locations);
-    for (let i = 0; i < locations.length; i++) {
-        const location = locations[i];
-        weatherAPI.searchCoordidateData(location)
-                .then(res => {
-                    const lat = res.data.latt;
-                    const lon = res.data.longt;
-                    console.log(location, ":", lat, lon);
-                });
+const retrieveLocationInfo = () => {
+    const locationInfo = localStorage.getLocalStorage();
+    console.log(locationInfo);
+    if (locationInfo !== undefined) {
+        for (let i = 0; i < locationInfo.length; i++) {
+            const location = locationInfo[i];
+            const lat = location.lat;
+            const lon = location.lon;
+            weatherAPI.weatherData(lat, lon)
+                    .then(res => {
+                        const tempF = utilFunctions.convertToFahrenheit(res.data.current.temp);
+                        location.temp = tempF;
+                        const description = res.data.current.weather[0].main;
+                        location.description = description;
+                    });
+        };
+        return locationInfo;
     };
 };
 
@@ -31,21 +35,22 @@ class Nav extends Component {
     };
 
     componentDidMount() {
-        this.setState({ savedLocations: renderLocations() });
+        if (retrieveLocationInfo() !== undefined) {
+            this.setState({ savedLocations: retrieveLocationInfo() });
+        };
     };
 
     handleNavSlide() {
-        this.setState({ savedLocations: renderLocations() });
-        // renderLocationTemps(this.state.savedLocations);
-
         if (this.state.slideNav) {
             this.setState({ slideNav: false});
         } else {
+            console.log(retrieveLocationInfo());
             this.setState({ slideNav: true });
         }
     };
 
     render() {
+        const locations = this.state.savedLocations;
         return (
             <nav>
                 <div id='nav-bar'>
@@ -88,14 +93,15 @@ class Nav extends Component {
                     <ul 
                         id='saved-list' 
                     >
-                        {this.state.savedLocations.map((location, index) => {
+                        {locations.map((location, index) => {
                             return <li
                                 key={index}
                                 className='location'
                                 onClick={this.props.handleNavSlide}
                             >
-                                <p>{location}</p>
-                                {/* <p id="temp">&deg;F</p> */}
+                                <p>{location.city}</p>
+                                <i className={renderConditionIcon(location.description)}></i>
+                                <p id="temp">{location.temp}&deg;F</p>
                             </li>
                         })}
                     </ul>

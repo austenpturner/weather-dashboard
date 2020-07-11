@@ -159,8 +159,16 @@ class Dashboard extends Component {
         const newLocation = utilFunctions.capLocation(this.state.searchInput);
         const savedLocations = this.state.savedLocations;
 
+        console.log(this.state.lat, this.state.lon);
+
+        const locationInfo = {
+            city: newLocation,
+            lat: this.state.lat,
+            lon: this.state.lon
+        };
+
         if (savedLocations.indexOf(newLocation) === -1) {
-            savedLocations.push(newLocation);
+            savedLocations.push(locationInfo);
             this.setState({ savedLocations: savedLocations });
         }
 
