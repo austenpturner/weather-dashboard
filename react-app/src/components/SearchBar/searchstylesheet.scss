@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+@mixin flex ($direction, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+}
+
+#search-bar {
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+    form {
+        @include flex (row, center);
+        padding: 10px 0px;
+        .form-group {
+            @include flex (row, space-evenly);
+            
+            label {
+                align-self: center;
+                font-size: 0.8em;
+                margin-right: 10px;
+            }
+            input {
+                border-radius: 5px 0 0 5px;
+                border: none;
+                padding: 8px 5px;
+                margin: 0;
+                width: 150px;
+                &:focus {
+                    outline: none;
+                }
+            }
+            button {
+                background: white;
+                border: none;
+                border-radius: 0 5px 5px 0;
+                padding: 0px 6px;
+            }
+        } 
+    }
+}
+
+.slide-down {
+    height: 53px;
+    opacity: 1;
+    transition: height 400ms ease-in-out, opacity 800ms ease-in-out;
+}
+.slide-up {
+    height: 0px;
+    opacity: 0;
+    transition: height 400ms ease-in-out, opacity 200ms ease-in-out;
+}
+.show {
+    display: inline-block;
+}
+.hide {
+    display: none;
+}
+
+// @media (min-width: 768px) {
+//     #search-bar {
+//         display: block;
+//         margin: 20px auto;
+//         form {
+//             .form-group {
+//                 @include flex (row, center);
+//                 label {
+//                     font-size: 1.2em;
+//                     margin: 5px;
+//                 }
+//                 input {
+//                     padding: 10px 5px;
+//                     margin: 0 8px 0 5px;
+//                     width: 200px;
+//                 }
+//             }
+//             button {
+//                 border: none;
+//                 font-size: 0.9em;
+//                 margin-right: 8px;
+//                 padding: 10px;
+//             }
+//             #save-btn {
+//                 padding: 10px 12px;
+//             }
+//         }
+//     }
+// }
+
+// @media (min-width: 1024px) {
+//     #search-bar {
+//         margin: 0px auto;
+//         form {
+//             .form-group {
+//                 label {
+//                     font-weight: 300;
+//                 }
+//                 input {
+//                     width: 280px;
+//                 }
+//             }
+//         }
+//     }
+// }

@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
 @mixin flex ($direction, $justify) {
     display: flex;
     flex-direction: $direction;
@@ -5,15 +12,12 @@
 }
 
 #weather-container {
-    margin: 10px auto;
+    margin: 0px auto;
     width: 90%;
-    #date {
-        margin: 4px 10px;
-    }
     #weather-data {
         @include flex (row, space-evenly);
         .col {
-            margin: 5px 8px;
+            margin: 0px 8px;
             h4 {
                 font-size: 1.8em;
                 font-weight: 300;

@@ -8,7 +8,6 @@ class WeatherContainer extends Component {
         const iconClass = renderConditionIcon(currentWeather.description);
         return (
             <div id="weather-container">
-                <p id="date">{this.props.date}</p>
                 <div id="weather-data">
                     <div className="col">
                         <h4>{this.props.location}</h4>

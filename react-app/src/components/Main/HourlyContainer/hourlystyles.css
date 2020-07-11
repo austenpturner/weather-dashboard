@@ -1,3 +1,11 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
 #hourly-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9,7 +17,7 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin: 10px auto;
+  margin: 5px auto;
   overflow-x: auto;
   width: 88%;
 }

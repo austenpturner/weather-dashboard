@@ -1,0 +1,89 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#search-bar {
+  -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#search-bar form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 0px;
+}
+
+#search-bar form .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+#search-bar form .form-group label {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 0.8em;
+  margin-right: 10px;
+}
+
+#search-bar form .form-group input {
+  border-radius: 5px 0 0 5px;
+  border: none;
+  padding: 8px 5px;
+  margin: 0;
+  width: 150px;
+}
+
+#search-bar form .form-group input:focus {
+  outline: none;
+}
+
+#search-bar form .form-group button {
+  background: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  padding: 0px 6px;
+}
+
+.slide-down {
+  height: 53px;
+  opacity: 1;
+  -webkit-transition: height 400ms ease-in-out, opacity 800ms ease-in-out;
+  transition: height 400ms ease-in-out, opacity 800ms ease-in-out;
+}
+
+.slide-up {
+  height: 0px;
+  opacity: 0;
+  -webkit-transition: height 400ms ease-in-out, opacity 200ms ease-in-out;
+  transition: height 400ms ease-in-out, opacity 200ms ease-in-out;
+}
+
+.show {
+  display: inline-block;
+}
+
+.hide {
+  display: none;
+}
+/*# sourceMappingURL=searchstylesheet.css.map */

@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
 @mixin flex ($direction, $justify) {
     display: flex;
     flex-direction: $direction;
@@ -6,7 +13,7 @@
 
 #hourly-container {
     @include flex (row, flex-start);
-    margin: 10px auto;
+    margin: 5px auto;
     overflow-x: auto;
     width: 88%;
     &::-webkit-scrollbar-track {

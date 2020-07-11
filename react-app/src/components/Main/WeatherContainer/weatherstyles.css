@@ -1,10 +1,14 @@
-#weather-container {
-  margin: 10px auto;
-  width: 90%;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
-#weather-container #date {
-  margin: 4px 10px;
+#weather-container {
+  margin: 0px auto;
+  width: 90%;
 }
 
 #weather-container #weather-data {
@@ -21,7 +25,7 @@
 }
 
 #weather-container #weather-data .col {
-  margin: 5px 8px;
+  margin: 0px 8px;
 }
 
 #weather-container #weather-data .col h4 {

@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
 @mixin flex ($direction, $justify) {
     display: flex;
     flex-direction: $direction;
@@ -5,134 +12,10 @@
 }
 
 #header {
-    @include flex (row, space-evenly);
-    height: 10px;
-    width: 100vw;
-    h1 {
-        align-self: center;
-        display: none;
-        font-size: 1.4em;
-        font-weight: 300;
-        text-align: center;
-    }
-    #nav-icon {
-        cursor: pointer;
-        padding: 15px;
-        position: absolute;
-        right: 0;
-        z-index: 2;
-        .line {
-            background: white;
-            border-radius: 5px;
-            height: 2px;
-            margin: 6px;
-            transition: all 500ms ease-in-out;
-            width: 30px;
-        }
-        .toggle1 {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .toggle2 {
-            opacity: 0;
-        }
-        .toggle3 {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-    }
-    nav {
-        background: radial-gradient(rgb(78, 157, 226), rgb(2,117,216));
-        display: none;
-        height: calc(100vh - 120px);
-        position: absolute;
-        top: 120px;
-        transition: left 1000ms ease-in-out;
-        width: 100vw;
-        z-index: 1;
-        #saved-list {
-            list-style: none;
-        }  
-    }
-    .slide-in {
-        left: 0;
-    }
-    .slide-out {
-        left: 100vw;
-    }
-}
-
-@media (min-width: 360px) and (min-height: 640px) {
-    #header {
-        #nav-icon {
-            padding: 20px;
-        }
-    }
-}
-
-@media (min-width: 360px) and (min-height: 740px) {
-    #header {
-        #nav-icon {
-            padding: 28px 26px;
-        }
-    }
-}
-
-@media (min-width: 375px) and (min-height: 667px) {
-    #header {
-        #nav-icon {
-            padding: 22px;
-        }
-    }
-}
-
-@media (min-width: 375px) and (min-height: 812px) {
-    #header {
-        #nav-icon {
-            padding: 30px 26px;
-        }
-    }
-}
-
-@media (min-width: 768px) {
-    #header {
-        height: 120px; 
-        h1 {
-            display: block;
-            font-size: 2.4em;
-        }
-        #nav-icon {
-            padding: 25px 35px;
-            .line {
-                height: 3px;
-                margin: 7px;
-                transition: all 500ms ease-in-out;
-                width: 40px;
-            }
-            .toggle1 {
-                transform: rotate(-45deg) translate(-5px, 9px);
-            }
-            .toggle3 {
-                transform: rotate(45deg) translate(-5px, -9px);
-            }
-        }
-    }
-}
-
-@media (min-width: 1024px) {
-    #header {
-        h1 {
-            font-size: 2.8em;
-        }
-        #nav-icon {
-            padding: 32px;
-        }
-    }
-}
-
-@media (min-width: 1024px) and (min-height: 768px) {
-    #header {
-        height: 120px; 
-        h1 {
-            font-size: 2.6em;
-        }
+    height: 55px;
+    width: 50%;
+    #date {
+        display: inline-block;
+        padding: 20px 5px 20px 25px;
     }
 }

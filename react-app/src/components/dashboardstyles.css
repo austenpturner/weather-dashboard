@@ -1,0 +1,18 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#dashboard {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #9fc3f1), to(#8774dd));
+  background: linear-gradient(#9fc3f1 10%, #8774dd);
+  background-repeat: no-repeat;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+}
+/*# sourceMappingURL=dashboardstyles.css.map */

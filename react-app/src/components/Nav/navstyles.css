@@ -1,0 +1,107 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+nav #nav-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100vw;
+}
+
+nav #nav-bar #nav-icon {
+  cursor: pointer;
+  padding: 15px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 3;
+}
+
+nav #nav-bar #nav-icon .line {
+  background: white;
+  border-radius: 5px;
+  height: 2px;
+  margin: 6px;
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+  width: 30px;
+}
+
+nav #nav-bar #nav-icon .toggle1 {
+  -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+          transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+nav #nav-bar #nav-icon .toggle2 {
+  opacity: 0;
+}
+
+nav #nav-bar #nav-icon .toggle3 {
+  -webkit-transform: rotate(45deg) translate(-5px, -6px);
+          transform: rotate(45deg) translate(-5px, -6px);
+}
+
+nav #nav-bar button {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  background: radial-gradient(#4e9de2, #0275d8);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.6em;
+  margin-top: 18px;
+  padding: 8px;
+  position: fixed;
+  top: 0;
+}
+
+nav #nav-bar button:focus {
+  outline: none;
+}
+
+nav #nav-bar #save-btn {
+  background: radial-gradient(#76ec76, #34c434);
+  left: 70%;
+}
+
+nav #nav-bar #search-btn {
+  left: 58%;
+}
+
+nav #nav-slider {
+  background: radial-gradient(#4e9de2, #0275d8);
+  height: calc(100vh - 65px);
+  overflow: hidden;
+  position: absolute;
+  top: 10px;
+  -webkit-transition: all 1000ms ease-in-out;
+  transition: all 1000ms ease-in-out;
+  width: 100vw;
+  z-index: 2;
+}
+
+nav #nav-slider #saved-list {
+  list-style: none;
+}
+
+nav .slide-in {
+  left: 0;
+}
+
+nav .slide-out {
+  left: 100vw;
+}
+/*# sourceMappingURL=navstyles.css.map */

@@ -4,9 +4,12 @@ import "./searchstylesheet.css";
 class SearchBar extends Component {
     render() {
         return (
-            <div id="search-bar">
+            <div 
+                id="search-bar"
+                className={this.props.showSearchBar ? 'slide-down' : 'slide-up'}
+            >
                 <form>
-                    <div className="form-group">
+                    <div className={this.props.showSearchBar ? 'form-group show' : 'form-group hide'}>
                         <label htmlFor="search">Search for a city:</label>
                         <input 
                             type="text" 
@@ -15,21 +18,13 @@ class SearchBar extends Component {
                             value={this.props.searchInput} 
                             onChange={this.props.handleInputChange}
                         />
+                        <button>
+                            <i 
+                                className='fas fa-search fa-md'
+                                onClick={this.props.handleFormSubmit}
+                            ></i>
+                        </button>
                     </div>
-                    <button  
-                        id='search-btn'
-                        onClick={this.props.handleFormSubmit}
-                    >
-                        <i 
-                            className='fas fa-search fa-lg'
-                        ></i>
-                    </button>
-                    <button 
-                        id='save-btn'
-                        onClick={this.props.handleLocationSave}
-                    >
-                        <i className='far fa-bookmark fa-lg'></i>
-                    </button>
                 </form>
             </div>
         );
