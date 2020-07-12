@@ -13,24 +13,24 @@
 
 #hourly-container {
     @include flex (row, flex-start);
-    margin: 5px auto;
+    margin: 2% auto;
     overflow-x: auto;
     width: 88%;
     &::-webkit-scrollbar-track {
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
         border-radius: 3px;
         background-color: rgb(255, 255, 255);
-        display: none;
+        // display: none;
     }
     &::-webkit-scrollbar {
-        display: none;
+        // display: none;
         width: 8px;
     }
     &::-webkit-scrollbar-thumb {
         border-radius: 3px;
         box-shadow: inset 0 0 6px rgba(0, 0 ,0, 0.2);
         background: linear-gradient(rgb(187, 187, 187), rgb(156, 156, 156));;
-        display: none;
+        // display: none;
     }
     .tile {
         @include flex (column, space-evenly);
@@ -48,43 +48,65 @@
     }
 }
 
-@media (min-width: 360px) and (min-height: 640px) {
+@media (hover: none) {
     #hourly-container {
-        margin: 15px auto;
+        &::-webkit-scrollbar-track {
+            display: none;
+        }
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        &::-webkit-scrollbar-thumb {
+            display: none;
+        }
+    }
+}
+
+@media (min-width: 480px) {
+    #hourly-container {
+        @include flex (row, flex-start);
+        width: 86%;
+    }
+}
+
+@media (min-width: 731px) and (orientation: landscape) {
+    #hourly-container {
+        margin: 2% auto;
+        width: 79%;
+        .tile {
+            margin: 6px 10px 10px 0px;
+        }
+        p {
+            font-size: 1em;
+            margin: 6px;
+        }
+        i {
+            margin: 6px auto;
+        }
+    }
+}
+
+@media (min-height: 600px) and (hover: none) {
+    #hourly-container {
+        margin: 5% auto;
+    }
+}
+
+@media (min-height: 650px) and (hover: hover) {
+    #hourly-container {
+        margin: 5% auto;
+        width: 60%;
+    }
+}
+
+@media (min-height: 700px) and (hover: none) {
+    #hourly-container {
+        margin: 8% auto;
         .tile {
             margin: 6px 16px 10px 0px;
         }
         p {
             font-size: 1em;
-            margin: 5px;
-        }
-        i {
-            font-size: 1.8em;
-            margin: 2px auto;
-        }
-    }
-}
-
-@media (min-width: 360px) and (min-height: 740px) {
-    #hourly-container {
-        margin: 22px auto;
-        .tile {
-            margin: 6px 12px 10px 0px;
-        }
-        p {
-            font-size: 1.2em;
-        }
-        i {
-            font-size: 2em;
-        }
-    }
-}
-
-@media (min-width: 375px) and (min-height: 667px) {
-    #hourly-container {
-        margin: 18px auto;
-        .tile {
-            margin: 6px 18px 10px 0px;
         }
         i {
             font-size: 1.6em;
@@ -92,9 +114,25 @@
     }
 }
 
-@media (min-width: 375px) and (min-height: 812px) {
+@media (min-height: 800px) and (hover: none) {
     #hourly-container {
-        margin: 32px auto;
+        margin: 10% auto;
+        .tile {
+            margin: 6px 12px 10px 0px;
+        }
+        p {
+            font-size: 1.1em;
+            margin: 6px;
+        }
+        i {
+            margin: 6px auto;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    #hourly-container {
+        width: 80%;
         .tile {
             margin: 6px 14px 10px 0px;
         }
@@ -102,107 +140,17 @@
             font-size: 1.2em;
         }
         i {
-            font-size: 2.1em;
-        }
-    }
-}
-
-@media (min-width: 411px) and (min-height: 731px) {
-    #hourly-container {
-        margin: 28px auto;
-        .tile {
-            margin: 6px 25px 10px 0px;
-        }
-    }
-}
-
-@media (min-width: 568px) {
-    #hourly-container {
-        width: 80%;
-        @include flex (row, flex-start);
-        margin: 10px auto;
-        .tile {
-            @include flex (column, space-evenly);
-        }
-        p {
-            font-size: 0.9em;
-            margin: 3px;
-        }
-        i {
             font-size: 1.5em;
-            margin: 8px auto;
-        }
-    }
-}
-
-@media (min-width: 667px) {
-    #hourly-container {
-        width: 76%;
-        margin: 20px auto;
-        .tile {
-            margin: 6px 24px 10px 0px;
-        }
-        p {
-            font-size: 1em;
-            margin: 5px;
-        }
-        i {
-            font-size: 1.6em;
-        }
-    }
-}
-
-@media (min-width: 768px) {
-    #hourly-container {
-        @include flex (row, flex-start);
-        margin: 40px auto;
-        width: 80%;
-        &::-webkit-scrollbar-track {
-            display: inline-block;
-        }
-        &::-webkit-scrollbar {
-            display: inline-block;
-        }
-        &::-webkit-scrollbar-thumb {
-            display: inline-block;
-        }
-        .tile {
-            @include flex (column, space-evenly);
-            margin: 6px 22px 10px 0px;
-        }
-        p {
-            font-size: 1.4em;
-            font-weight: 300;
-            margin: 4px;
-        }
-        i {
-            font-size: 2em;
-            margin: 8px auto;
         }
     }
 }
 
 @media (min-width: 1024px) {
     #hourly-container {
-        margin: 20px auto 30px;
+        margin: 4% auto;
         width: 70%;
         .tile {
-            margin: 6px 38px 10px 0px;
-        }
-        p {
-            font-size: 1.2em;
-        }
-        i {
-            font-size: 1.8em;
-        }
-    }
-}
-
-@media (min-width: 1024px) and (min-height: 768px) {
-    #hourly-container {
-        margin: 12px auto 20px;
-        p {
-            font-size: 1.3em;
+            margin: 6px 16px 10px 0px;
         }
     }
 }

@@ -28,7 +28,6 @@ class Nav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            slideNav: false,
             savedLocations: []
         };
     };
@@ -39,16 +38,8 @@ class Nav extends Component {
         };
     };
 
-    handleNavSlide() {
-        if (this.state.slideNav) {
-            this.setState({ slideNav: false});
-        } else {
-            this.setState({ slideNav: true });
-        };
-    };
-
     locationSelection(event) {
-        this.handleNavSlide();
+        this.props.handleNavSlide();
         this.props.handleLocationSelection(event);
     };
 
@@ -57,41 +48,43 @@ class Nav extends Component {
         return (
             <nav>
                 <div id='nav-bar'>
-                    <button  
-                        id='search-btn'
-                        onClick={this.props.displaySearchBar}
-                    >
-                        <i 
-                            className='fas fa-search fa-lg'
-                        ></i>
-                    </button>
-                    <button 
-                        id='save-btn'
-                        onClick={this.props.handleLocationSave}
-                    >
-                        <i className='far fa-bookmark fa-lg'></i>
-                    </button>
+                    <div id='btn-container'>
+                        <button  
+                            id='search-btn'
+                            onClick={this.props.displaySearchBar}
+                        >
+                            <i 
+                                className='fas fa-search fa-lg'
+                            ></i>
+                        </button>
+                        <button 
+                            id='save-btn'
+                            onClick={this.props.handleLocationSave}
+                        >
+                            <i className='far fa-bookmark fa-lg'></i>
+                        </button>
+                    </div>
                     <div 
                         id='nav-icon' 
-                        onClick={this.handleNavSlide.bind(this)}
+                        onClick={this.props.handleNavSlide}
                     >
                         <div 
-                            className={this.state.slideNav ? "line toggle1" : "line"} 
+                            className={this.props.slideNav ? "line toggle1" : "line"} 
                             id='line1'
                         ></div>
                         <div 
-                            className={this.state.slideNav ? "line toggle2" : "line"} 
+                            className={this.props.slideNav ? "line toggle2" : "line"} 
                             id='line2'
                         ></div>
                         <div 
-                            className={this.state.slideNav ? "line toggle3" : "line"} 
+                            className={this.props.slideNav ? "line toggle3" : "line"} 
                             id='line3'
                         ></div>
                     </div>
                 </div>
                 <div 
                     id='nav-slider'
-                    className={this.state.slideNav ? "slide-in" : "slide-out"}
+                    className={this.props.slideNav ? "slide-in" : "slide-out"}
                 >
                     <ul 
                         id='saved-list' 

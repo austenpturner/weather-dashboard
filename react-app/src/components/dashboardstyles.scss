@@ -10,6 +10,13 @@
     background-repeat: no-repeat;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
+    margin-bottom: 0;
+    overflow-x: hidden;
     height: 100vh;
 }
+
+// @media (min-width: 480px) and (orientation: landscape) {
+//     #dashboard {
+//         overflow-y: scroll;
+//     }
+// }

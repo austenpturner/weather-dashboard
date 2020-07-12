@@ -17,21 +17,11 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  margin: 10px auto 0px;
+  margin: 2% auto 0px;
   width: 90%;
 }
 
 #forecast-container .card {
-  background: radial-gradient(#4e9de2, #0275d8);
-  border-radius: 5px;
-  -webkit-box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.3);
-          box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  margin: 5px 0px;
-  min-height: 36px;
-}
-
-#forecast-container .card .card-front {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -42,16 +32,23 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  background: radial-gradient(#4e9de2, #0275d8);
+  border-radius: 5px;
+  -webkit-box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.3);
+          box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.3);
+  margin: 2% 0;
+  min-height: 36px;
 }
 
-#forecast-container .card .card-front p {
+#forecast-container .card p {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  font-size: 1em;
   width: 25%;
 }
 
-#forecast-container .card .card-front i {
+#forecast-container .card i {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -59,125 +56,8 @@
   padding: 8px;
 }
 
-#forecast-container .card .card-front .day {
-  font-size: 1em;
-}
-
-#forecast-container .card .card-front .temp {
-  font-size: 1.1em;
+#forecast-container .card .temp {
   text-align: center;
-}
-
-#forecast-container .card .card-back {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-
-#forecast-container .card .card-back p {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  font-size: 0.7em;
-  padding-top: 10px;
-}
-
-#forecast-container .card .hide {
-  display: none;
-}
-
-@media (min-width: 360px) and (min-height: 640px) {
-  #forecast-container {
-    margin: 15px auto;
-  }
-  #forecast-container .card {
-    margin: 6px 0px;
-    min-height: 41px;
-  }
-  #forecast-container .card .card-front i {
-    font-size: 1.6em;
-  }
-  #forecast-container .card .card-back p {
-    font-size: 0.8em;
-    padding-top: 11px;
-  }
-}
-
-@media (min-width: 360px) and (min-height: 740px) {
-  #forecast-container {
-    margin: 22px auto;
-  }
-  #forecast-container .card {
-    min-height: 47px;
-  }
-  #forecast-container .card .card-front i {
-    font-size: 1.7em;
-    padding: 10px;
-  }
-  #forecast-container .card .card-front .day {
-    font-size: 1.1em;
-  }
-  #forecast-container .card .card-front .temp {
-    font-size: 1.2em;
-  }
-  #forecast-container .card .card-back p {
-    font-size: 0.85em;
-    padding-top: 13px;
-  }
-}
-
-@media (min-width: 375px) and (min-height: 667px) {
-  #forecast-container {
-    margin: 18px auto;
-  }
-}
-
-@media (min-width: 375px) and (min-height: 812px) {
-  #forecast-container {
-    margin: 28px auto;
-  }
-  #forecast-container .card {
-    margin: 8px 0px;
-  }
-  #forecast-container .card .card-front {
-    height: 48px;
-  }
-  #forecast-container .card .card-front i {
-    font-size: 1.8em;
-    padding: 10px;
-  }
-  #forecast-container .card .card-front .day {
-    font-size: 1.2em;
-  }
-  #forecast-container .card .card-front .temp {
-    font-size: 1.3em;
-  }
-  #forecast-container .card .card-back {
-    height: 48px;
-  }
-  #forecast-container .card .card-back p {
-    font-size: 0.85em;
-    padding-top: 13px;
-  }
-}
-
-@media (min-width: 411px) and (min-height: 731px) {
-  #forecast-container {
-    margin: 28px auto;
-  }
-  #forecast-container .card .card-front .day {
-    font-size: 1.1em;
-  }
-  #forecast-container .card .card-front .temp {
-    font-size: 1.2em;
-  }
 }
 
 @media (min-width: 568px) {
@@ -193,13 +73,9 @@
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
     margin: 16px auto;
-    width: 86%;
+    width: 90%;
   }
   #forecast-container .card {
-    height: 143px;
-    width: 16%;
-  }
-  #forecast-container .card .card-front {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -210,109 +86,67 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    height: 143px;
+    height: 140px;
+    max-width: 115px;
+    width: 18%;
   }
-  #forecast-container .card .card-front p {
+  #forecast-container .card p {
     margin: 5px;
     text-align: center;
     width: 100%;
   }
-  #forecast-container .card .card-front i {
-    font-size: 2em;
+  #forecast-container .card i {
     padding: 6px;
-  }
-  #forecast-container .card .card-front .day {
-    font-size: 0.9em;
-  }
-  #forecast-container .card .card-front .temp {
-    font-size: 0.8em;
-    font-weight: 300;
-  }
-  #forecast-container .card .card-back {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
-    height: 143px;
-  }
-  #forecast-container .card .card-back p {
-    font-size: 0.7em;
-    padding: 0px;
-    text-align: center;
-  }
-  #forecast-container .card .hide {
-    display: none;
   }
 }
 
-@media (min-width: 667px) {
+@media (min-width: 736px) and (orientation: landscape) {
   #forecast-container {
-    margin: 20px auto;
-    width: 82%;
+    width: 85%;
+  }
+  #forecast-container .card i {
+    padding: 6px;
+    font-size: 1.7em;
+  }
+}
+
+@media (min-height: 600px) and (hover: none) {
+  #forecast-container {
+    margin: 4% auto;
+  }
+}
+
+@media (min-height: 700px) and (hover: none) {
+  #forecast-container {
+    margin: 8% auto;
+  }
+  #forecast-container .card {
+    padding: 5px 0;
+  }
+  #forecast-container .card p {
+    font-size: 1.1em;
+  }
+  #forecast-container .card i {
+    font-size: 1.3em;
+  }
+}
+
+@media (min-height: 800px) and (hover: none) {
+  #forecast-container {
+    margin: 10% auto;
   }
 }
 
 @media (min-width: 768px) {
-  #forecast-container {
-    margin: 30px auto;
-    width: 86%;
-  }
-  #forecast-container .card {
-    height: 141px;
-    padding: 8px;
-    width: 16%;
-  }
-  #forecast-container .card .card-front p {
-    margin: 5px;
-    width: 100%;
-  }
-  #forecast-container .card .card-front i {
-    font-size: 2.2em;
-    padding: 10px;
-  }
-  #forecast-container .card .card-front .day {
-    font-size: 1.2em;
-  }
-  #forecast-container .card .card-front .temp {
-    font-size: 1.2em;
-  }
-  #forecast-container .card .card-back p {
-    font-size: 1em;
+  #forecast-container .card i {
+    font-size: 1.5em;
   }
 }
 
 @media (min-width: 1024px) {
   #forecast-container {
-    margin: 40px auto;
-    min-height: 125px;
+    margin: 4% auto 1%;
     width: 76%;
-  }
-  #forecast-container .card {
-    padding: 8px;
-    text-align: center;
-    width: 16%;
-  }
-  #forecast-container .card .card-front i {
-    font-size: 2em;
-  }
-  #forecast-container .card .card-front .temp {
-    font-size: 1.3em;
-  }
-  #forecast-container .card .card-back p {
-    font-size: 1.1em;
-    padding: 4px;
-  }
-}
-
-@media (min-width: 1024px) and (min-height: 768px) {
-  #forecast-container {
-    margin: 30px auto;
   }
 }
 /*# sourceMappingURL=forecaststyles.css.map */

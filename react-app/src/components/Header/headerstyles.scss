@@ -5,17 +5,14 @@
     position: relative;
 }
 
-@mixin flex ($direction, $justify) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-}
-
 #header {
-    height: 55px;
-    // width: 50%;
+    width: 50vw;
     #date {
         display: inline-block;
-        padding: 20px 5px 20px 25px;
+        height: 60px;
+        max-width: 300px;
+        padding: 20px 5px;
+        text-align: center;
+        width: 50vw;
     }
 }

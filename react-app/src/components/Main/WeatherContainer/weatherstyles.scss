@@ -12,7 +12,7 @@
 }
 
 #weather-container {
-    margin: 0px auto;
+    margin: 1% auto;
     width: 90%;
     #weather-data {
         @include flex (row, space-evenly);
@@ -40,174 +40,78 @@
     }
 }
 
-@media (min-width: 360px) and (min-height: 640px) {
+@media (min-width: 640px) and (orientation: landscape) {
     #weather-container {
-        margin: 15px auto;
-        #date {
-            margin: 5px 10px;
-        }
-        #weather-data {
-            .col {
-                h4 {
-                    font-size: 2.1em;
-                }
-                h4, p {
-                    margin: 10px 2px;
-                }
-                p {
-                    font-size: 1em;
-                }
-            }
-        }
+        margin: 4.5% auto;
     }
 }
 
-@media (min-width: 360px) and (min-height: 740px) {
+@media (min-width: 731px) and (orientation: landscape) {
     #weather-container {
-        margin: 22px auto;
-        #date {
-            font-size: 1.2em;
-            margin: 10px;
-        }
         #weather-data {
             .col {
-                p {
-                    font-size: 1.1em;
-                }
-            }
-        }
-    }
-}
-
-@media (min-width: 375px) and (min-height: 667px) {
-    #weather-container {
-        margin: 18px auto;
-    }
-}
-
-@media (min-width: 375px) and (min-height: 812px) {
-    #weather-container {
-        margin: 24px auto 28px;
-        #weather-data {
-            .col {
-                margin: 12px 10px 10px;
-                h4 {
-                    font-size: 2.2em;
-                }
-                i {
-                    margin-top: 12px;
-                }
-            }
-        }
-    }
-}
-
-@media (min-width: 411px) and (min-height: 731px) {
-    #weather-container {
-        margin: 22px auto;
-        #date {
-            font-size: 1.2em;
-            margin: 8px 10px;
-        }
-        #weather-data {
-            .col {
-                margin: 12px 10px 10px;
-                h4, p {
-                    margin: 10px 2px;
-                }
-                p {
-                    font-size: 1.1em;
-                }
-                i {
-                    margin-top: 12px;
-                }
-            }
-        }
-    }
-}
-
-@media (min-width: 568px) {
-    #weather-container {
-        margin: 20px auto 10px;
-        width: 80%;
-        #date {
-            font-size: 1em;
-            margin: 10px;
-        }
-        #weather-data {
-            @include flex (row, space-evenly);
-            .col {
-                @include flex (column, flex-start);
-                margin: 0px 10px;
-                padding: 6px;
                 h4 {
                     font-size: 2em;
                 }
-                h4, p {
-                    margin: 3px 0px;
-                }
-                p {
-                    font-size: 0.9em;
-                }
-                #temp {
-                    font-size: 2em;
-                    margin-top: 8px;
-                }
-                i {
-                    font-size: 3.2em;
-                    margin-top: 10px;
-                }
             }
         }
     }
 }
 
-@media (min-width: 667px) {
+@media (min-width: 812px) and (orientation: landscape) {
     #weather-container {
-        margin: 20px auto 10px;
-        width: 76%;
-        #weather-data {
-            .col {
-                margin: 6px 10px;
-                p {
-                    font-size: 1em;
-                    font-weight: 300;
-                }
-            }
-        }
+        margin: 2.2% auto;
     }
 }
 
-@media (min-width: 768px) and (orientation: portrait) {
+@media (min-width: 823px) and (orientation: landscape) {
     #weather-container {
-        margin: 40px auto;
-        width: 80%;
-        #date {
-            font-size: 1.3em;
-            margin: 10px;
-        }
+        margin: 3% auto;
+    }
+}
+
+@media (min-height: 600px) and (hover: none) {
+    #weather-container {
+        margin: 5% auto;
+    }
+}
+
+@media (min-height: 700px) and (hover: none) {
+    #weather-container {
+        margin: 8% auto;
         #weather-data {
-            @include flex (row, space-evenly);
             .col {
-                @include flex (column, flex-start);
-                margin: 5px 8px;
-                padding: 10px;
                 h4 {
-                    font-size: 2.4em;
+                    font-size: 2em;
                 }
-                h4, p {
-                    margin: 5px 0px;
+            }
+        }
+    }
+}
+
+@media (min-height: 800px) and (hover: none) {
+    #weather-container {
+        margin: 10% auto;
+    }
+}
+
+@media (min-width: 768px) and (min-height: 480px) {
+    #weather-container {
+        margin: 8% auto;
+        #weather-data {
+            .col {
+                h4 {
+                    font-size: 2.9em;
                 }
                 p {
-                    font-size: 1.2em;
+                    font-size: 1.3em;
                 }
                 #temp {
-                    font-size: 2.4em;
-                    margin-top: 10px;
+                    font-size: 2.6em;
                 }
                 i {
-                    font-size: 4em;
-                    margin-top: 15px;
+                    font-size: 4.1em;
+                    margin-top: 16px;
                 }
             }
         }
@@ -216,60 +120,6 @@
 
 @media (min-width: 1024px) {
     #weather-container {
-        margin: 20px auto;
-        width: 70%;
-        #date {
-            font-size: 1.2em;
-            margin: 6px 0px;
-        }
-        #weather-data {
-            .col {
-                margin: 4px 8px;
-                padding: 10px;
-                h4 {
-                    font-size: 2.4em;
-                }
-                h4, p {
-                    margin: 3px 0px;
-                }
-                p {
-                    font-size: 1.2em;
-                    font-weight: 300;
-                }
-                #temp {
-                    font-size: 2.4em;
-                    margin-top: 10px;
-                }
-                i {
-                    font-size: 4.2em;
-                    margin-top: 20px;
-                }
-            }
-        }
-    }
-}
-
-@media (min-width: 1024px) and (min-height: 768px) {
-    #weather-container {
-        margin: 20px auto 12px;
-        width: 70%;
-        #date {
-            font-size: 1.2em;
-        }
-        #weather-data {
-            .col {
-                margin: 4px 8px;
-                h4 {
-                    font-size: 2.2em;
-                }
-                h4, p {
-                    margin: 4px 0px;
-                }
-                #temp {
-                    font-size: 2.2em;
-                    margin-top: 8px;
-                }
-            }
-        }
+        margin: 5% auto;
     }
 }

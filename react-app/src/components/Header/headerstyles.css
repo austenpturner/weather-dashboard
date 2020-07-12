@@ -7,11 +7,15 @@
 }
 
 #header {
-  height: 55px;
+  width: 50vw;
 }
 
 #header #date {
   display: inline-block;
-  padding: 20px 5px 20px 25px;
+  height: 60px;
+  max-width: 300px;
+  padding: 20px 5px;
+  text-align: center;
+  width: 50vw;
 }
 /*# sourceMappingURL=headerstyles.css.map */

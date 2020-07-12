@@ -24,7 +24,8 @@ class Dashboard extends Component {
             hourlyWeather: [],
             forecast: [],
             savedLocations: [],
-            showSearchBar: false
+            showSearchBar: false,
+            slideNav: false
         };
     }
 
@@ -194,6 +195,14 @@ class Dashboard extends Component {
         };
     };
 
+    handleNavSlide() {
+        if (this.state.slideNav) {
+            this.setState({ slideNav: false});
+        } else {
+            this.setState({ slideNav: true });
+        };
+    };
+
     handleLocationSelection(event) {
         if (event.target.className === 'location') {
             const selectedLocation = event.target.id;
@@ -231,6 +240,8 @@ class Dashboard extends Component {
                     date={this.state.date}
                 />
                 <Nav
+                    slideNav={this.state.slideNav}
+                    handleNavSlide={this.handleNavSlide.bind(this)}
                     displaySearchBar={this.displaySearchBar.bind(this)}
                     handleLocationSave={this.handleLocationSave.bind(this)}
                     handleLocationSelection={this.handleLocationSelection.bind(this)}
@@ -242,6 +253,7 @@ class Dashboard extends Component {
                     handleFormSubmit={this.handleFormSubmit.bind(this)}
                 />
                 <Main
+                    slideNav={this.state.slideNav}
                     showSearchBar={this.state.showSearchBar} 
                     location={this.state.location}
                     hourlyWeather={this.state.hourlyWeather}

@@ -9,7 +9,7 @@ class Main extends Component {
         return (
             <div 
                 id="main"
-                className={this.props.showSearchBar ? 'veil' : ''}
+                className={this.props.showSearchBar || this.props.slideNav ? 'veil' : ''}
             >
                 <WeatherContainer 
                     currentWeather={this.props.currentWeather}
