@@ -27,9 +27,11 @@
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   background-color: white;
+  display: none;
 }
 
 #hourly-container::-webkit-scrollbar {
+  display: none;
   width: 8px;
 }
 
@@ -39,6 +41,7 @@
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
   background: -webkit-gradient(linear, left top, left bottom, from(#bbbbbb), to(#9c9c9c));
   background: linear-gradient(#bbbbbb, #9c9c9c);
+  display: none;
 }
 
 #hourly-container .tile {
@@ -69,15 +72,15 @@
   margin: 2px auto;
 }
 
-@media (hover: none) {
+@media (hover: hover) {
   #hourly-container::-webkit-scrollbar-track {
-    display: none;
+    display: inline-block;
   }
   #hourly-container::-webkit-scrollbar {
-    display: none;
+    display: inline-block;
   }
   #hourly-container::-webkit-scrollbar-thumb {
-    display: none;
+    display: inline-block;
   }
 }
 
