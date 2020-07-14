@@ -16,6 +16,7 @@ class Dashboard extends Component {
             date: "",
             location: "",
             searchInput: "",
+            searchOptions: [],
             lat: "",
             lon: "",
             sunrise: 0,
@@ -115,6 +116,19 @@ class Dashboard extends Component {
     handleInputChange(event) {
         const search = event.target.value;
         this.setState({ searchInput: search });
+        weatherAPI.searchCities(search)
+            .then(res => {
+                const searchOptions = [];
+                for (let i = 0; i < res.data.results[0].locations.length; i++) {
+                    const cities = res.data.results[0].locations[i].adminArea5;
+                    const state = res.data.results[0].locations[i].adminArea3;
+                    if (cities !== '' && state !== '') {
+                        searchOptions.push(`${cities}, ${state}`);
+                        // console.log(searchOptions);
+                    };
+                };
+                this.setState({ searchOptions: searchOptions });
+            });
     };
 
     handleFormSubmit(event) {
@@ -249,6 +263,7 @@ class Dashboard extends Component {
                 <SearchBar
                     showSearchBar={this.state.showSearchBar}
                     searchInput={this.state.searchInput}
+                    searchOptions={this.state.searchOptions}
                     handleInputChange={this.handleInputChange.bind(this)}
                     handleFormSubmit={this.handleFormSubmit.bind(this)}
                 />

@@ -3,6 +3,7 @@ import "./searchstylesheet.css";
 
 class SearchBar extends Component {
     render() {
+        const searchOptions = this.props.searchOptions;
         return (
             <div 
                 id="search-bar"
@@ -13,11 +14,22 @@ class SearchBar extends Component {
                         <label htmlFor="search">Search for a city:</label>
                         <input 
                             type="text" 
-                            name="search" 
+                            name="search"
+                            list="city-options" 
                             id="search-input"
                             value={this.props.searchInput} 
                             onChange={this.props.handleInputChange}
                         />
+                            <datalist 
+                                id="city-options"
+                            >
+                                {searchOptions.map((city, index) => {
+                                    return <option 
+                                        key={index}
+                                        value={city}
+                                    />
+                                })}
+                            </datalist>
                         <button>
                             <i 
                                 className='fas fa-search fa-md'

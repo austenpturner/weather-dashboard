@@ -123,13 +123,6 @@
   }
 }
 
-@media (min-height: 650px) and (hover: hover) {
-  #hourly-container {
-    margin: 5% auto;
-    width: 60%;
-  }
-}
-
 @media (min-height: 700px) and (hover: none) {
   #hourly-container {
     margin: 8% auto;

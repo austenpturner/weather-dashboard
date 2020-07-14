@@ -1,10 +1,16 @@
 import axios from "axios";
 
 const weatherAPIKey = '1c15bab08bfbee58f4e3567a79550403';
+const oneCallWeatherQueryURL = `https://api.openweathermap.org/data/2.5/onecall?`;
+const resFormat = `?json=1`;
+
 const geoCodeKey = '212959806664248386919x6259';
 const geoCodeURL = `https://geocode.xyz/`;
-const resFormat = `?json=1`;
-const oneCallWeatherQueryURL = `https://api.openweathermap.org/data/2.5/onecall?`;
+
+const mapQuestKey = '4hhISOmWoS3iV83IKmtT0wAf9YyGwQay';
+const mapQuestURL = 'http://www.mapquestapi.com/geocoding/v1/address?';
+
+
 
 const weatherAPI = {
     weatherData: (lat, lon) => {
@@ -15,6 +21,9 @@ const weatherAPI = {
     },
     retrieveLocationCoords: (lat, lon) => {
         return axios.get(`${geoCodeURL}${lat},${lon}${resFormat}&auth=${geoCodeKey}`);
+    },
+    searchCities: searchInput => {
+        return axios.get(`${mapQuestURL}key=${mapQuestKey}&location=${searchInput}`)
     }
 };
 
