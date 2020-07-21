@@ -26,28 +26,83 @@
 
 #weather-container #weather-data .col {
   margin: 0px 8px;
+  max-width: 62%;
 }
 
 #weather-container #weather-data .col h4 {
-  font-size: 1.8em;
+  font-size: 1.6em;
   font-weight: 300;
   margin-bottom: 12px;
 }
 
 #weather-container #weather-data .col h4, #weather-container #weather-data .col p {
-  margin: 8px 2px;
+  margin: 5px 2px;
+}
+
+#weather-container #weather-data .col p {
+  font-size: 0.9em;
 }
 
 #weather-container #weather-data .col #temp {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 300;
   text-align: center;
 }
 
 #weather-container #weather-data .col i {
-  font-size: 3.6em;
+  font-size: 3.4em;
   margin-top: 8px;
   text-align: center;
+}
+
+@media (min-height: 600px) {
+  #weather-container {
+    margin: 1% auto;
+    width: 90%;
+  }
+  #weather-container #weather-data {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  #weather-container #weather-data .col {
+    margin: 0px 8px;
+    max-width: 50%;
+  }
+  #weather-container #weather-data .col h4 {
+    font-size: 1.8em;
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+  #weather-container #weather-data .col h4, #weather-container #weather-data .col p {
+    margin: 8px 2px;
+  }
+  #weather-container #weather-data .col p {
+    font-size: 1em;
+  }
+  #weather-container #weather-data .col #temp {
+    font-size: 2em;
+    font-weight: 300;
+    text-align: center;
+  }
+  #weather-container #weather-data .col i {
+    font-size: 3.6em;
+    margin-top: 8px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 568px) and (orientation: landscape) {
+  #weather-container #weather-data .col {
+    max-width: 80%;
+  }
 }
 
 @media (min-width: 640px) and (orientation: landscape) {
@@ -56,34 +111,22 @@
   }
 }
 
-@media (min-width: 731px) and (orientation: landscape) {
+@media (min-height: 700px) and (hover: hover) {
+  #weather-container {
+    margin: 5% auto;
+  }
   #weather-container #weather-data .col h4 {
     font-size: 2em;
   }
 }
 
-@media (min-width: 812px) and (orientation: landscape) {
-  #weather-container {
-    margin: 2.2% auto;
-  }
-}
-
-@media (min-width: 823px) and (orientation: landscape) {
-  #weather-container {
-    margin: 3% auto;
-  }
-}
-
-@media (min-height: 600px) and (hover: none) {
-  #weather-container {
-    margin: 5% auto;
-  }
-}
-
 @media (min-height: 700px) and (hover: none) {
   #weather-container {
-    margin: 8% auto;
+    margin: 6% auto;
   }
+}
+
+@media (min-width: 731px) and (orientation: landscape) {
   #weather-container #weather-data .col h4 {
     font-size: 2em;
   }
@@ -95,28 +138,27 @@
   }
 }
 
-@media (min-width: 768px) and (min-height: 480px) {
+@media (min-width: 812px) and (orientation: landscape) {
   #weather-container {
-    margin: 8% auto;
+    margin: 2.5% auto;
   }
-  #weather-container #weather-data .col h4 {
-    font-size: 2.9em;
-  }
-  #weather-container #weather-data .col p {
-    font-size: 1.3em;
-  }
-  #weather-container #weather-data .col #temp {
-    font-size: 2.6em;
-  }
-  #weather-container #weather-data .col i {
-    font-size: 4.1em;
-    margin-top: 16px;
+}
+
+@media (min-width: 823px) and (orientation: landscape) and (hover: none) {
+  #weather-container {
+    margin: 3% auto;
   }
 }
 
 @media (min-width: 1024px) {
   #weather-container {
-    margin: 5% auto;
+    margin: 1% auto;
+  }
+}
+
+@media (min-width: 1024px) and (hover: none) {
+  #weather-container {
+    margin: 6% auto;
   }
 }
 /*# sourceMappingURL=weatherstyles.css.map */

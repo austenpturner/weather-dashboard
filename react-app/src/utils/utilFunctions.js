@@ -41,6 +41,11 @@ const untilFunctions = {
         const locationWords = location.toLowerCase().split(' ');
         let capLocation = '';
         for (let i = 0; i < locationWords.length; i++) {
+            if (i === 1 && locationWords[i].length === 2) {
+                const state = locationWords[i].toUpperCase();
+                capLocation += ` ${state}`;
+                break;
+            }
             const splitWord = locationWords[i].split('');
             const capfirst = splitWord[0].toUpperCase();
             splitWord.shift([0]); 

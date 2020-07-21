@@ -8,7 +8,9 @@ const geoCodeKey = '212959806664248386919x6259';
 const geoCodeURL = `https://geocode.xyz/`;
 
 const mapQuestKey = '4hhISOmWoS3iV83IKmtT0wAf9YyGwQay';
-const mapQuestURL = 'http://www.mapquestapi.com/geocoding/v1/address?';
+const mapQuestURL = 'https://www.mapquestapi.com/geocoding/v1/address?';
+
+const restCountriesURL = 'https://restcountries.eu/rest/v2/alpha/';
 
 
 
@@ -24,6 +26,9 @@ const weatherAPI = {
     },
     searchCities: searchInput => {
         return axios.get(`${mapQuestURL}key=${mapQuestKey}&location=${searchInput}`)
+    },
+    searchCodes: codeInput => {
+        return axios.get(`${restCountriesURL}${codeInput}`);
     }
 };
 

@@ -19,7 +19,7 @@
 
 @media (min-width: 480px) and (orientation: landscape) {
   #dashboard {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 /*# sourceMappingURL=dashboardstyles.css.map */

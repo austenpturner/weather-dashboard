@@ -23,11 +23,20 @@ class SearchBar extends Component {
                             <datalist 
                                 id="city-options"
                             >
-                                {searchOptions.map((city, index) => {
-                                    return <option 
-                                        key={index}
-                                        value={city}
-                                    />
+                                {searchOptions.map((location, index) => {
+                                    if (location.country === 'US') {
+                                        const searchLocation = `${location.city}, ${location.state}`
+                                        return <option 
+                                            key={index}
+                                            value={searchLocation}
+                                        />
+                                    } else {
+                                        const searchLocation = `${location.city}, ${location.country}`
+                                        return <option 
+                                            key={index}
+                                            value={searchLocation}
+                                        />
+                                    }
                                 })}
                             </datalist>
                         <button>

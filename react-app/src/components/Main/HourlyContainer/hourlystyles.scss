@@ -69,7 +69,34 @@
     }
 }
 
-@media (min-width: 731px) and (orientation: landscape) {
+@media (min-height: 600px) and (hover: none) {
+    #hourly-container {
+        margin: 5% auto;
+    }
+}
+
+@media (min-height: 650px) and (hover: none) {
+    #hourly-container {
+        margin: 5% auto;
+    }
+}
+
+@media (min-height: 700px) and (hover: none) {
+    #hourly-container {
+        margin: 8% auto;
+        .tile {
+            margin: 6px 16px 10px 0px;
+        }
+        p {
+            font-size: 1em;
+        }
+        i {
+            font-size: 1.6em;
+        }
+    }
+}
+
+@media (min-width: 731px) and (orientation: landscape) and (hover: none){
     #hourly-container {
         margin: 2% auto;
         width: 79%;
@@ -86,30 +113,21 @@
     }
 }
 
-@media (min-height: 600px) and (hover: none) {
+@media (min-width: 768px) {
     #hourly-container {
-        margin: 5% auto;
+        width: 78%;
     }
 }
 
-// @media (min-height: 650px) and (hover: none) {
-//     #hourly-container {
-//         margin: 5% auto;
-//     }
-// }
-
-@media (min-height: 700px) and (hover: none) {
+@media (min-width: 768px) and (hover: none) {
     #hourly-container {
-        margin: 8% auto;
-        .tile {
-            margin: 6px 16px 10px 0px;
-        }
-        p {
-            font-size: 1em;
-        }
-        i {
-            font-size: 1.6em;
-        }
+        width: 76%;
+    }
+}
+
+@media (min-width: 800px) {
+    #hourly-container {
+        width: 72%;
     }
 }
 
@@ -129,27 +147,26 @@
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     #hourly-container {
-        width: 80%;
-        .tile {
-            margin: 6px 14px 10px 0px;
-        }
-        p {
-            font-size: 1.2em;
-        }
-        i {
-            font-size: 1.5em;
-        }
+        width: 66%;
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (hover: none) {
     #hourly-container {
-        margin: 4% auto;
+        margin: 8% auto 5%;
         width: 70%;
         .tile {
             margin: 6px 16px 10px 0px;
         }
+        p {
+            font-size: 1.2em;
+            margin: 6px;
+        }
+        i {
+            margin: 4px auto;
+        }
     }
 }
+

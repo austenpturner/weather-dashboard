@@ -98,10 +98,17 @@ class Dashboard extends Component {
 
             weatherAPI.retrieveLocationCoords(lat, lon)
                 .then(res => {
-                    const currentLocation = utilFunctions.capLocation(res.data.city);
-                    this.setState({ location: currentLocation });
+                    if (res.data.country === 'United States of America') {
+                        const currentLocation = `${res.data.city}, ${res.data.state}`;
+                        const location = utilFunctions.capLocation(currentLocation);
+                        this.setState({ location: location });
+                    } else {
+                        const currentLocation = `${res.data.city}, ${res.data.country}`;
+                        const location = utilFunctions.capLocation(currentLocation);
+                        this.setState({ location: location });
+                    };
                 });
-        }
+        };
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(setPosition);
@@ -109,8 +116,16 @@ class Dashboard extends Component {
 
         const savedLocations = localStorage.getLocalStorage();
         if (savedLocations !== undefined) {
+            console.log(savedLocations);
             this.setState({ savedLocations: savedLocations });
         };
+    };
+
+    findCountryFromCode(countryCode) {
+        weatherAPI.searchCodes(countryCode)
+        .then(res => {
+            return res.data.name;
+        });
     };
 
     handleInputChange(event) {
@@ -120,26 +135,44 @@ class Dashboard extends Component {
             .then(res => {
                 const searchOptions = [];
                 for (let i = 0; i < res.data.results[0].locations.length; i++) {
-                    const cities = res.data.results[0].locations[i].adminArea5;
+                    const countryCode = res.data.results[0].locations[i].adminArea1;
                     const state = res.data.results[0].locations[i].adminArea3;
-                    if (cities !== '' && state !== '') {
-                        searchOptions.push(`${cities}, ${state}`);
-                        // console.log(searchOptions);
+                    const city = res.data.results[0].locations[i].adminArea5;
+                    if (countryCode === 'US' && city !== '' && state !== '') {
+                        const searchLocation = {
+                            country: 'US',
+                            state: state,
+                            city: city
+                        };
+                        searchOptions.push(searchLocation);
+                    } else if (countryCode !== '' & countryCode !== 'US' && countryCode !== '' && city !== '') {
+                        weatherAPI.searchCodes(countryCode)
+                            .then(res => {
+                                const country = res.data.name;
+                                const searchLocation = {
+                                    country: country,
+                                    state: state,
+                                    city: city
+                                };
+                                searchOptions.push(searchLocation);
+                                this.setState({ searchOptions: searchOptions });
+                            });
                     };
                 };
-                this.setState({ searchOptions: searchOptions });
+                
             });
     };
 
     handleFormSubmit(event) {
         event.preventDefault();
 
-        const search = this.state.searchInput;
+        const search = this.state.searchInput.trim();
 
         if (search === '') {
             return;
         } else {
             const searchLocation = utilFunctions.capLocation(search);
+            console.log(searchLocation);
             this.setState({ location: searchLocation });
 
             weatherAPI.searchCoordidateData(search)
@@ -161,16 +194,18 @@ class Dashboard extends Component {
         };
 
         // clear search input
-        this.setState({ searchInput: '' });       
+        this.setState({ searchInput: '' });
+        this.setState({ searchOptions: [] });       
     };
 
     handleLocationSave(event) {
         event.preventDefault();
         let newLocation = '';
         if (this.state.searchInput === '') {
-            newLocation = utilFunctions.capLocation(this.state.location);
+            newLocation = this.state.location;
         } else {
-            newLocation = utilFunctions.capLocation(this.state.searchInput);
+            newLocation = this.state.searchInput;
+            console.log(newLocation);
         };
 
         const locationInfo = {
@@ -181,6 +216,8 @@ class Dashboard extends Component {
 
         const savedLocations = this.state.savedLocations;
 
+        console.log(savedLocations);
+
         if (savedLocations.length === 0) {
             savedLocations.push(locationInfo);
             this.setState({ savedLocations: savedLocations });
@@ -188,7 +225,6 @@ class Dashboard extends Component {
             for (let i = 0; i < savedLocations.length; i++) {
                 const location = savedLocations[i].city;
                 if (location === newLocation) {
-                    // console.log('already saved');
                     break;
                 } else {
                     savedLocations.push(locationInfo);

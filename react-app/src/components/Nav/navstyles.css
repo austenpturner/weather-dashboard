@@ -88,7 +88,7 @@ nav #nav-slider {
   height: calc(100vh - 60px);
   margin-left: 0;
   max-width: 480px;
-  overflow: hidden;
+  overflow-y: auto;
   position: absolute;
   -webkit-transition: all 1000ms ease-in-out;
   transition: all 1000ms ease-in-out;
@@ -108,21 +108,18 @@ nav #nav-slider #saved-list li {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  padding: 20px 30px;
+  padding: 20px 10px;
 }
 
 nav #nav-slider #saved-list li p, nav #nav-slider #saved-list li i {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
   text-align: center;
-  width: 30%;
+  min-width: 15%;
 }
 
 nav #nav-slider #saved-list li p {
@@ -135,6 +132,7 @@ nav #nav-slider #saved-list li i {
 
 nav #nav-slider #saved-list li .city {
   text-align: left;
+  min-width: 50%;
 }
 
 nav .slide-in {
