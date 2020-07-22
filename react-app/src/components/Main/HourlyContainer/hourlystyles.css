@@ -100,6 +100,15 @@
   }
 }
 
+@media (min-width: 667px) and (hover: none) {
+  #hourly-container {
+    margin: 5% auto;
+  }
+  #hourly-container .tile {
+    margin: 6px 16px 10px 0px;
+  }
+}
+
 @media (min-height: 600px) and (hover: none) {
   #hourly-container {
     margin: 5% auto;

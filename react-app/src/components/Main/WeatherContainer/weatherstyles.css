@@ -127,6 +127,9 @@
 }
 
 @media (min-width: 731px) and (orientation: landscape) {
+  #weather-container {
+    margin: 5.5% auto;
+  }
   #weather-container #weather-data .col h4 {
     font-size: 2em;
   }
@@ -146,7 +149,7 @@
 
 @media (min-width: 823px) and (orientation: landscape) and (hover: none) {
   #weather-container {
-    margin: 3% auto;
+    margin: 5% auto;
   }
 }
 

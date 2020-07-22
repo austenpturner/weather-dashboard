@@ -69,6 +69,15 @@
     }
 }
 
+@media (min-width: 667px) and (hover: none) {
+    #hourly-container {
+        margin: 5% auto;
+        .tile {
+            margin: 6px 16px 10px 0px;
+        }
+    }
+}
+
 @media (min-height: 600px) and (hover: none) {
     #hourly-container {
         margin: 5% auto;
@@ -96,7 +105,7 @@
     }
 }
 
-@media (min-width: 731px) and (orientation: landscape) and (hover: none){
+@media (min-width: 731px) and (orientation: landscape) and (hover: none) {
     #hourly-container {
         margin: 2% auto;
         width: 79%;
