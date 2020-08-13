@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Moment from "moment";
 import renderConditionIcon from "../../../utils/renderIcons";
-import "./forecaststyles.css";
+import "../../dashboardstyles.css";
 
 class ForecastContainer extends Component {
     constructor(props) {

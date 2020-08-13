@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./searchstylesheet.css";
+import "../dashboardstyles.css";
 
 class SearchBar extends Component {
     render() {

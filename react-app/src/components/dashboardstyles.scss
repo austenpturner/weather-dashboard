@@ -1,21 +1,22 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
+// ---- Import Sass Variables --- //
+@import "./sassVars";
 
 #dashboard {
-    background: linear-gradient(rgb(159, 195, 241) 10%, rgb(135, 116, 221));
+    background: linear-gradient($lightPurple 10%, $darkPurple);
     background-repeat: no-repeat;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 0;
     overflow: hidden;
     height: 100vh;
+    @import "./Header/headerstyles";
+    @import "./Nav/navstyles";
+    @import "./SearchBar/searchstyles";
+    @import "./Main/mainstyles";
 }
 
-@media (min-width: 480px) and (orientation: landscape) {
+// --- Media Queries --- //
+@media (min-width: 480px) and (hover: none) {
     #dashboard {
         overflow-y: auto;
     }

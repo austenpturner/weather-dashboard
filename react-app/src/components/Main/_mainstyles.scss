@@ -1,0 +1,15 @@
+// --- Import Sass Variables --- //
+@import "../sassVars";
+
+#main {
+    max-height: 600px;
+    transition: opacity 400ms ease-in-out;
+    @import "./WeatherContainer/weatherstyles";
+    @import "./HourlyContainer//hourlystyles";
+    @import "./ForecastContainer/forecaststyles";
+}
+
+.veil {
+    opacity: 0.4;
+    transition: opacity 600ms ease-in-out;
+}

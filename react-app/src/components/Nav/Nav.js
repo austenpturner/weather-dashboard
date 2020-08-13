@@ -3,7 +3,7 @@ import localStorage from '../../utils/localStorage'
 import API from '../../utils/API';
 import utilFunctions from '../../utils/utilFunctions';
 import renderConditionIcon from '../../utils/renderIcons';
-import './navstyles.css';
+import '../dashboardstyles.css';
 
 const retrieveLocationInfo = () => {
     const locationInfo = localStorage.getLocalStorage();

@@ -1,15 +1,5 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-
-@mixin flex ($direction, $justify) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-}
+// ---- Import Sass Variables --- //
+@import "../../sassVars";
 
 #hourly-container {
     @include flex (row, flex-start);
@@ -17,9 +7,9 @@
     overflow-x: auto;
     width: 88%;
     &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-        border-radius: 3px;
-        background-color: rgb(255, 255, 255);
+        box-shadow: inset 0 0 6px $shadow;
+        border-radius: $rounded;
+        background-color: white;
         display: none;
     }
     &::-webkit-scrollbar {
@@ -27,9 +17,9 @@
         width: 8px;
     }
     &::-webkit-scrollbar-thumb {
-        border-radius: 3px;
-        box-shadow: inset 0 0 6px rgba(0, 0 ,0, 0.2);
-        background: linear-gradient(rgb(187, 187, 187), rgb(156, 156, 156));;
+        border-radius: $rounded;
+        box-shadow: inset 0 0 6px $shadow;
+        background: linear-gradient($lightGrey, $darkGrey);
         display: none;
     }
     .tile {
@@ -48,6 +38,7 @@
     }
 }
 
+// --- Media Queries --- //
 @media (hover: hover) {
     #hourly-container {
         &::-webkit-scrollbar-track {
@@ -178,4 +169,3 @@
         }
     }
 }
-

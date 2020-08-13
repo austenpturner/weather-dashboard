@@ -1,0 +1,26 @@
+// --- CSS Reset --- //
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+// --- Sass Variables --- //
+$lightPurple: rgb(159, 195, 241);
+$darkPurple: rgb(135, 116, 221);
+$lightBlue: rgb(78, 157, 226);
+$darkBlue: rgb(2,117,216);
+$lightGreen: rgb(118, 236, 118);
+$darkGreen: rgb(52, 196, 52);
+$lightGrey: rgb(187, 187, 187);
+$darkGrey: rgb(156, 156, 156);
+$shadow: rgba(0, 0, 0, 0.3);
+$rounded: 5px;
+
+// --- Sass Mixins --- //
+@mixin flex ($direction, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import renderConditionIcon from "../../../utils/renderIcons";
-import "./weatherstyles.css";
+import "../../dashboardstyles.css";
 
 class WeatherContainer extends Component {
     render() {

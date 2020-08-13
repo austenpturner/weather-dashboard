@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import renderConditionIcon from "../../../utils/renderIcons";
-import "./hourlystyles.css";
+import "../../dashboardstyles.css";
 
 class HourlyContainer extends Component {
     render() {

@@ -1,15 +1,5 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-
-@mixin flex ($direction, $justify) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-}
+// ---- Import Sass Variables --- //
+@import "../../sassVars";
 
 #weather-container {
     margin: 1% auto;
@@ -44,6 +34,7 @@
     }
 }
 
+// --- Media Queries --- //
 @media (min-height: 600px) {
     #weather-container {
         margin: 1% auto;
@@ -126,29 +117,6 @@
         }
     }
 }
-
-// @media (min-width: 768px) and (min-height: 480px) {
-//     #weather-container {
-//         margin: 8% auto;
-//         #weather-data {
-//             .col {
-//                 h4 {
-//                     font-size: 2.9em;
-//                 }
-//                 p {
-//                     font-size: 1.3em;
-//                 }
-//                 #temp {
-//                     font-size: 2.6em;
-//                 }
-//                 i {
-//                     font-size: 4.1em;
-//                     margin-top: 16px;
-//                 }
-//             }
-//         }
-//     }
-// }
 
 @media (min-height: 800px) and (hover: none) {
     #weather-container {

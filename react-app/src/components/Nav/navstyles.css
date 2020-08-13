@@ -38,8 +38,8 @@ nav #nav-bar #nav-icon .line {
   border-radius: 5px;
   height: 2px;
   margin: 6px;
-  -webkit-transition: all 500ms ease-in-out;
-  transition: all 500ms ease-in-out;
+  -webkit-transition: all 800ms ease-in-out;
+  transition: all 800ms ease-in-out;
   width: 30px;
 }
 
@@ -90,8 +90,8 @@ nav #nav-slider {
   max-width: 480px;
   overflow-y: auto;
   position: absolute;
-  -webkit-transition: all 1000ms ease-in-out;
-  transition: all 1000ms ease-in-out;
+  -webkit-transition: all 800ms ease-in-out;
+  transition: all 800ms ease-in-out;
   width: 100vw;
   z-index: 2;
 }
@@ -111,8 +111,8 @@ nav #nav-slider #saved-list li {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   padding: 20px 10px;
 }
@@ -135,11 +135,11 @@ nav #nav-slider #saved-list li .city {
   min-width: 50%;
 }
 
-nav .slide-in {
+.slide-in {
   left: 0;
 }
 
-nav .slide-out {
+.slide-out {
   left: 100vw;
 }
 

@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import WeatherContainer from "./WeatherContainer/WeatherContainer";
 import HourlyContainer from "./HourlyContainer/HourlyContainer";
 import ForecastContainer from "./ForecastContainer/ForecastContainer";
-import './mainstyles.css';
+import "../dashboardstyles.css";
 
 class Main extends Component {
     render() {
         return (
-            <div 
-                id="main"
-                className={this.props.showSearchBar || this.props.slideNav ? 'veil' : ''}
-            >
+            <div id="main"className={this.props.showSearchBar || this.props.slideNav ? "veil" : ""}>
                 <WeatherContainer 
                     currentWeather={this.props.currentWeather}
                     location={this.props.location}
@@ -26,7 +23,7 @@ class Main extends Component {
                 />
             </div>
         );
-    }
-}
+    };
+};
 
 export default Main;

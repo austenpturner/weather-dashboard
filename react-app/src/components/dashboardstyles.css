@@ -17,7 +17,864 @@
   height: 100vh;
 }
 
-@media (min-width: 480px) and (orientation: landscape) {
+#dashboard * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#dashboard #header {
+  margin-left: 5vw;
+  width: 50vw;
+}
+
+#dashboard #header #date {
+  display: inline-block;
+  font-size: 0.8em;
+  height: 60px;
+  max-width: 300px;
+  padding: 20px 0px;
+}
+
+@media (min-width: 360px) {
+  #dashboard #header #date {
+    font-size: 0.9em;
+  }
+}
+
+@media (min-width: 768px) {
+  #dashboard #header {
+    margin-left: 3vw;
+  }
+  #dashboard #header #date {
+    font-size: 1.1em;
+  }
+}
+
+#dashboard * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#dashboard nav #nav-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 60px;
+  margin-left: 50vw;
+  position: absolute;
+  top: -60px;
+  width: 50vw;
+}
+
+#dashboard nav #nav-bar #nav-icon {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  cursor: pointer;
+  padding: 12px;
+  z-index: 3;
+}
+
+#dashboard nav #nav-bar #nav-icon .line {
+  background: white;
+  border-radius: 5px;
+  height: 2px;
+  margin: 6px;
+  -webkit-transition: all 800ms ease-in-out;
+  transition: all 800ms ease-in-out;
+  width: 30px;
+}
+
+#dashboard nav #nav-bar #nav-icon .toggle1 {
+  -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+          transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+#dashboard nav #nav-bar #nav-icon .toggle2 {
+  opacity: 0;
+}
+
+#dashboard nav #nav-bar #nav-icon .toggle3 {
+  -webkit-transform: rotate(45deg) translate(-5px, -6px);
+          transform: rotate(45deg) translate(-5px, -6px);
+}
+
+#dashboard nav #nav-bar #btn-container {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#dashboard nav #nav-bar #btn-container button {
+  background: radial-gradient(#4e9de2, #0275d8);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.6em;
+  margin: 0 5px;
+  padding: 0.9em;
+}
+
+#dashboard nav #nav-bar #btn-container button:focus {
+  outline: none;
+}
+
+#dashboard nav #nav-bar #btn-container #save-btn {
+  background: radial-gradient(#76ec76, #34c434);
+  padding: 0.9em 1em;
+}
+
+#dashboard nav #nav-slider {
+  background: radial-gradient(#4e9de2, #0275d8);
+  height: calc(100vh - 60px);
+  margin-left: 0;
+  max-width: 480px;
+  overflow-y: auto;
+  position: absolute;
+  -webkit-transition: all 800ms ease-in-out;
+  transition: all 800ms ease-in-out;
+  width: 100vw;
+  z-index: 2;
+}
+
+#dashboard nav #nav-slider #saved-list {
+  list-style: none;
+}
+
+#dashboard nav #nav-slider #saved-list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  padding: 20px 10px;
+}
+
+#dashboard nav #nav-slider #saved-list li p, #dashboard nav #nav-slider #saved-list li i {
+  text-align: center;
+  min-width: 15%;
+}
+
+#dashboard nav #nav-slider #saved-list li p {
+  font-size: 1.2em;
+}
+
+#dashboard nav #nav-slider #saved-list li i {
+  font-size: 1.8em;
+}
+
+#dashboard nav #nav-slider #saved-list li .city {
+  text-align: left;
+  min-width: 50%;
+}
+
+#dashboard .slide-in {
+  left: 0;
+}
+
+#dashboard .slide-out {
+  left: 100vw;
+}
+
+@media (orientation: landscape) {
+  #dashboard nav #nav-slider {
+    min-height: 450px;
+  }
+}
+
+@media (min-width: 480px) {
+  #dashboard nav #nav-slider {
+    border-radius: 5px 0 0 0;
+  }
+  #dashboard nav #nav-slider #saved-list li {
+    padding: 16px 30px;
+  }
+  #dashboard nav #nav-slider #saved-list li p {
+    font-size: 1.2em;
+  }
+  #dashboard nav #nav-slider #saved-list li i {
+    font-size: 1.8em;
+  }
+  #dashboard nav .slide-in {
+    left: calc(100vw - 480px);
+  }
+}
+
+#dashboard * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#dashboard #search-bar {
+  -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+#dashboard #search-bar form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 0px;
+}
+
+#dashboard #search-bar form label {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 0.8em;
+  margin-right: 10px;
+}
+
+#dashboard #search-bar form input {
+  border-radius: 5px 0 0 5px;
+  border: none;
+  padding: 8px 5px;
+  margin: 0;
+  max-width: 250px;
+  width: 50vw;
+}
+
+#dashboard #search-bar form input:focus {
+  outline: none;
+}
+
+#dashboard #search-bar form button {
+  background: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  padding: 0px 6px;
+}
+
+#dashboard .slide-down {
+  height: 53px;
+  opacity: 1;
+  -webkit-transition: height 400ms ease-in-out, opacity 800ms ease-in-out;
+  transition: height 400ms ease-in-out, opacity 800ms ease-in-out;
+}
+
+#dashboard .slide-up {
+  height: 0px;
+  opacity: 0;
+  -webkit-transition: height 400ms ease-in-out, opacity 200ms ease-in-out;
+  transition: height 400ms ease-in-out, opacity 200ms ease-in-out;
+}
+
+#dashboard .show {
+  display: inline-block;
+}
+
+#dashboard .hide {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #dashboard #search-bar form label {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 1024px) {
+  #dashboard #search-bar form label {
+    font-size: 1.1em;
+  }
+}
+
+#dashboard * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#dashboard #main {
+  max-height: 600px;
+  -webkit-transition: opacity 400ms ease-in-out;
+  transition: opacity 400ms ease-in-out;
+}
+
+#dashboard #main * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#dashboard #main #weather-container {
+  margin: 1% auto;
+  width: 90%;
+}
+
+#dashboard #main #weather-container #weather-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+#dashboard #main #weather-container #weather-data .col {
+  margin: 0px 8px;
+  max-width: 62%;
+}
+
+#dashboard #main #weather-container #weather-data .col h4 {
+  font-size: 1.6em;
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+
+#dashboard #main #weather-container #weather-data .col h4, #dashboard #main #weather-container #weather-data .col p {
+  margin: 5px 2px;
+}
+
+#dashboard #main #weather-container #weather-data .col p {
+  font-size: 0.9em;
+}
+
+#dashboard #main #weather-container #weather-data .col #temp {
+  font-size: 1.8em;
+  font-weight: 300;
+  text-align: center;
+}
+
+#dashboard #main #weather-container #weather-data .col i {
+  font-size: 3.4em;
+  margin-top: 8px;
+  text-align: center;
+}
+
+@media (min-height: 600px) {
+  #dashboard #main #weather-container {
+    margin: 1% auto;
+    width: 90%;
+  }
+  #dashboard #main #weather-container #weather-data {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  #dashboard #main #weather-container #weather-data .col {
+    margin: 0px 8px;
+    max-width: 50%;
+  }
+  #dashboard #main #weather-container #weather-data .col h4 {
+    font-size: 1.8em;
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+  #dashboard #main #weather-container #weather-data .col h4, #dashboard #main #weather-container #weather-data .col p {
+    margin: 8px 2px;
+  }
+  #dashboard #main #weather-container #weather-data .col p {
+    font-size: 1em;
+  }
+  #dashboard #main #weather-container #weather-data .col #temp {
+    font-size: 2em;
+    font-weight: 300;
+    text-align: center;
+  }
+  #dashboard #main #weather-container #weather-data .col i {
+    font-size: 3.6em;
+    margin-top: 8px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 568px) and (orientation: landscape) {
+  #dashboard #main #weather-container #weather-data .col {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 640px) and (orientation: landscape) {
+  #dashboard #main #weather-container {
+    margin: 4.5% auto;
+  }
+}
+
+@media (min-height: 700px) and (hover: hover) {
+  #dashboard #main #weather-container {
+    margin: 5% auto;
+  }
+  #dashboard #main #weather-container #weather-data .col h4 {
+    font-size: 2em;
+  }
+}
+
+@media (min-height: 700px) and (hover: none) {
+  #dashboard #main #weather-container {
+    margin: 6% auto;
+  }
+}
+
+@media (min-width: 731px) and (orientation: landscape) {
+  #dashboard #main #weather-container {
+    margin: 5.5% auto;
+  }
+  #dashboard #main #weather-container #weather-data .col h4 {
+    font-size: 2em;
+  }
+}
+
+@media (min-height: 800px) and (hover: none) {
+  #dashboard #main #weather-container {
+    margin: 10% auto;
+  }
+}
+
+@media (min-width: 812px) and (orientation: landscape) {
+  #dashboard #main #weather-container {
+    margin: 2.5% auto;
+  }
+}
+
+@media (min-width: 823px) and (orientation: landscape) and (hover: none) {
+  #dashboard #main #weather-container {
+    margin: 5% auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  #dashboard #main #weather-container {
+    margin: 1% auto;
+  }
+}
+
+@media (min-width: 1024px) and (hover: none) {
+  #dashboard #main #weather-container {
+    margin: 6% auto;
+  }
+}
+
+#dashboard #main * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#dashboard #main #hourly-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 2% auto;
+  overflow-x: auto;
+  width: 88%;
+}
+
+#dashboard #main #hourly-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background-color: white;
+  display: none;
+}
+
+#dashboard #main #hourly-container::-webkit-scrollbar {
+  display: none;
+  width: 8px;
+}
+
+#dashboard #main #hourly-container::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: -webkit-gradient(linear, left top, left bottom, from(#bbbbbb), to(#9c9c9c));
+  background: linear-gradient(#bbbbbb, #9c9c9c);
+  display: none;
+}
+
+#dashboard #main #hourly-container .tile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 6px 15px 10px 0px;
+}
+
+#dashboard #main #hourly-container p {
+  font-size: 0.9em;
+  margin: 4px;
+  text-align: center;
+}
+
+#dashboard #main #hourly-container i {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 1.5em;
+  margin: 2px auto;
+}
+
+@media (hover: hover) {
+  #dashboard #main #hourly-container::-webkit-scrollbar-track {
+    display: inline-block;
+  }
+  #dashboard #main #hourly-container::-webkit-scrollbar {
+    display: inline-block;
+  }
+  #dashboard #main #hourly-container::-webkit-scrollbar-thumb {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 480px) {
+  #dashboard #main #hourly-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    width: 86%;
+  }
+}
+
+@media (min-width: 667px) and (hover: none) {
+  #dashboard #main #hourly-container {
+    margin: 5% auto;
+  }
+  #dashboard #main #hourly-container .tile {
+    margin: 6px 16px 10px 0px;
+  }
+}
+
+@media (min-height: 600px) and (hover: none) {
+  #dashboard #main #hourly-container {
+    margin: 5% auto;
+  }
+}
+
+@media (min-height: 650px) and (hover: none) {
+  #dashboard #main #hourly-container {
+    margin: 5% auto;
+  }
+}
+
+@media (min-height: 700px) and (hover: none) {
+  #dashboard #main #hourly-container {
+    margin: 8% auto;
+  }
+  #dashboard #main #hourly-container .tile {
+    margin: 6px 16px 10px 0px;
+  }
+  #dashboard #main #hourly-container p {
+    font-size: 1em;
+  }
+  #dashboard #main #hourly-container i {
+    font-size: 1.6em;
+  }
+}
+
+@media (min-width: 731px) and (orientation: landscape) and (hover: none) {
+  #dashboard #main #hourly-container {
+    margin: 2% auto;
+    width: 79%;
+  }
+  #dashboard #main #hourly-container .tile {
+    margin: 6px 10px 10px 0px;
+  }
+  #dashboard #main #hourly-container p {
+    font-size: 1em;
+    margin: 6px;
+  }
+  #dashboard #main #hourly-container i {
+    margin: 6px auto;
+  }
+}
+
+@media (min-width: 768px) {
+  #dashboard #main #hourly-container {
+    width: 78%;
+  }
+}
+
+@media (min-width: 768px) and (hover: none) {
+  #dashboard #main #hourly-container {
+    width: 76%;
+  }
+}
+
+@media (min-width: 800px) {
+  #dashboard #main #hourly-container {
+    width: 72%;
+  }
+}
+
+@media (min-height: 800px) and (hover: none) {
+  #dashboard #main #hourly-container {
+    margin: 10% auto;
+  }
+  #dashboard #main #hourly-container .tile {
+    margin: 6px 12px 10px 0px;
+  }
+  #dashboard #main #hourly-container p {
+    font-size: 1.1em;
+    margin: 6px;
+  }
+  #dashboard #main #hourly-container i {
+    margin: 6px auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  #dashboard #main #hourly-container {
+    width: 66%;
+  }
+}
+
+@media (min-width: 1024px) and (hover: none) {
+  #dashboard #main #hourly-container {
+    margin: 8% auto 5%;
+    width: 70%;
+  }
+  #dashboard #main #hourly-container .tile {
+    margin: 6px 16px 10px 0px;
+  }
+  #dashboard #main #hourly-container p {
+    font-size: 1.2em;
+    margin: 6px;
+  }
+  #dashboard #main #hourly-container i {
+    margin: 4px auto;
+  }
+}
+
+#dashboard #main * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#dashboard #main #forecast-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 2% auto 0px;
+  width: 90%;
+}
+
+#dashboard #main #forecast-container .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background: radial-gradient(#4e9de2, #0275d8);
+  border-radius: 5px;
+  -webkit-box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.3);
+          box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.3);
+  margin: 2% 0;
+  min-height: 34px;
+}
+
+#dashboard #main #forecast-container .card p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 0.9em;
+  width: 25%;
+}
+
+#dashboard #main #forecast-container .card i {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 1.2em;
+  padding: 6px;
+}
+
+#dashboard #main #forecast-container .card .temp {
+  text-align: center;
+}
+
+@media (min-width: 568px) {
+  #dashboard #main #forecast-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    margin: 16px auto;
+    width: 90%;
+  }
+  #dashboard #main #forecast-container .card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 140px;
+    max-width: 115px;
+    width: 18%;
+  }
+  #dashboard #main #forecast-container .card p {
+    font-size: 1em;
+    margin: 5px;
+    text-align: center;
+    width: 100%;
+  }
+  #dashboard #main #forecast-container .card i {
+    font-size: 1.3em;
+    padding: 6px;
+  }
+}
+
+@media (min-width: 736px) and (orientation: landscape) {
+  #dashboard #main #forecast-container {
+    width: 85%;
+  }
+  #dashboard #main #forecast-container .card i {
+    padding: 6px;
+    font-size: 1.7em;
+  }
+}
+
+@media (min-height: 600px) and (hover: none) {
+  #dashboard #main #forecast-container {
+    margin: 4% auto;
+  }
+}
+
+@media (min-height: 700px) and (hover: none) {
+  #dashboard #main #forecast-container {
+    margin: 8% auto;
+  }
+  #dashboard #main #forecast-container .card {
+    padding: 5px 0;
+  }
+  #dashboard #main #forecast-container .card p {
+    font-size: 1.1em;
+  }
+  #dashboard #main #forecast-container .card i {
+    font-size: 1.3em;
+  }
+}
+
+@media (min-height: 800px) and (hover: none) {
+  #dashboard #main #forecast-container {
+    margin: 10% auto;
+  }
+}
+
+@media (min-width: 768px) {
+  #dashboard #main #forecast-container {
+    width: 80%;
+  }
+  #dashboard #main #forecast-container .card i {
+    font-size: 1.5em;
+  }
+}
+
+@media (min-width: 1024px) {
+  #dashboard #main #forecast-container {
+    width: 74%;
+  }
+}
+
+@media (min-width: 1024px) and (hover: none) {
+  #dashboard #main #forecast-container {
+    margin: 5% auto 1%;
+    width: 76%;
+  }
+}
+
+#dashboard .veil {
+  opacity: 0.4;
+  -webkit-transition: opacity 600ms ease-in-out;
+  transition: opacity 600ms ease-in-out;
+}
+
+@media (min-width: 480px) and (hover: none) {
   #dashboard {
     overflow-y: auto;
   }
