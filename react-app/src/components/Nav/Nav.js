@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import localStorage from '../../utils/localStorage'
-import weatherAPI from '../../utils/openWeatherAPI';
+import API from '../../utils/API';
 import utilFunctions from '../../utils/utilFunctions';
 import renderConditionIcon from '../../utils/renderIcons';
 import './navstyles.css';
@@ -12,7 +12,7 @@ const retrieveLocationInfo = () => {
             const location = locationInfo[i];
             const lat = location.lat;
             const lon = location.lon;
-            weatherAPI.weatherData(lat, lon)
+            API.openWeather.weatherData(lat, lon)
                     .then(res => {
                         const tempF = utilFunctions.convertToFahrenheit(res.data.current.temp);
                         location.temp = tempF;
@@ -49,46 +49,21 @@ class Nav extends Component {
             <nav>
                 <div id='nav-bar'>
                     <div id='btn-container'>
-                        <button  
-                            id='search-btn'
-                            onClick={this.props.displaySearchBar}
-                        >
-                            <i 
-                                className='fas fa-search fa-lg'
-                            ></i>
+                        <button id='search-btn' onClick={this.props.displaySearchBar}>
+                            <i className='fas fa-search fa-lg'></i>
                         </button>
-                        <button 
-                            id='save-btn'
-                            onClick={this.props.handleLocationSave}
-                        >
+                        <button id='save-btn' onClick={this.props.handleLocationSave}>
                             <i className='far fa-bookmark fa-lg'></i>
                         </button>
                     </div>
-                    <div 
-                        id='nav-icon' 
-                        onClick={this.props.handleNavSlide}
-                    >
-                        <div 
-                            className={this.props.slideNav ? "line toggle1" : "line"} 
-                            id='line1'
-                        ></div>
-                        <div 
-                            className={this.props.slideNav ? "line toggle2" : "line"} 
-                            id='line2'
-                        ></div>
-                        <div 
-                            className={this.props.slideNav ? "line toggle3" : "line"} 
-                            id='line3'
-                        ></div>
+                    <div id='nav-icon' onClick={this.props.handleNavSlide}>
+                        <div className={this.props.slideNav ? "line toggle1" : "line"} id='line1'></div>
+                        <div className={this.props.slideNav ? "line toggle2" : "line"} id='line2'></div>
+                        <div className={this.props.slideNav ? "line toggle3" : "line"} id='line3'></div>
                     </div>
                 </div>
-                <div 
-                    id='nav-slider'
-                    className={this.props.slideNav ? "slide-in" : "slide-out"}
-                >
-                    <ul 
-                        id='saved-list' 
-                    >
+                <div id='nav-slider' className={this.props.slideNav ? "slide-in" : "slide-out"}>
+                    <ul id='saved-list'>
                         {locations.map((location, index) => {
                             return <li
                                 key={index}

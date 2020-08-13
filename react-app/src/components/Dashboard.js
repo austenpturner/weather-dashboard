@@ -4,7 +4,7 @@ import Header from "./Header/Header";
 import Nav from "./Nav/Nav";
 import SearchBar from "./SearchBar/SearchBar";
 import Main from './Main/Main';
-import weatherAPI from "../utils/openWeatherAPI";
+import API from "../utils/API";
 import utilFunctions from "../utils/utilFunctions";
 import localStorage from "../utils/localStorage";
 import './dashboardstyles.css';
@@ -13,25 +13,41 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentWeather: {},
             date: "",
+            forecast: [],
+            hourlyWeather: [],
+            lat: "",
             location: "",
+            lon: "",
+            savedLocations: [],
             searchInput: "",
             searchOptions: [],
-            lat: "",
-            lon: "",
+            showSearchBar: false,
+            slideNav: false,
             sunrise: 0,
             sunset: 0,
-            currentWeather: {},
-            hourlyWeather: [],
-            forecast: [],
-            savedLocations: [],
-            showSearchBar: false,
-            slideNav: false
         };
     }
 
-    retrieveWeatherData = (lat, lon) => {
-        weatherAPI.weatherData(lat, lon)
+    // --- Function to find current location city from location coordinates --- //
+    geolocate = (lat, lon) =>{
+        API.geoCode.retrieveLocationCoords(lat, lon)
+        .then(res => {
+            let currentLocation;
+            if (res.data.country === 'United States of America') {
+                currentLocation = `${res.data.city}, ${res.data.state}`;
+            } else {
+                currentLocation = `${res.data.city}, ${res.data.country}`;
+            };
+            const location = utilFunctions.capLocation(currentLocation);
+            this.setState({ location: location });
+        });
+    };
+
+    // --- Function to retrieve and set all weather data from location or search coordinates --- //
+    getWeatherData = (lat, lon) => {
+        API.openWeather.weatherData(lat, lon)
             .then(res => {
                 const currentRes = res.data.current;
                 const temp = utilFunctions.convertToFahrenheit(currentRes.temp);
@@ -83,6 +99,53 @@ class Dashboard extends Component {
                 });
         });
     };
+
+    // --- Function to retrieve all location options from search input --- //
+    getSearchCities = search => {
+        API.mapQuest.searchCities(search)
+        .then(res => {
+            const searchOptions = [];
+            for (let i = 0; i < res.data.results[0].locations.length; i++) {
+                const countryCode = res.data.results[0].locations[i].adminArea1;
+                const state = res.data.results[0].locations[i].adminArea3;
+                const city = res.data.results[0].locations[i].adminArea5;
+                if (countryCode === 'US' && city !== '' && state !== '') {
+                    const searchLocation = {
+                        country: 'US',
+                        state: state,
+                        city: city
+                    };
+                    searchOptions.push(searchLocation);
+                } else if (countryCode !== '' & countryCode !== 'US' && city !== '') {
+                    API.restCountries.searchCodes(countryCode)
+                        .then(res => {
+                            const country = res.data.name;
+                            const searchLocation = {
+                                country: country,
+                                state: state,
+                                city: city
+                            };
+                            searchOptions.push(searchLocation);
+                        });
+                };
+            };
+            this.setState({ searchOptions: searchOptions });
+        });
+    };
+
+    // --- Function to get lat/lon retrieve weather data from search input --- //
+    getLocationCoords = search => {
+        API.geoCode.searchCoordidateData(search)
+            .then(res => {
+                const lat = res.data.latt;
+                const lon = res.data.longt;
+                this.setState({
+                    lat: lat,
+                    lon: lon
+                });
+                this.getWeatherData(lat, lon);
+            });
+    };
     
     componentDidMount() {
         const date = Moment().format('dddd, MMMM Do');
@@ -94,20 +157,8 @@ class Dashboard extends Component {
                 lat: lat,
                 lon: lon
             });
-            this.retrieveWeatherData(lat, lon);
-
-            weatherAPI.retrieveLocationCoords(lat, lon)
-                .then(res => {
-                    if (res.data.country === 'United States of America') {
-                        const currentLocation = `${res.data.city}, ${res.data.state}`;
-                        const location = utilFunctions.capLocation(currentLocation);
-                        this.setState({ location: location });
-                    } else {
-                        const currentLocation = `${res.data.city}, ${res.data.country}`;
-                        const location = utilFunctions.capLocation(currentLocation);
-                        this.setState({ location: location });
-                    };
-                });
+            this.geolocate(lat, lon);
+            this.getWeatherData(lat, lon);
         };
 
         if (navigator.geolocation) {
@@ -116,79 +167,32 @@ class Dashboard extends Component {
 
         const savedLocations = localStorage.getLocalStorage();
         if (savedLocations !== undefined) {
-            console.log(savedLocations);
             this.setState({ savedLocations: savedLocations });
         };
     };
 
-    findCountryFromCode(countryCode) {
-        weatherAPI.searchCodes(countryCode)
-        .then(res => {
-            return res.data.name;
-        });
-    };
-
+    // --- Handle location search input change --- //
     handleInputChange(event) {
         const search = event.target.value;
         this.setState({ searchInput: search });
-        weatherAPI.searchCities(search)
-            .then(res => {
-                const searchOptions = [];
-                for (let i = 0; i < res.data.results[0].locations.length; i++) {
-                    const countryCode = res.data.results[0].locations[i].adminArea1;
-                    const state = res.data.results[0].locations[i].adminArea3;
-                    const city = res.data.results[0].locations[i].adminArea5;
-                    if (countryCode === 'US' && city !== '' && state !== '') {
-                        const searchLocation = {
-                            country: 'US',
-                            state: state,
-                            city: city
-                        };
-                        searchOptions.push(searchLocation);
-                    } else if (countryCode !== '' & countryCode !== 'US' && countryCode !== '' && city !== '') {
-                        weatherAPI.searchCodes(countryCode)
-                            .then(res => {
-                                const country = res.data.name;
-                                const searchLocation = {
-                                    country: country,
-                                    state: state,
-                                    city: city
-                                };
-                                searchOptions.push(searchLocation);
-                                this.setState({ searchOptions: searchOptions });
-                            });
-                    };
-                };
-                
-            });
+        this.getSearchCities(search);
     };
 
+    // --- Handle location search --- //
     handleFormSubmit(event) {
         event.preventDefault();
-
         const search = this.state.searchInput.trim();
 
         if (search === '') {
             return;
         } else {
             const searchLocation = utilFunctions.capLocation(search);
-            console.log(searchLocation);
             this.setState({ location: searchLocation });
-
-            weatherAPI.searchCoordidateData(search)
-                .then(res => {
-                    const lat = res.data.latt;
-                    const lon = res.data.longt;
-                    this.setState({
-                        lat: lat,
-                        lon: lon
-                    });
-                    this.retrieveWeatherData(lat, lon);
-                });
+            this.getLocationCoords(search);
         };
 
         if (this.state.showSearchBar) {
-            this.setState({ showSearchBar: false});
+            this.setState({ showSearchBar: false });
         } else {
             this.setState({ showSearchBar: true });
         };
@@ -198,44 +202,33 @@ class Dashboard extends Component {
         this.setState({ searchOptions: [] });       
     };
 
+    // --- Save location to local storage --- //
     handleLocationSave(event) {
         event.preventDefault();
-        let newLocation = '';
-        if (this.state.searchInput === '') {
-            newLocation = this.state.location;
-        } else {
-            newLocation = this.state.searchInput;
-            console.log(newLocation);
-        };
-
         const locationInfo = {
-            city: newLocation,
+            city: this.state.location,
             lat: this.state.lat,
             lon: this.state.lon
         };
-
         const savedLocations = this.state.savedLocations;
-
-        console.log(savedLocations);
 
         if (savedLocations.length === 0) {
             savedLocations.push(locationInfo);
             this.setState({ savedLocations: savedLocations });
         } else {
+            const savedCityNames = [];
             for (let i = 0; i < savedLocations.length; i++) {
-                const location = savedLocations[i].city;
-                if (location === newLocation) {
-                    break;
-                } else {
-                    savedLocations.push(locationInfo);
-                    this.setState({ savedLocations: savedLocations });
-                };
+                savedCityNames.push(savedLocations[i].city);
+            };
+            if (savedCityNames.indexOf(locationInfo.city) === -1) {
+                savedLocations.push(locationInfo);
+                this.setState({ savedLocations: savedLocations });
             };
         };
-
         localStorage.setLocalStorage(savedLocations);
     };
 
+    // --- Show search bar on nav search button click --- //
     displaySearchBar(event) {
         event.preventDefault();
         if (this.state.showSearchBar) {
@@ -245,6 +238,7 @@ class Dashboard extends Component {
         };
     };
 
+    // --- Show nav slider on nav symbol click --- //
     handleNavSlide() {
         if (this.state.slideNav) {
             this.setState({ slideNav: false});
@@ -253,34 +247,18 @@ class Dashboard extends Component {
         };
     };
 
+    // --- Handle location selection from nav slider --- //
     handleLocationSelection(event) {
+        let selectedLocation;
+
         if (event.target.className === 'location') {
-            const selectedLocation = event.target.id;
-            this.setState({ location: selectedLocation });
-            weatherAPI.searchCoordidateData(selectedLocation)
-                .then(res => {
-                    const lat = res.data.latt;
-                    const lon = res.data.longt;
-                    this.setState({
-                        lat: lat,
-                        lon: lon
-                    });
-                    this.retrieveWeatherData(lat, lon);
-                });
+            selectedLocation = event.target.id;
         } else if (event.target.parentElement.className === 'location') {
-            const selectedLocation = event.target.parentElement.id;
-            this.setState({ location: selectedLocation });
-            weatherAPI.searchCoordidateData(selectedLocation)
-                .then(res => {
-                    const lat = res.data.latt;
-                    const lon = res.data.longt;
-                    this.setState({
-                        lat: lat,
-                        lon: lon
-                    });
-                    this.retrieveWeatherData(lat, lon);
-                });
+            selectedLocation = event.target.parentElement.id;
         };
+
+        this.setState({ location: selectedLocation });
+        this.getLocationCoords(selectedLocation);
     };
 
     render() {
@@ -314,7 +292,7 @@ class Dashboard extends Component {
                 />
             </div>
         );
-    }
-}
+    };
+};
 
 export default Dashboard;

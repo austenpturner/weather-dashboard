@@ -16,31 +16,29 @@
     form {
         @include flex (row, center);
         padding: 10px 0px;
-        .form-group {
-            @include flex (row, space-evenly);
-            
-            label {
-                align-self: center;
-                font-size: 0.8em;
-                margin-right: 10px;
+        label {
+            align-self: center;
+            font-size: 0.8em;
+            margin-right: 10px;
+        }
+        input {
+            border-radius: 5px 0 0 5px;
+            border: none;
+            padding: 8px 5px;
+            margin: 0;
+            max-width: 250px;
+            width: 50vw;
+            &:focus {
+                outline: none;
             }
-            input {
-                border-radius: 5px 0 0 5px;
-                border: none;
-                padding: 8px 5px;
-                margin: 0;
-                width: 150px;
-                &:focus {
-                    outline: none;
-                }
-            }
-            button {
-                background: white;
-                border: none;
-                border-radius: 0 5px 5px 0;
-                padding: 0px 6px;
-            }
-        } 
+        }
+        button {
+            background: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            padding: 0px 6px;
+        }
     }
 }
 
@@ -61,48 +59,22 @@
     display: none;
 }
 
-// @media (min-width: 768px) {
-//     #search-bar {
-//         display: block;
-//         margin: 20px auto;
-//         form {
-//             .form-group {
-//                 @include flex (row, center);
-//                 label {
-//                     font-size: 1.2em;
-//                     margin: 5px;
-//                 }
-//                 input {
-//                     padding: 10px 5px;
-//                     margin: 0 8px 0 5px;
-//                     width: 200px;
-//                 }
-//             }
-//             button {
-//                 border: none;
-//                 font-size: 0.9em;
-//                 margin-right: 8px;
-//                 padding: 10px;
-//             }
-//             #save-btn {
-//                 padding: 10px 12px;
-//             }
-//         }
-//     }
-// }
+@media (min-width: 768px) {
+    #search-bar {
+        form {
+            label {
+                font-size: 1em;
+            }
+        }
+    }
+}
 
-// @media (min-width: 1024px) {
-//     #search-bar {
-//         margin: 0px auto;
-//         form {
-//             .form-group {
-//                 label {
-//                     font-weight: 300;
-//                 }
-//                 input {
-//                     width: 280px;
-//                 }
-//             }
-//         }
-//     }
-// }
+@media (min-width: 1024px) {
+    #search-bar {
+        form {
+            label {
+                font-size: 1.1em;
+            }
+        }
+    }
+}

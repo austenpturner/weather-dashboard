@@ -20,7 +20,7 @@ const getDecimal = unixNum => {
   return parseFloat(decimal);
 };
 
-const untilFunctions = {
+const utilFunctions = {
     getDecimal: unixNum => {
         const regex = /:/gi; 
         const time = calculateTime(unixNum);
@@ -69,4 +69,4 @@ const untilFunctions = {
     }
 };
 
-export default untilFunctions;
+export default utilFunctions;
