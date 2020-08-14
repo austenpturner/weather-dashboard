@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import Moment from "moment";
 import Header from "./Header/Header";
 import Nav from "./Nav/Nav";
 import SearchBar from "./SearchBar/SearchBar";
-import Main from './Main/Main';
+import Main from "./Main/Main";
 import API from "../utils/API";
 import utilFunctions from "../utils/utilFunctions";
 import localStorage from "../utils/localStorage";
-import './dashboardstyles.css';
+import "./dashboardstyles.css";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -30,12 +30,12 @@ class Dashboard extends Component {
         };
     }
 
-    // --- Function to find current location city from location coordinates --- //
+    // --- Function to get city name from coordinates --- //
     geolocate = (lat, lon) =>{
         API.geoCode.retrieveLocationCoords(lat, lon)
         .then(res => {
             let currentLocation;
-            if (res.data.country === 'United States of America') {
+            if (res.data.country === "United States of America") {
                 currentLocation = `${res.data.city}, ${res.data.state}`;
             } else {
                 currentLocation = `${res.data.city}, ${res.data.country}`;
@@ -45,7 +45,7 @@ class Dashboard extends Component {
         });
     };
 
-    // --- Function to retrieve and set all weather data from location or search coordinates --- //
+    // --- Function to get and set all weather data from location or search coordinates --- //
     getWeatherData = (lat, lon) => {
         API.openWeather.weatherData(lat, lon)
             .then(res => {
@@ -100,7 +100,7 @@ class Dashboard extends Component {
         });
     };
 
-    // --- Function to retrieve all location options from search input --- //
+    // --- Function to get all location options from search input --- //
     getSearchCities = search => {
         API.mapQuest.searchCities(search)
         .then(res => {
@@ -109,14 +109,14 @@ class Dashboard extends Component {
                 const countryCode = res.data.results[0].locations[i].adminArea1;
                 const state = res.data.results[0].locations[i].adminArea3;
                 const city = res.data.results[0].locations[i].adminArea5;
-                if (countryCode === 'US' && city !== '' && state !== '') {
+                if (countryCode === "US" && city !== "" && state !== "") {
                     const searchLocation = {
-                        country: 'US',
+                        country: "US",
                         state: state,
                         city: city
                     };
                     searchOptions.push(searchLocation);
-                } else if (countryCode !== '' & countryCode !== 'US' && city !== '') {
+                } else if (countryCode !== "" & countryCode !== "US" && city !== "") {
                     API.restCountries.searchCodes(countryCode)
                         .then(res => {
                             const country = res.data.name;
@@ -133,12 +133,12 @@ class Dashboard extends Component {
         });
     };
 
-    // --- Function to get lat/lon retrieve weather data from search input --- //
+    // --- Function to get weather data from search input lat/lon --- //
     getLocationCoords = search => {
         API.geoCode.searchCoordidateData(search)
             .then(res => {
-                const lat = res.data.latt;
-                const lon = res.data.longt;
+                const lat = parseInt(res.data.latt);
+                const lon = parseInt(res.data.longt);
                 this.setState({
                     lat: lat,
                     lon: lon
@@ -146,10 +146,30 @@ class Dashboard extends Component {
                 this.getWeatherData(lat, lon);
             });
     };
+
+    // --- Function to get current weather data for saved locations --- //
+    getSavedLocationWeather = savedLocations => {
+        if (savedLocations !== undefined) {
+            for (let i = 0; i < savedLocations.length; i++) {
+                const lat = savedLocations[i].lat;
+                const lon = savedLocations[i].lon;
+                API.openWeather.weatherData(lat, lon)
+                        .then(res => {
+                            const tempF = utilFunctions.convertToFahrenheit(res.data.current.temp);
+                            savedLocations[i].temp = tempF;
+                            const description = res.data.current.weather[0].main;
+                            savedLocations[i].description = description;
+                        });
+            };
+            return savedLocations;
+        };
+    };
     
     componentDidMount() {
-        const date = Moment().format('dddd, MMMM Do');
+        // update state date
+        const date = Moment().format("dddd, MMMM Do");
         this.setState({ date: date });
+        // use geolocation lat and lon to render weather data of current location
         const setPosition = position => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
@@ -160,15 +180,10 @@ class Dashboard extends Component {
             this.geolocate(lat, lon);
             this.getWeatherData(lat, lon);
         };
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(setPosition);
-        }
-
+        if (navigator.geolocation) navigator.geolocation.getCurrentPosition(setPosition);
+        // get saved locations from local storage and update state
         const savedLocations = localStorage.getLocalStorage();
-        if (savedLocations !== undefined) {
-            this.setState({ savedLocations: savedLocations });
-        };
+        if (savedLocations !== undefined) this.setState({ savedLocations: this.getSavedLocationWeather(savedLocations) });
     };
 
     // --- Handle location search input change --- //
@@ -182,82 +197,81 @@ class Dashboard extends Component {
     handleFormSubmit(event) {
         event.preventDefault();
         const search = this.state.searchInput.trim();
-
-        if (search === '') {
+        // if there is a search value then update location state and render weather data
+        if (search === "") {
             return;
         } else {
             const searchLocation = utilFunctions.capLocation(search);
             this.setState({ location: searchLocation });
             this.getLocationCoords(search);
         };
-
-        if (this.state.showSearchBar) {
-            this.setState({ showSearchBar: false });
-        } else {
-            this.setState({ showSearchBar: true });
-        };
-
+        // hide search bar
+        this.state.showSearchBar ?
+            this.setState({ showSearchBar: false }) : this.setState({ showSearchBar: true });
         // clear search input
-        this.setState({ searchInput: '' });
+        this.setState({ searchInput: "" });
         this.setState({ searchOptions: [] });       
     };
 
     // --- Save location to local storage --- //
     handleLocationSave(event) {
         event.preventDefault();
+        // disable save button when nav slider is out
+        if (this.state.slideNav) return
+        // store currently displayed location, lat and lon data in object
         const locationInfo = {
             city: this.state.location,
             lat: this.state.lat,
             lon: this.state.lon
         };
+        // store currently saved locations in variable
         const savedLocations = this.state.savedLocations;
-
+        // if there are no saved locations then save new location
         if (savedLocations.length === 0) {
-            savedLocations.push(locationInfo);
+            savedLocations.push(this.getSavedLocationWeather(locationInfo));
             this.setState({ savedLocations: savedLocations });
         } else {
+            // if there are saved locations, check to see if location has already been saved
             const savedCityNames = [];
             for (let i = 0; i < savedLocations.length; i++) {
                 savedCityNames.push(savedLocations[i].city);
             };
+            // if location has not already been saved, add to saved locations and update state
             if (savedCityNames.indexOf(locationInfo.city) === -1) {
-                savedLocations.push(locationInfo);
+                savedLocations.push(this.getSavedLocationWeather(locationInfo));
                 this.setState({ savedLocations: savedLocations });
             };
         };
-        localStorage.setLocalStorage(savedLocations);
+        // update local storage with new list of saved locations
+        localStorage.setLocalStorage(this.getSavedLocationWeather(savedLocations));
     };
 
     // --- Show search bar on nav search button click --- //
     displaySearchBar(event) {
         event.preventDefault();
-        if (this.state.showSearchBar) {
-            this.setState({ showSearchBar: false});
-        } else {
-            this.setState({ showSearchBar: true });
-        };
+        // show search bar if not already displayed or if nav is not displayed
+        this.state.showSearchBar || this.state.slideNav ? 
+            this.setState({ showSearchBar: false}) : this.setState({ showSearchBar: true });
     };
 
     // --- Show nav slider on nav symbol click --- //
     handleNavSlide() {
-        if (this.state.slideNav) {
-            this.setState({ slideNav: false});
-        } else {
-            this.setState({ slideNav: true });
-        };
+        // slide nav if not already displayed or if search bar is not displayed
+        this.state.slideNav || this.state.showSearchBar ? 
+            this.setState({ slideNav: false}) : this.setState({ slideNav: true });
     };
 
-    // --- Handle location selection from nav slider --- //
+    // --- Handle location selection (click) from nav slider --- //
     handleLocationSelection(event) {
         let selectedLocation;
-
-        if (event.target.className === 'location') {
+        if (event.target.className === "location") {
             selectedLocation = event.target.id;
-        } else if (event.target.parentElement.className === 'location') {
+        } else if (event.target.parentElement.className === "location") {
             selectedLocation = event.target.parentElement.id;
         };
-
+        // update location state with location selected from nav
         this.setState({ location: selectedLocation });
+        // render weather data for selected location
         this.getLocationCoords(selectedLocation);
     };
 
@@ -269,6 +283,7 @@ class Dashboard extends Component {
                 />
                 <Nav
                     slideNav={this.state.slideNav}
+                    savedLocations={this.state.savedLocations}
                     handleNavSlide={this.handleNavSlide.bind(this)}
                     displaySearchBar={this.displaySearchBar.bind(this)}
                     handleLocationSave={this.handleLocationSave.bind(this)}
@@ -289,6 +304,7 @@ class Dashboard extends Component {
                     currentWeather={this.state.currentWeather}
                     forecast={this.state.forecast}
                     date={this.state.date}
+                    savedLocations={this.state.savedLocations}
                 />
             </div>
         );

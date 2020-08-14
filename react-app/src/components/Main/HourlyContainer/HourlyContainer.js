@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import renderConditionIcon from "../../../utils/renderIcons";
 import "../../dashboardstyles.css";
 

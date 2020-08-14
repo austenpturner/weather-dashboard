@@ -151,10 +151,6 @@
   z-index: 2;
 }
 
-#dashboard nav #nav-slider #saved-list {
-  list-style: none;
-}
-
 #dashboard nav #nav-slider #saved-list li {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -173,8 +169,8 @@
 }
 
 #dashboard nav #nav-slider #saved-list li p, #dashboard nav #nav-slider #saved-list li i {
-  text-align: center;
   min-width: 15%;
+  text-align: center;
 }
 
 #dashboard nav #nav-slider #saved-list li p {
@@ -186,8 +182,16 @@
 }
 
 #dashboard nav #nav-slider #saved-list li .city {
-  text-align: left;
   min-width: 50%;
+  text-align: left;
+}
+
+#dashboard nav #nav-slider #saved-list .show {
+  display: block;
+}
+
+#dashboard nav #nav-slider #saved-list .hide {
+  display: none;
 }
 
 #dashboard .slide-in {

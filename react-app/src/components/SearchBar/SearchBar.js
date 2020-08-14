@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "../dashboardstyles.css";
 
 class SearchBar extends Component {
     render() {
         const searchOptions = this.props.searchOptions;
         return (
-            <div id="search-bar" className={this.props.showSearchBar ? 'slide-down' : 'slide-up'}>
-                <form className={this.props.showSearchBar ? 'form-group show' : 'form-group hide'}>
+            <div id="search-bar" className={this.props.showSearchBar ? "slide-down" : "slide-up"}>
+                <form className={this.props.showSearchBar ? "form-group show" : "form-group hide"}>
                     <label htmlFor="search">Search for a city:</label>
                     <input 
                         type="text" 
@@ -18,7 +18,7 @@ class SearchBar extends Component {
                     />
                     <datalist id="city-options">
                         {searchOptions.map((location, index) => {
-                            if (location.country === 'US') {
+                            if (location.country === "US") {
                                 const searchLocation = `${location.city}, ${location.state}`
                                 return <option key={index} value={searchLocation}/>
                             } else {
@@ -28,7 +28,7 @@ class SearchBar extends Component {
                         })}
                     </datalist>
                     <button>
-                        <i className='fas fa-search fa-md' onClick={this.props.handleFormSubmit}></i>
+                        <i className="fas fa-search fa-md" onClick={this.props.handleFormSubmit}></i>
                     </button>
                 </form>
             </div>
