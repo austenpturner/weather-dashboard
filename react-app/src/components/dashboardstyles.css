@@ -25,15 +25,11 @@
   position: relative;
 }
 
-#dashboard #header {
-  margin-left: 5vw;
-  width: 50vw;
-}
-
 #dashboard #header #date {
   display: inline-block;
   font-size: 0.8em;
   height: 60px;
+  margin-left: 5vw;
   max-width: 300px;
   padding: 20px 0px;
 }
@@ -45,9 +41,6 @@
 }
 
 @media (min-width: 768px) {
-  #dashboard #header {
-    margin-left: 3vw;
-  }
   #dashboard #header #date {
     font-size: 1.1em;
   }
@@ -77,6 +70,7 @@
   position: absolute;
   top: -60px;
   width: 50vw;
+  z-index: 1;
 }
 
 #dashboard nav #nav-bar #nav-icon {
@@ -85,7 +79,7 @@
       align-self: center;
   cursor: pointer;
   padding: 12px;
-  z-index: 3;
+  z-index: 1;
 }
 
 #dashboard nav #nav-bar #nav-icon .line {
@@ -125,17 +119,22 @@
   color: white;
   cursor: pointer;
   font-size: 0.6em;
-  margin: 0 5px;
-  padding: 0.9em;
+  margin: 0 2px;
+  padding: 0.8em;
 }
 
 #dashboard nav #nav-bar #btn-container button:focus {
   outline: none;
 }
 
+#dashboard nav #nav-bar #btn-container #location-btn {
+  background: radial-gradient(#9fc3f1, #8774dd);
+  padding: 0.8em 0.9em;
+}
+
 #dashboard nav #nav-bar #btn-container #save-btn {
   background: radial-gradient(#76ec76, #34c434);
-  padding: 0.9em 1em;
+  padding: 0.8em 0.9em;
 }
 
 #dashboard nav #nav-slider {
@@ -165,11 +164,11 @@
   -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  padding: 20px 10px;
 }
 
 #dashboard nav #nav-slider #saved-list li p, #dashboard nav #nav-slider #saved-list li i {
-  min-width: 15%;
+  min-width: 20%;
+  padding: 10px 8px;
   text-align: center;
 }
 
@@ -182,7 +181,7 @@
 }
 
 #dashboard nav #nav-slider #saved-list li .city {
-  min-width: 50%;
+  min-width: 60%;
   text-align: left;
 }
 
@@ -202,6 +201,19 @@
   left: 100vw;
 }
 
+@media (min-width: 375px) {
+  #dashboard nav #nav-bar #btn-container button {
+    margin: 0 5px;
+    padding: 0.9em;
+  }
+  #dashboard nav #nav-bar #btn-container #location-btn {
+    padding: 0.9em 1em;
+  }
+  #dashboard nav #nav-bar #btn-container #save-btn {
+    padding: 0.9em 1em;
+  }
+}
+
 @media (orientation: landscape) {
   #dashboard nav #nav-slider {
     min-height: 450px;
@@ -212,7 +224,7 @@
   #dashboard nav #nav-slider {
     border-radius: 5px 0 0 0;
   }
-  #dashboard nav #nav-slider #saved-list li {
+  #dashboard nav #nav-slider #saved-list li p, #dashboard nav #nav-slider #saved-list li i {
     padding: 16px 30px;
   }
   #dashboard nav #nav-slider #saved-list li p {

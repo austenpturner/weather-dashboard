@@ -164,12 +164,9 @@ class Dashboard extends Component {
             return savedLocations;
         };
     };
-    
-    componentDidMount() {
-        // update state date
-        const date = Moment().format("dddd, MMMM Do");
-        this.setState({ date: date });
-        // use geolocation lat and lon to render weather data of current location
+
+    // --- Function to get current location using geolocation and render weather data--- //
+    renderCurrentLocationWeather = () => {
         const setPosition = position => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
@@ -181,6 +178,14 @@ class Dashboard extends Component {
             this.getWeatherData(lat, lon);
         };
         if (navigator.geolocation) navigator.geolocation.getCurrentPosition(setPosition);
+    };
+    
+    componentDidMount() {
+        // update state date
+        const date = Moment().format("dddd, MMMM Do");
+        this.setState({ date: date });
+        // use geolocation lat and lon to render weather data of current location
+        this.renderCurrentLocationWeather();
         // get saved locations from local storage and update state
         const savedLocations = localStorage.getLocalStorage();
         if (savedLocations !== undefined) this.setState({ savedLocations: this.getSavedLocationWeather(savedLocations) });
@@ -263,16 +268,16 @@ class Dashboard extends Component {
 
     // --- Handle location selection (click) from nav slider --- //
     handleLocationSelection(event) {
-        let selectedLocation;
-        if (event.target.className === "location") {
-            selectedLocation = event.target.id;
-        } else if (event.target.parentElement.className === "location") {
-            selectedLocation = event.target.parentElement.id;
-        };
+        const selectedLocation = event.target.parentElement.id;
         // update location state with location selected from nav
         this.setState({ location: selectedLocation });
         // render weather data for selected location
         this.getLocationCoords(selectedLocation);
+    };
+
+    handleCurrentSelection(event) {
+        event.preventDefault();
+        this.renderCurrentLocationWeather();
     };
 
     render() {
@@ -287,6 +292,7 @@ class Dashboard extends Component {
                     handleNavSlide={this.handleNavSlide.bind(this)}
                     displaySearchBar={this.displaySearchBar.bind(this)}
                     handleLocationSave={this.handleLocationSave.bind(this)}
+                    handleCurrentSelection={this.handleCurrentSelection.bind(this)}
                     handleLocationSelection={this.handleLocationSelection.bind(this)}
                 />
                 <SearchBar

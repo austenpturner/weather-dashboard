@@ -2,12 +2,11 @@
 @import "../sassVars";
 
 #header {
-    margin-left: 5vw;
-    width: 50vw;
     #date {
         display: inline-block;
         font-size: 0.8em;
         height: 60px;
+        margin-left: 5vw;
         max-width: 300px;
         padding: 20px 0px;
     }
@@ -24,9 +23,10 @@
 
 @media (min-width: 768px) {
     #header {
-        margin-left: 3vw;
+        
         #date {
             font-size: 1.1em;
+            // margin-left: 8vw;
         }
     }
 }

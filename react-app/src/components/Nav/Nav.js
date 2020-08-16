@@ -10,16 +10,15 @@ class Nav extends Component {
 
     render() {
         const locations = this.props.savedLocations;
-        // console.log(locations);
-        // if (locations.length === 0) {
-        //     console.log('show');
-        // }
         return (
             <nav>
                 <div id="nav-bar">
                     <div id="btn-container">
                         <button id="search-btn" onClick={this.props.displaySearchBar}>
                             <i className="fas fa-search fa-lg"></i>
+                        </button>
+                        <button id="location-btn" onClick={this.props.handleCurrentSelection}>
+                            <i className="fas fa-location-arrow"></i>
                         </button>
                         <button id="save-btn" onClick={this.props.handleLocationSave}>
                             <i className="far fa-bookmark fa-lg"></i>
