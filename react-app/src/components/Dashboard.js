@@ -266,18 +266,34 @@ class Dashboard extends Component {
             this.setState({ slideNav: false}) : this.setState({ slideNav: true });
     };
 
-    // --- Handle location selection (click) from nav slider --- //
+    // --- Handle location selection from nav slider --- //
     handleLocationSelection(event) {
-        const selectedLocation = event.target.parentElement.id;
-        // update location state with location selected from nav
-        this.setState({ location: selectedLocation });
-        // render weather data for selected location
-        this.getLocationCoords(selectedLocation);
+        if (event.target.className === 'delete-icon fas fa-times') {
+            return;
+        } else {
+            const selectedLocation = event.target.parentElement.id;
+            this.setState({ location: selectedLocation });
+            // render weather data for selected location
+            this.getLocationCoords(selectedLocation);
+        };
     };
 
+    // --- Render weather of current location on location btn click --- //
     handleCurrentSelection(event) {
         event.preventDefault();
         this.renderCurrentLocationWeather();
+    };
+
+    // ---- Delete saved location on delete button click --- //
+    handleLocationDelete(event) {
+        const deletedLocation = event.target.parentElement.id;
+        const savedLocations = this.state.savedLocations;
+        for (let i = 0; i < savedLocations.length; i++) {
+            if (savedLocations[i].city === deletedLocation) {
+                savedLocations.splice(i, 1);
+                this.setState({ savedLocations: savedLocations });
+            };
+        };
     };
 
     render() {
@@ -294,6 +310,7 @@ class Dashboard extends Component {
                     handleLocationSave={this.handleLocationSave.bind(this)}
                     handleCurrentSelection={this.handleCurrentSelection.bind(this)}
                     handleLocationSelection={this.handleLocationSelection.bind(this)}
+                    handleLocationDelete={this.handleLocationDelete.bind(this)}
                 />
                 <SearchBar
                     showSearchBar={this.state.showSearchBar}

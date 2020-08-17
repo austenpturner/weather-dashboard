@@ -4,8 +4,12 @@ import "../dashboardstyles.css";
 
 class Nav extends Component {
     locationSelection(event) {
-        this.props.handleNavSlide();
-        this.props.handleLocationSelection(event);
+        if (event.target.className === 'delete-icon fas fa-times') {
+            return;
+        } else {
+            this.props.handleNavSlide();
+            this.props.handleLocationSelection(event);
+        };
     };
 
     render() {
@@ -45,6 +49,7 @@ class Nav extends Component {
                                 <p className="city">{location.city}</p>
                                 <i className={renderConditionIcon(location.description)}></i>
                                 <p className="temp">{location.temp}&deg;F</p>
+                                <i className="delete-icon fas fa-times" onClick={this.props.handleLocationDelete}></i>
                             </li>
                         })}
                     </ul>
