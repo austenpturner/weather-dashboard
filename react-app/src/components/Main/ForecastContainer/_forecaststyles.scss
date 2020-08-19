@@ -4,6 +4,7 @@
 #forecast-container {
     @include flex(column, space-evenly);
     margin: 2% auto 0px;
+    max-width: 900px;
     width: 90%;
     .card {
         @include flex(row, space-evenly);
@@ -32,7 +33,7 @@
 @media (min-width: 568px) {
     #forecast-container {
         @include flex(row, space-evenly);
-        margin: 16px auto;
+        margin: 3% auto;
         width: 90%;
         .card {
             @include flex(column, center);
@@ -53,7 +54,13 @@
     }
 }
 
-@media (min-width: 736px) and (orientation: landscape) {
+@media (min-width: 568px) and (hover: hover) {
+    #forecast-container {
+        margin: 8% auto;
+    }
+}
+
+@media (min-width: 736px) and (hover: none) {
     #forecast-container {
         width: 85%;
         .card {
@@ -105,6 +112,7 @@
 
 @media (min-width: 1024px) {
     #forecast-container {
+        margin: 5% auto;
         width: 74%;
     }
 }

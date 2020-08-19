@@ -3,6 +3,7 @@
 
 #weather-container {
     margin: 1% auto;
+    max-width: 900px;
     width: 90%;
     #weather-data {
         @include flex (row, space-evenly);
@@ -70,7 +71,13 @@
     }
 }
 
-@media (min-width: 568px) and (orientation: landscape) {
+@media (min-width: 568px) and (hover: hover) {
+    #weather-container {
+        margin: 8% auto;
+    }
+}
+
+@media (min-width: 568px) and (hover: none) {
     #weather-container {
         #weather-data {
             .col {
@@ -80,7 +87,7 @@
     }
 }
 
-@media (min-width: 640px) and (orientation: landscape) {
+@media (min-width: 640px) and (hover: none) {
     #weather-container {
         margin: 4.5% auto;
     }
@@ -105,7 +112,7 @@
     }
 }
 
-@media (min-width: 731px) and (orientation: landscape) {
+@media (min-width: 731px) and (hover: none) {
     #weather-container {
         margin: 5.5% auto;
         #weather-data {
@@ -124,13 +131,13 @@
     }
 }
 
-@media (min-width: 812px) and (orientation: landscape) {
+@media (min-width: 812px) and (hover: none) {
     #weather-container {
         margin: 2.5% auto;
     }
 }
 
-@media (min-width: 823px) and (orientation: landscape) and (hover: none) {
+@media (min-width: 823px) and (hover: none) {
     #weather-container {
         margin: 5% auto;
     }
@@ -138,7 +145,7 @@
 
 @media (min-width: 1024px) {
     #weather-container {
-        margin: 1% auto;
+        margin: 5% auto;
     }
 }
 

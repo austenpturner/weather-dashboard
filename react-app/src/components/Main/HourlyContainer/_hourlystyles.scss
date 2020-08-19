@@ -4,6 +4,7 @@
 #hourly-container {
     @include flex (row, flex-start);
     margin: 2% auto;
+    max-width: 820px;
     overflow-x: auto;
     width: 88%;
     &::-webkit-scrollbar-track {
@@ -60,6 +61,12 @@
     }
 }
 
+@media (min-height: 568px) and (hover: hover) {  
+    #hourly-container {
+        margin: 8% auto;
+    }
+}
+
 @media (min-width: 667px) and (hover: none) {
     #hourly-container {
         margin: 5% auto;
@@ -96,7 +103,7 @@
     }
 }
 
-@media (min-width: 731px) and (orientation: landscape) and (hover: none) {
+@media (min-width: 731px) and (hover: none) {
     #hourly-container {
         margin: 2% auto;
         width: 79%;
@@ -115,6 +122,7 @@
 
 @media (min-width: 768px) {
     #hourly-container {
+        margin: 8% auto;
         width: 78%;
     }
 }
@@ -149,6 +157,7 @@
 
 @media (min-width: 1024px) {
     #hourly-container {
+        margin: 5% auto;
         width: 66%;
     }
 }

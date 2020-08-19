@@ -91,7 +91,7 @@ nav {
                     text-align: left;
                 }
                 .delete-icon {
-                    background: rgb(253, 32, 32);
+                    background: $deleteRed;
                     text-align: center;
                     width: 20%;
                 }
@@ -133,6 +133,9 @@ nav {
                         font-size: 1.5em;
                         padding: 18px 10px;
                         min-width: 12%;
+                        &:hover {
+                            color: $deleteRed;
+                        }
                     }
                 }
             }
