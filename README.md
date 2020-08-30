@@ -31,7 +31,7 @@ Weather Dashboard saved locations menu:
 
 ![Weather Dashboard Slide Menu](https://github.com/austenpturner/weather-dashboard/blob/master/assets/display-saved-locations.jpg)
 
-Link to deployed site: https://austenpturner.github.io/weather-dashboard/
+Link to deployed site: https://weather-dashboard-app.heroku.com
 
 ## Next Steps
 The next challenge with this app would be to change colors and symbols depending on if the current time in the location displayed was night or day. To do this I could somehow use the sunrise and sunset data returned by the API. 
